@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1015640104727",
+    "project_id": "w8-android",
+    "storage_bucket": "w8-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015640104727:android:a460d08bcd8b55951ca152",
+        "android_client_info": {
+          "package_name": "com.w8india.w8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015640104727-uo8ee7hj8dtg5g2in22kpf83muq7vif4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.w8india.w8",
+            "certificate_hash": "f7b90bbd07e9336f9617ec14cf6f1636ec4c6215"
+          }
+        },
+        {
+          "client_id": "1015640104727-vip86erpuhbld39to71hqo9jbl22fjs0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCimZjKw9ZlOPlZjWReUmxp0JZc6BZ_tdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015640104727-vip86erpuhbld39to71hqo9jbl22fjs0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
