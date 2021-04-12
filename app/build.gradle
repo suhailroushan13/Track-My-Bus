@@ -6,6 +6,9 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    lintOptions {
+        disable 'ContentDescription'
+    }
 
     defaultConfig {
         applicationId "com.w8india.w8"

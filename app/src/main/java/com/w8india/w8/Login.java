@@ -35,9 +35,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         firebaseAuth = FirebaseAuth.getInstance();
+        getSupportActionBar().hide();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
-            Intent intent = new Intent(Login.this, MainActivity.class);
+            Intent intent = new Intent(Login.this, Selection.class);
             startActivity(intent);
             finish();
         }
@@ -124,7 +125,7 @@ public class Login extends AppCompatActivity {
 
     private void launchMainActivity(FirebaseUser user) {
         if (user != null) {
-            Intent intent = new Intent(Login.this, MainActivity.class);
+            Intent intent = new Intent(Login.this, Selection.class);
             startActivity(intent);
             finish();
         }
