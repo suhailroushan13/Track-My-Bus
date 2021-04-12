@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">W8</string>
+    <string name="todo1">TODO</string>
+    <string name="lords">Lords</string>
+    <string name="powered_by_w8">Powered By W8</string>
+    <string name="bus_app">Bus App</string>
+    <string name="connect_with_driver">Connect With Driver</string>
+    <string name="todo2">TODO</string>
+    <string name="welcome">Welcome !</string>
+    <string name="todo3">TODO2</string>
+    <string name="student_login23">Student Login</string>
+    <string name="driver_login">Driver Login</string>
+    <string name="todo4">TODO</string>
+    <string name="todo">todo5</string>
+    <string name="title_activity_driverlogin">Driverlogin</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="student_login1">Student Login</string>
+    <string name="hello_students">Hello Students!</string>
+    <string name="Message">Message</string>
+    <string name="title_activity_home">Home</string>
+    <string name="create_account">Create Account</string>
+    <string name="roll_number">Roll Number</string>
+    <string name="password4">Password</string>
+    <string name="button">Button</string>
+    <string name="login">Login</string>
+
+    <string name="student_login">Student Login</string>
+    <string name="todo6">TODO</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="or_sign_in_with_google">Or Sign In With Google</string>
+    <string name="todo8">TODO</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="we_will_send_you_an_one_time_password_on_this_mobile_number">We will send you an One Time Password on this Mobile Number</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="_91">+91</string>
+    <string name="dash">__________</string>
+    <string name="dash2">-__________</string>
+    <string name="_9618211xxx">9618211xxx</string>
+    <string name="DASH1">__________</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="enter_the_otp_sent_to">Enter the OTP sent to</string>
+    <string name="didn_t_receive_the_otp">Didn\'t receive the OTP ?</string>
+    <string name="resend_otp">RESEND OTP</string>
+    <string name="verify">Verify</string>
+    <string name="dash4">________________</string>
+    <string name="title_activity_send_o_t_p">SendOTP</string>
+    <string name="hello_there">Hello There !</string>
+    <string name="roll_number_">Roll Number :</string>
+    <string name="password_">Password:</string>
+    <string name="or">_____________ OR ___________</string>
+    <string name="dash15">_______________Or_____________</string>
+    <string name="or_">OR</string>
+
+    <string name="email_id">Email Id:</string>
+    <string name="forget_password">Forget Password ?</string>
+
+
+    <string name="full_name">Full Name</string>
+    <string name="age">Age</string>
+
+    <string name="register">Register</string>
+    <string name="W8">w8</string>
+    <string name="todo6789">TODO</string>
+    <string name="bus_app1">Bus App</string>
+    <string name="lords_bus_app">Lords Bus App</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="login_using_with">Login Using With</string>
+    <string name="todo45">TODO</string>
+    <string name="todo34">TODO</string>
+    <string name="todoty">sdf</string>
+    <string name="description">description</string>
+    <string name="_5tgnjr">5tgnjr</string>
+    <string name="ok">ok</string>
+    <string name="select_your_bus">Select Your Bus</string>
+    <string name="todo009">TODO</string>
+    <string name="todo678">TODO</string>
+    <string name="bus1">Button</string>
+    <string name="jntuh_mehdipatnam_college">JNTUH - MEHDIPATNAM - COLLEGE</string>
+
+    <string name="bandlaguda_shalibanda_college">BANDLAGUDA - SHALIBANDA - COLLEGE</string>
+
+
+    <string name="todo45678">TODO</string>
+    <string name="bus_no_1">Bus No.1</string>
+    <string name="tododj">TODO</string>
+    <string name="todo5678">TODO</string>
+    <string name="bus_no_2">Bus No.2</string>
+    <string name="bus_no_5">Bus No.5</string>
+    <string name="bai_ramal_guda_rajendra_nagar_college">BAI RAMAL GUDA - RAJENDRA NAGAR - COLLEGE</string>
+    <string name="not_in_service">Not in Service</string>
+    <string name="miyapur_langer_houser_college">MIYAPUR - LANGER HOUSER - COLLEGE</string>
+    <string name="lb_nagar_nampally_college">LB NAGAR - NAMPALLY - COLLEGE</string>
+    <string name="bus_no_3">Bus No.3</string>
+    <string name="bus_no_4">Bus No.4</string>
+    <string name="bus_no_7">Bus No.7</string>
+    <string name="nerdmert_x_road_lakdikapool_college">NERDMERT X ROAD - LAKDIKAPOOL - COLLEGE</string>
+    <string name="bus_no_6">Bus No.6</string>
+    <string name="todo89651">TODO</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+
+</resources>

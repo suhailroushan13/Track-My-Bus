@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="Roll" type="id" />
+    <item name="progressBar" type="id" />
+    <item name="signInButton" type="id"/>
+    <item name="list_view" type="id"/>
+
+</resources>
