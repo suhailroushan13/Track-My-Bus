@@ -115,5 +115,12 @@
     <string name="_5">5</string>
     <string name="_6">6</string>
     <string name="_7">7</string>
+    <string name="todoss">erfg</string>
+    <string name="login_via_otp">Login Via OTP</string>
+    <string name="google_sign_up">Google SIgn Up</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="mobile_number">Mobile Number</string>
+   ]
+    <string name="enter_the_otp_we_just_sent_to_you_on_your_given_mobile_number">Enter the OTP we just sent to you on your given mobile Number</string>
 
 </resources>

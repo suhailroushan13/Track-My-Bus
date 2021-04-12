@@ -7,9 +7,9 @@
     <color name="teal_700">@color/black</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorDivider">#BDBDBD</color>
-    <color name="colorTextSecondary">#757575</color>
-    <color name="colorTextPrimary">#212121</color>
+    <color name="colorDivider">#FFFFFF</color>
+    <color name="colorTextSecondary">#FFFFFF</color>
+    <color name="colorTextPrimary">#FCFCFC</color>
     <color name="colorAccent">#F44336</color>
     <color name="ColorPrimary">#536DFE</color>
     <color name="colorPrimaryDark">#536DFE</color>

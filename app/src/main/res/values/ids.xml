@@ -3,7 +3,10 @@
 
     <item name="Roll" type="id" />
     <item name="progressBar" type="id" />
-    <item name="signInButton" type="id"/>
+
     <item name="list_view" type="id"/>
+    <item name="signInButton" type="id"/>
+    <item name="sign_in_button" type="id"/>
+    <item name="loginvigoogle" type="id"/>
 
 </resources>

@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.W8">
-        <activity android:name=".SplashScreen"
+        <activity android:name=".Student_OTP"></activity>
+        <activity android:name=".Select_Bus" />
+        <activity android:name=".Select_Login" />
+        <activity android:name=".Student_Number" />
+        <activity
+            android:name=".SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,14 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name=".Selection"
-            android:screenOrientation="portrait">
-
-        </activity>
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Selection"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
