@@ -15,7 +15,7 @@ public class Student_Number extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student__number);
 
-        getotp=findViewById(R.id.getotp);
+        getotp=findViewById(R.id.button);
         getotp.setOnClickListener(v -> Student_OTP());
         loginwithgoogle=findViewById(R.id.loginwithgoogle);
         loginwithgoogle.setOnClickListener(v -> Login());

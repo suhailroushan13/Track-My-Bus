@@ -9,10 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.W8">
-        <activity android:name=".Student_OTP"></activity>
-        <activity android:name=".Select_Bus" />
-        <activity android:name=".Select_Login" />
-        <activity android:name=".Student_Number" />
+        <activity android:name=".Student_OTP"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".Select_Bus"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Student_Number"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait">
@@ -28,6 +33,10 @@
         <activity
             android:name=".Selection"
             android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
