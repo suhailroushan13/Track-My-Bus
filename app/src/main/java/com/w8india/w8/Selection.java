@@ -16,13 +16,23 @@ public class Selection extends AppCompatActivity {
         slogin=findViewById(R.id.slogin);
         slogin.setOnClickListener(v -> Student_Number());
 
+        dlogin=findViewById(R.id.dlogin);
+        dlogin.setOnClickListener(v -> Driver_Home());
+
     }
 
     public void Student_Number(){
         Intent intent = new Intent(this, Student_Number.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
 
+
+    }
+    public void Driver_Home(){
+        Intent intent = new Intent(this, Driver_Home.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }
 }

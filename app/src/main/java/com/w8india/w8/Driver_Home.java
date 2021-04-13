@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Select_Bus extends AppCompatActivity {
-
-
+public class Driver_Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select__bus);
+        setContentView(R.layout.activity_driver__home);
     }
 }

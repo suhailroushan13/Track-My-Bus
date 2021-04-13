@@ -16,6 +16,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
     Button connectwithdriver;
+    ImageView busmain;
 
 
     @Override
@@ -26,6 +27,10 @@ public class SplashScreen extends AppCompatActivity {
         connectwithdriver=findViewById(R.id.connectwithdriver);
         connectwithdriver.setOnClickListener(v -> Selection());
 
+        busmain=findViewById(R.id.busmain);
+
+        busmain.animate().translationX(450).setDuration(2000).start();
+
 
 
 
@@ -34,6 +39,7 @@ public class SplashScreen extends AppCompatActivity {
     public void Selection(){
         Intent intent = new Intent(this, Selection.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 }

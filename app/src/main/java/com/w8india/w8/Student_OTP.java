@@ -20,21 +20,21 @@ import com.chaos.view.PinView;
 
 public class Student_OTP extends AppCompatActivity implements View.OnClickListener {
 
-        private PinView pinView;
-        private Button next;
-        private TextView topText,textU;
-        private EditText userName, userPhone;
-        private ConstraintLayout first, second;
+    private PinView pinView;
+    private Button next;
+    private TextView topText, textU;
+    private EditText userName, userPhone;
+    private ConstraintLayout first, second;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(Color.TRANSPARENT);
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
         setContentView(R.layout.activity_student__o_t_p);
 
 
@@ -43,53 +43,21 @@ public class Student_OTP extends AppCompatActivity implements View.OnClickListen
         next.setOnClickListener(v -> Select_Bus());
 
 
+    }
+
+    public void Select_Bus() {
+        Intent intent = new Intent(this, Select_Bus.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
 
+    }
 
-        }
-        public void Select_Bus(){
-            Intent intent = new Intent(this, Select_Bus.class);
-            startActivity(intent);
+    @Override
+    public void onClick(View v) {
 
-
-        }
-
-        @Override
-        public void onClick(View v) {
-
-        if (next.getText().equals("Let's go!")) {
-        String name = userName.getText().toString();
-        String phone = userPhone.getText().toString();
-
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone)) {
-        next.setText("Verify");
-        first.setVisibility(View.GONE);
-        second.setVisibility(View.VISIBLE);
-        topText.setText("I Still don't trust you.nTell me something that only two of us know.");
-        } else {
-        Toast.makeText(Student_OTP.this, "Please enter the details", Toast.LENGTH_SHORT).show();
-        }
-        } else if (next.getText().equals("Verify")) {
-        String OTP = pinView.getText().toString();
-        if (OTP.equals("3456")) {
-        pinView.setLineColor(Color.GREEN);
-        textU.setText("OTP Verified");
-        textU.setTextColor(Color.GREEN);
-        next.setText("Next");
-        } else {
-        pinView.setLineColor(Color.RED);
-        textU.setText("X Incorrect OTP");
-        textU.setTextColor(Color.RED);
-        }
-        }
-
-
-
-        }
-        }
-
-
-
+    }
+}
 
 
 

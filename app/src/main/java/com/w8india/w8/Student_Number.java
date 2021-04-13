@@ -27,10 +27,13 @@ public class Student_Number extends AppCompatActivity {
         Intent intent = new Intent(this, Student_OTP.class);
         startActivity(intent);
 
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
     }
     public void Login(){
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
     }
 
