@@ -10,6 +10,7 @@
     <color name="colorDivider">#FFFFFF</color>
     <color name="colorTextSecondary">#FFFFFF</color>
     <color name="colorTextPrimary">#FCFCFC</color>
+    <color name="maincolor">#03A9F4 </color>
     <color name="colorAccent">#F44336</color>
     <color name="ColorPrimary">#536DFE</color>
     <color name="colorPrimaryDark">#536DFE</color>

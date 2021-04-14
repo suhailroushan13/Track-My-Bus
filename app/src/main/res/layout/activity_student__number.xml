@@ -52,7 +52,7 @@
         android:inputType="phone"
         android:textColor="#000000"
         android:textColorHint="#AAAAAA"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="normal"
 
         app:layout_constraintBottom_toBottomOf="@+id/google"
@@ -71,6 +71,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/round"
+
         android:text="@string/get_otp"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -78,7 +79,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853" />
+        app:layout_constraintVertical_bias="0.853"
+       />
 
     <Button
         android:id="@+id/loginwithgoogle"
@@ -105,7 +107,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="91+"
+        android:text="@string/_91_"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="normal"
@@ -115,5 +117,13 @@
         app:layout_constraintStart_toStartOf="@+id/google"
         app:layout_constraintTop_toTopOf="@+id/google"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/getotp"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="60dp"
+        app:errorEnabled="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

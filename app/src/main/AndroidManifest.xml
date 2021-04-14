@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.W8">
-        <activity android:name=".Driver_Home"></activity>
+        <activity android:name=".Home"></activity>
+        <activity android:name=".Driver_Home" />
         <activity
             android:name=".Student_OTP"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Select_Bus"
             android:screenOrientation="portrait" />

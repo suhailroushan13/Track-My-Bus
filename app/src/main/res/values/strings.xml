@@ -127,6 +127,14 @@
     <string name="otp_authentication">OTP Authentication</string>
 
     <string name="todo896453">TODO</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="_91_">91+</string>
+    <string name="otp">OTP</string>
+
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="send">Send</string>
 
 
 </resources>
