@@ -55,6 +55,7 @@
         android:textSize="25sp"
         android:textStyle="normal"
 
+        android:maxLength="10"
         app:layout_constraintBottom_toBottomOf="@+id/google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.546"
