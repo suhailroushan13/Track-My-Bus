@@ -1,12 +1,17 @@
 package com.w8india.w8;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.AnimatedImageDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
@@ -15,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
 
-    Button connectwithdriver;
+    //Button connectwithdriver;
     ImageView busmain;
 
 
@@ -24,22 +29,45 @@ public class SplashScreen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        connectwithdriver=findViewById(R.id.connectwithdriver);
-        connectwithdriver.setOnClickListener(v -> Selection());
+        /**connectwithdriver=findViewById(R.id.connectwithdriver);
+        connectwithdriver.setOnClickListener(v -> Selection());**/
 
         busmain=findViewById(R.id.busmain);
 
-        busmain.animate().translationX(450).setDuration(2000).start();
+        busmain.animate().translationX(25).translationY(25).start();
+
+        if (isConnected()){
+            busmain.animate().cancel();
+            busmain.animate().translationX(450).setDuration(2000).start();
+            Intent intent = new Intent(this, Selection.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }else{
+            busmain.animate().cancel();
+            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+        }
+
 
 
 
 
 
     }
-    public void Selection(){
+    /**public void Selection(){
         Intent intent = new Intent(this, Selection.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }**/
+    public boolean isConnected() {
+        boolean connected = false;
+        try {
+            ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo nInfo = cm.getActiveNetworkInfo();
+            connected = nInfo != null && nInfo.isAvailable() && nInfo.isConnected();
+            return connected;
+        } catch (Exception e) {
+            Log.e("Connectivity Exception", e.getMessage());
+        }
+        return connected;
     }
-
 }
