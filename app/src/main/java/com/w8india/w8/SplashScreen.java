@@ -17,6 +17,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class SplashScreen extends AppCompatActivity {
 
 
@@ -36,24 +39,48 @@ public class SplashScreen extends AppCompatActivity {
         busmain=findViewById(R.id.busmain);
 
         busmain.animate().translationX(25).translationY(25).start();
+        Timer timer = new Timer();
+        int begin = 0;
+        int timeInterval = 500;
+        timer.schedule(new TimerTask() {
 
-        if (isConnected()){
+            @Override
+            public void run() {
+                //call the method
+                if (isConnected()){
+                    timer.cancel();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Your code
+                            busmain.animate().cancel();
+                            busmain.animate().translationX(450).setDuration(2000).start();
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(SplashScreen.this, Selection.class);
+                                    startActivity(intent);
 
-            busmain.animate().cancel();
-            busmain.animate().translationX(450).setDuration(2000).start();
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(SplashScreen.this, Selection.class);
-                    startActivity(intent);
+                                }
+                            }, 2100);
+                        }
+                    });
+
+
+                }else{
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Your code
+                            busmain.animate().cancel();
+                        }
+                    });
+
                 }
-            }, 2100);
+            }
+        }, begin, timeInterval);
 
-        }else{
-            busmain.animate().cancel();
-            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
-        }
 
 
 
