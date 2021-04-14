@@ -7,6 +7,7 @@ import android.graphics.drawable.AnimatedImageDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -37,11 +38,18 @@ public class SplashScreen extends AppCompatActivity {
         busmain.animate().translationX(25).translationY(25).start();
 
         if (isConnected()){
+
             busmain.animate().cancel();
             busmain.animate().translationX(450).setDuration(2000).start();
-            Intent intent = new Intent(this, Selection.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(SplashScreen.this, Selection.class);
+                    startActivity(intent);
+                }
+            }, 2100);
+
         }else{
             busmain.animate().cancel();
             Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
