@@ -5,7 +5,7 @@
     android:id="@+id/splashscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/splashfinal"
     tools:context=".SplashScreen">
 
     <ImageView
@@ -94,7 +94,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853"
+        app:layout_constraintVertical_bias="0.876"
         app:srcCompat="@drawable/busmain"
         tools:targetApi="lollipop" />
 
