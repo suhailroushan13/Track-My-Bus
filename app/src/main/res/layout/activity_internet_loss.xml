@@ -3,19 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/internet"
+    tools:context=".Internet_loss">
+
 
     <Button
-        android:id="@+id/log_out_btn"
-        android:layout_width="205dp"
-        android:layout_height="96dp"
-        android:text="@string/log_out"
+        android:id="@+id/checkInternet"
+        android:layout_width="285dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="80dp"
+
+
+        android:layout_marginRight="80dp"
+        android:text="@string/check_internet"
+        android:textColor="@color/white"
         android:textSize="20sp"
 
-        android:textColor="@color/white"
+
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

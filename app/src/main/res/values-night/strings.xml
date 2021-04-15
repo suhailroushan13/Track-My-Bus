@@ -86,6 +86,13 @@
     <string name="communicate">Communicate</string>
     <string name="share">Share</string>
     <string name="send">Send</string>
+    <string name="you_re_number">You\'re Number</string>
+    <string name="resend">Resend</string>
+    <string name="if_you_didn_t_recieve_a_code">If you didn\'t recieve a code.</string>
+
+    <string name="check_internet">Check Internet</string>
+    <string name="OK">Please Enter Country Code and Phone Number</string>
+    <string name="log_out">Log Out</string>
 
 
 </resources>

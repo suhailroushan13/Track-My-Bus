@@ -8,5 +8,6 @@
     <item name="signInButton" type="id"/>
     <item name="sign_in_button" type="id"/>
     <item name="loginvigoogle" type="id"/>
+    <item name="try_again_btn" type="id"/>
 
 </resources>

@@ -8,14 +8,14 @@
     tools:context=".Student_OTP">
 
     <Button
-        android:id="@+id/getotp"
+        android:id="@+id/verifycode_btn"
         android:layout_width="260dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/round"
-        android:text="Get OTP"
+        android:text="@string/get_otp"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,9 +28,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pinView"
-        android:layout_toLeftOf="@+id/resend"
-        android:text="If you didn't recieve a code."
+        android:layout_below="@+id/verify_code_edit"
+        android:layout_toStartOf="@id/resend"
+        android:text="@string/if_you_didn_t_recieve_a_code"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,57 +38,49 @@
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.73" />
 
     <com.chaos.view.PinView
-        android:id="@+id/pinView"
+        android:id="@+id/verify_code_edit"
         style="@style/PinWidget.PinView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="325dp"
+        android:layout_height="67dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:inputType="number"
-        android:padding="10dp"
-        android:textSize="18sp"
-        app:itemCount="6"
         android:autofillHints=""
         android:ems="6"
-        app:itemHeight="48dp"
+        android:inputType="number"
+        android:maxLength="6"
+        android:padding="10dp"
         android:textColor="@color/black"
-        app:itemRadius="10dp"
+        android:textSize="18sp"
+        app:itemCount="6"
+        app:itemHeight="48dp"
+        app:itemRadius="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612"
+        app:layout_constraintVertical_bias="0.625"
         app:lineColor="#03A9F4" />
 
     <TextView
         android:id="@+id/resend"
         android:layout_width="89dp"
         android:layout_height="22dp"
-        android:layout_below="@id/pinView"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="252dp"
+        android:layout_below="@id/verify_code_edit"
+        android:layout_alignParentEnd="true"
         android:gravity="center"
-        android:text="Resend"
+        android:text="@string/resend"
         android:textColor="#03A9F4"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_noti"
-        android:layout_width="185dp"
-        android:layout_height="41dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pinView"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,7 +40,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/input_phone"
         android:layout_width="248dp"
         android:layout_height="46dp"
 
@@ -65,14 +65,14 @@
     </EditText>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/send_codebtn"
         android:layout_width="321dp"
         android:layout_height="54dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/round"
 
+        android:background="@drawable/round"
         android:text="@string/get_otp"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -80,8 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853"
-       />
+        app:layout_constraintVertical_bias="0.853" />
 
     <Button
         android:id="@+id/loginwithgoogle"
@@ -103,7 +102,7 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/input_country_code"
         android:layout_width="54dp"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
@@ -112,15 +111,15 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/phone"
-        app:layout_constraintEnd_toStartOf="@+id/phone"
+        app:layout_constraintBottom_toBottomOf="@+id/input_phone"
+        app:layout_constraintEnd_toStartOf="@+id/input_phone"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/google"
         app:layout_constraintTop_toTopOf="@+id/google"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/getotp"
+        android:id="@+id/verifycode_btn"
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         tools:ignore="MissingConstraints"
