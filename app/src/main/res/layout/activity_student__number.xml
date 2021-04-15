@@ -107,7 +107,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="@string/_91_"
+        android:hint="+91"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="normal"

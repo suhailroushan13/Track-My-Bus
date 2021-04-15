@@ -39,7 +39,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Student_Number extends AppCompatActivity {
 
-    private Button mSendOTPBtn;
+    private Button mSendOTPBtn,loginwithgoogle;
     private TextView processText;
     private EditText countryCodeEdit , phoneNumberEdit;
     private FirebaseAuth auth;
@@ -53,13 +53,17 @@ public class Student_Number extends AppCompatActivity {
         setContentView(R.layout.activity_student__number);
 
 
-
+       loginwithgoogle=findViewById(R.id.loginwithgoogle);
+       loginwithgoogle.setOnClickListener(v -> Login());
 
         mSendOTPBtn = findViewById(R.id.send_codebtn);
         phoneNumberEdit = findViewById(R.id.input_phone);
-        countryCodeEdit = findViewById(R.id.input_country_code);
+//        countryCodeEdit = findViewById(R.id.input_country_code);
 
         auth = FirebaseAuth.getInstance();
+
+
+
 
         mSendOTPBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +92,8 @@ public class Student_Number extends AppCompatActivity {
                 signIn(phoneAuthCredential);
             }
 
+
+
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
                 processText.setText(e.getMessage());
@@ -114,6 +120,10 @@ public class Student_Number extends AppCompatActivity {
 
             }
         };
+    }
+    public void Login(){
+        Intent intent = new Intent(Student_Number.this, Login.class);
+        startActivity(intent);
     }
 
     @Override
@@ -143,6 +153,7 @@ public class Student_Number extends AppCompatActivity {
             }
         });
     }
+
 
 }
 
