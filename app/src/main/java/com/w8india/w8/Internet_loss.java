@@ -33,13 +33,12 @@ public class Internet_loss extends AppCompatActivity {
 
 
                          Toast.makeText(Internet_loss.this, "Connected", Toast.LENGTH_SHORT).show();
+                         finish();
 
                      }
                      else {
 
-                         Intent i= new Intent(Internet_loss.this,notconnected.class);
-                         startActivity(i);
-                         finish();
+                         Toast.makeText(Internet_loss.this, "Please check internet connection", Toast.LENGTH_SHORT).show();
 
                      }
 

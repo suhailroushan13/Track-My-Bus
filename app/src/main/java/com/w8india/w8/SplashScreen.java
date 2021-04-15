@@ -74,6 +74,8 @@ public class SplashScreen extends AppCompatActivity {
                         public void run() {
                             //Your code
                             busmain.animate().cancel();
+                            Intent intent = new Intent(SplashScreen.this, Internet_loss.class);
+                            startActivity(intent);
                         }
                     });
 
