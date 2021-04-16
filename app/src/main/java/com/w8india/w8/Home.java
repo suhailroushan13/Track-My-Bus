@@ -21,19 +21,24 @@ public class Home extends AppCompatActivity {
 
 
     private Button mLogOutBtn;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth auth;
+    FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if (auth.getCurrentUser() == null) {
+            finish();
+            startActivity(new Intent(this, Student_Number.class));
+        }
         mLogOutBtn = findViewById(R.id.log_out_btn);
-        mAuth = FirebaseAuth.getInstance();
 
         mLogOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
+                auth.signOut();
                 startActivity(new Intent(Home.this , Student_OTP.class));
                 finish();
             }
@@ -43,7 +48,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null){
             startActivity(new Intent(Home.this , Student_OTP.class));
             finish();
