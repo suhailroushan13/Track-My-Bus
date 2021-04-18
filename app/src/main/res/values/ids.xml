@@ -9,5 +9,15 @@
     <item name="sign_in_button" type="id"/>
     <item name="loginvigoogle" type="id"/>
     <item name="try_again_btn" type="id"/>
+    <item name="imageViews" type="id"/>
+    <item name="scrollView2" type="id"/>
+    <item name="bus1" type="id"/>
+    <item name="bus2" type="id"/>
+    <item name="bus3" type="id"/>
+    <item name="bus5" type="id"/>
+    <item name="bus4" type="id"/>
+    <item name="bus7" type="id"/>
+    <item name="bus6" type="id"/>
+    <item name="textView4" type="id"/>
 
 </resources>

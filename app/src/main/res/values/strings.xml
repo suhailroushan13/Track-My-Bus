@@ -83,7 +83,7 @@
     <string name="description">description</string>
     <string name="_5tgnjr">5tgnjr</string>
     <string name="ok">ok</string>
-    <string name="select_your_bus">Select Your Bus</string>
+
     <string name="todo009">TODO</string>
     <string name="todo678">TODO</string>
     <string name="bus1">Button</string>
@@ -93,7 +93,7 @@
 
 
     <string name="todo45678">TODO</string>
-    <string name="bus_no_1">Bus No.1</string>
+
     <string name="tododj">TODO</string>
     <string name="todo5678">TODO</string>
     <string name="bus_no_2">Bus No.2</string>
@@ -163,6 +163,10 @@
     <string name="tell_a_friend">Tell a Friend</string>
     <string name="Menu">Menus</string>
     <string name="or_login_with_google">or Login With Google</string>
+    <string name="select_your_bus">Select Your Bus</string>
+    <string name="bus_no_1">Bus No.1</string>
+    <string name="button">Button</string>
+    <string name="share1">SHARE</string>
 
 
 </resources>

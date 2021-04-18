@@ -3,24 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/maincolor">
 
-    <Button
-        android:id="@+id/log_out_btn"
-        android:layout_width="5dp"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"
-        android:text="@string/log_out"
-        android:textColor="@color/white"
-
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/drawerBtn"
@@ -30,7 +16,8 @@
         android:clickable="true"
         android:focusable="true"
 
-        app:backgroundTint="@color/white"
+
+        app:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
@@ -39,6 +26,7 @@
         app:layout_constraintVertical_bias="0.021"
         app:srcCompat="@drawable/hamburger"
         app:useCompatPadding="true" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

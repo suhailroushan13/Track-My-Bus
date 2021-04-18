@@ -27,17 +27,19 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="221dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/verify_code_edit"
+        android:layout_marginStart="36dp"
         android:layout_toStartOf="@id/resend"
-        android:text="@string/if_you_didn_t_recieve_a_code"
+        android:gravity="center"
+        android:text="Didn't not recieve code ?"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <com.chaos.view.PinView
         android:id="@+id/verify_code_edit"
@@ -66,17 +68,18 @@
 
     <Button
         android:id="@+id/resend"
-        android:layout_width="88dp"
-        android:layout_height="40dp"
+        android:layout_width="117dp"
+        android:layout_height="45dp"
         android:background="@android:color/transparent"
         android:text="@string/resend"
-        android:textColor="@color/maincolor"
         android:textAllCaps="false"
+        android:textColor="@color/maincolor"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/verifycode_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/verify_code_edit"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintVertical_bias="0.258" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

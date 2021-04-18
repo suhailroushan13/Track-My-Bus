@@ -24,24 +24,20 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class Home extends AppCompatActivity {
     private DrawerLayout drawer;
-
-
     Button menu;
     FloatingActionButton drawebtn;
     AccountHeader headerResult;
-    private Button mLogOutBtn;
     Drawer result;
     private FirebaseAuth auth;
     FirebaseUser user;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         drawebtn = findViewById(R.id.drawerBtn);
-
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -49,7 +45,7 @@ public class Home extends AppCompatActivity {
             finish();
             startActivity(new Intent(this, Student_Number.class));
         }
-        mLogOutBtn = findViewById(R.id.log_out_btn);
+
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home");
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
 
@@ -61,14 +57,12 @@ public class Home extends AppCompatActivity {
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
-
-
                 .withSavedInstance(savedInstanceState)
                 .build();
 
-
         result = new DrawerBuilder()
                 .withActivity(this)
+                .withHasStableIds(true)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Change Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
@@ -81,17 +75,60 @@ public class Home extends AppCompatActivity {
                         new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.follow).withIdentifier(12).withSelectable(false).withSubItems(
                                 new SecondaryDrawerItem().withName("Facebook").withLevel(2).withIdentifier(2000).withSelectable(false),
                                 new SecondaryDrawerItem().withName("Instagram").withLevel(2).withIdentifier(2001).withSelectable(false)
-                        )
-                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                        )).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                            @Override
+                            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                                //check if the drawerItem is set.
+                                //there are different reasons for the drawerItem to be null
+                                //--> click on the header
+                                //--> click on the footer
+                                //those items don't contain a drawerItem
+
+                                if (drawerItem != null) {
+                                    Intent intent = null;
+                                    if (drawerItem.getIdentifier() == 1) {
+                                        intent = new Intent(Home.this, Select_Bus.class);
+                                    } else if (drawerItem.getIdentifier() == 2) {
+                                        //    intent = new Intent(Home.this, ActionBarActivity.class);
+                                    } else if (drawerItem.getIdentifier() == 3) {
+                                        //  intent = new Intent(DrawerActivity.this, MultiDrawerActivity.class);
+                                    } else if (drawerItem.getIdentifier() == 4) {
+                                        //intent = new Intent(DrawerActivity.this, NonTranslucentDrawerActivity.class);
+                                    } else if (drawerItem.getIdentifier() == 5) {
+                                        //intent = new Intent(DrawerActivity.this, AdvancedActivity.class);
+                                    } else if (drawerItem.getIdentifier() == 7) {
+                                        // intent = new Intent(DrawerActivity.this, EmbeddedDrawerActivity.class);
+
+                                        auth.signOut();
+                                        intent = new Intent(Home.this,Selection.class);
+                                        finish();
+
+                                    } else if (drawerItem.getIdentifier() == 20) {
+
+                                    }
+                                    if (intent != null) {
+                                        Home.this.startActivity(intent);
+                                    }
+                                }
+
+                                return false;
+                            }
+                        }).build();
+                               /** .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                                     @Override
                                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                                         // do something with the clicked item :D
                                         if (drawerItem != null) {
                                             Intent intent = null;
                                             if (drawerItem.getIdentifier() == 1) {
+                                                intent = new Intent(Home.this,Select_Bus.class);
+                                                Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
+
+
+
 
                                             } else if (drawerItem.getIdentifier() == 2) {
-
+                                                Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
                                             } else if (drawerItem.getIdentifier() == 3) {
 
                                             } else if (drawerItem.getIdentifier() == 4) {
@@ -102,19 +139,23 @@ public class Home extends AppCompatActivity {
 
                                             } else if (drawerItem.getIdentifier() == 7) {
 
+                                                auth.signOut();
+                                                startActivity(new Intent(Home.this, Selection.class));
+                                                finish();
+
+
                                             }
                                         }
+
                                         return false;
                                     }
                                 })
 
-                ) .build();
+                )**/
+
 
 
         result.setSelection(0);
-
-
-
 
         drawebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,16 +164,9 @@ public class Home extends AppCompatActivity {
 
             }
         });
-        mLogOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auth.signOut();
-                startActivity(new Intent(Home.this, Selection.class));
-                finish();
-            }
-        });
-    }
 
+
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -142,6 +176,11 @@ public class Home extends AppCompatActivity {
             finish();
         }
     }
+
+
+
+
+
 
 }
 

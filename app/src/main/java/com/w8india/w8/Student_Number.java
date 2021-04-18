@@ -78,10 +78,10 @@ public class Student_Number extends AppCompatActivity {
                 String phone = phoneNumberEdit.getText().toString();
                 String phoneNumber = "+91"+ phone;
                if (phone.isEmpty()){
-                    phoneNumberEdit.setError("Please enter your phone number");
+                    phoneNumberEdit.setError("Enter Your Number ");
 
                 }else if(phone.length()<10){
-                    phoneNumberEdit.setError("Please enter a valid phone number");
+                    phoneNumberEdit.setError("Have You Forget Your Number ??");
                 }else {
                     Intent intent = new Intent(Student_Number.this, Student_OTP.class);
                     intent.putExtra("no",phoneNumber);

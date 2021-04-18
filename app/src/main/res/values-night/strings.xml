@@ -42,7 +42,7 @@
     <string name="sign_out">Sign Out</string>
     <string name="login_using_with">Login Using With</string>
     <string name="todo34">TODO</string>
-    <string name="select_your_bus">Select Your Bus</string>
+
     <string name="todo678">TODO</string>
     <string name="bus1">Button</string>
     <string name="jntuh_mehdipatnam_college">JNTUH - MEHDIPATNAM - COLLEGE</string>
@@ -51,7 +51,7 @@
     <string name="bandlaguda_shalibanda_college">BANDLAGUDA - SHALIBANDA - COLLEGE</string>
 
     <string name="nerdmert_x_road_lakdikapool_college">NERDMERT X ROAD - LAKDIKAPOOL - COLLEGE</string>
-    <string name="bus_no_1">Bus No.1</string>
+
     <string name="tododj">TODO</string>
     <string name="todo5678">TODO</string>
     <string name="bus_no_2">Bus No.2</string>
@@ -104,6 +104,10 @@
     <string name="tell_a_friend">Tell a Friend</string>
     <string name="Menu">Menus</string>
     <string name="or_login_with_google">or Login With Google</string>
+    <string name="select_your_bus">Select Your Bus</string>
+    <string name="bus_no_1">Bus No.1</string>
+    <string name="button">Button</string>
+    <string name="share1">SHARE</string>
 
 
 </resources>
