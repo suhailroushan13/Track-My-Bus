@@ -78,7 +78,7 @@ public class Home extends AppCompatActivity {
                         new PrimaryDrawerItem().withName("Join our Circle").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(7).withSelectable(false),
-                        new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.join).withIdentifier(12).withSelectable(false).withSubItems(
+                        new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.follow).withIdentifier(12).withSelectable(false).withSubItems(
                                 new SecondaryDrawerItem().withName("Facebook").withLevel(2).withIdentifier(2000),
                                 new SecondaryDrawerItem().withName("Instagram").withLevel(2).withIdentifier(2001)
                         )

@@ -103,7 +103,7 @@
     <string name="log_out">Log Out</string>
     <string name="tell_a_friend">Tell a Friend</string>
     <string name="Menu">Menus</string>
-
+    <string name="or_login_with_google">or Login With Google</string>
 
 
 </resources>
