@@ -143,6 +143,25 @@
     <string name="OK">Please Enter Country Code and Phone Number</string>
     <string name="log_out">Log Out</string>
     <string name="verifyS">VERIFY</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="w8">W8</string>
+    <string name="w8india_gmail_com">w8india@gmail.com</string>
+
+    <string name="log_out_group_menu"><![CDATA[Log Out /> </group> </menu>]]></string>
+    <string name="about_us">About Us</string>
+    <string name="support_us">Support Us</string>
+    <string name="rate_this_app">Rate This App</string>
+
+    <string name="tell_a_friend">Tell a Friend</string>
+    <string name="Menu">Menus</string>
 
 
 </resources>

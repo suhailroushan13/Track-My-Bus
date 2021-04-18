@@ -37,11 +37,12 @@ import static com.w8india.w8.Constants.showSnack;
 public class Student_OTP extends AppCompatActivity {
 
 
+    Button resend;
     private Button mVerifyCodeBtn;
     private EditText otpEdit;
     private String OTP;
     private FirebaseAuth firebaseAuth;
-    TextView resend;
+
     int TIME = 60500;
     CountDownTimer countDownTimer;
     private FirebaseAuth mAuth;
@@ -54,7 +55,8 @@ public class Student_OTP extends AppCompatActivity {
         mVerifyCodeBtn = findViewById(R.id.verifycode_btn);
         otpEdit = findViewById(R.id.verify_code_edit);
         no = getIntent().getStringExtra("no");
-        resend = findViewById(R.id.resend);
+       resend=findViewById(R.id.resend);
+
 
         Toast.makeText(this, no, Toast.LENGTH_SHORT).show();
         firebaseAuth = FirebaseAuth.getInstance();

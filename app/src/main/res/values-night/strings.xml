@@ -92,8 +92,18 @@
 
     <string name="check_internet">Check Internet</string>
     <string name="OK">Please Enter Country Code and Phone Number</string>
-    <string name="log_out">Log Out</string>
+
     <string name="verifyS">VERIFY</string>
+    <string name="w8">W8</string>
+    <string name="w8india_gmail_com">w8india@gmail.com</string>
+
+    <string name="log_out_group_menu"><![CDATA[Log Out /> </group> </menu>]]></string>
+    <string name="support_us">Support Us</string>
+    <string name="rate_this_app">Rate This App</string>
+    <string name="log_out">Log Out</string>
+    <string name="tell_a_friend">Tell a Friend</string>
+    <string name="Menu">Menus</string>
+
 
 
 </resources>

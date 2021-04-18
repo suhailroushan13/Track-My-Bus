@@ -26,6 +26,7 @@
         app:layout_constraintVertical_bias="0.867" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/verify_code_edit"
@@ -34,8 +35,6 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/resend"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.73" />
@@ -65,24 +64,19 @@
         app:layout_constraintVertical_bias="0.625"
         app:lineColor="#03A9F4" />
 
-    <TextView
+    <Button
         android:id="@+id/resend"
-        android:layout_width="89dp"
-        android:layout_height="22dp"
-        android:layout_below="@id/verify_code_edit"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
         android:text="@string/resend"
-        android:textColor="#03A9F4"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/maincolor"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/verifycode_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733"
-        android:focusable="true" />
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/verify_code_edit"
+        app:layout_constraintVertical_bias="0.492" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
