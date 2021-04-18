@@ -77,16 +77,16 @@ public class Student_Number extends AppCompatActivity {
 
                 String phone = phoneNumberEdit.getText().toString();
                 String phoneNumber = "+91"+ phone;
-                if (!phone.isEmpty()){
+               if (phone.isEmpty()){
+                    phoneNumberEdit.setError("Please enter your phone number");
+
+                }else if(phone.length()<10){
+                    phoneNumberEdit.setError("Please enter a valid phone number");
+                }else {
                     Intent intent = new Intent(Student_Number.this, Student_OTP.class);
                     intent.putExtra("no",phoneNumber);
 
                     startActivityForResult(intent,2);
-
-                }else{
-                    processText.setText("Please Enter Phone Number");
-                    processText.setTextColor(Color.RED);
-                    processText.setVisibility(View.VISIBLE);
                 }
             }
         });

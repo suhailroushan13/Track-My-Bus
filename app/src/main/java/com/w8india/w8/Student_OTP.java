@@ -58,7 +58,6 @@ public class Student_OTP extends AppCompatActivity {
        resend=findViewById(R.id.resend);
 
 
-        Toast.makeText(this, no, Toast.LENGTH_SHORT).show();
         firebaseAuth = FirebaseAuth.getInstance();
         resend.setEnabled(false);
         resend.setOnClickListener(new View.OnClickListener() {
