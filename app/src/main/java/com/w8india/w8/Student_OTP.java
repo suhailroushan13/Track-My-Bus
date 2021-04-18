@@ -225,7 +225,7 @@ public class Student_OTP extends AppCompatActivity {
                             //verification successful we will start the profile activity
                             setResult(1);
                             finish();
-                            sendToMain();
+                            startActivity(new Intent(Student_OTP.this, Select_Bus.class));
 
 
                         } else {

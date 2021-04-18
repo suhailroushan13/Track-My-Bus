@@ -89,7 +89,7 @@ public class Home extends AppCompatActivity {
                                         if (drawerItem != null) {
                                             Intent intent = null;
                                             if (drawerItem.getIdentifier() == 1) {
-                                                //Home
+
                                             } else if (drawerItem.getIdentifier() == 2) {
 
                                             } else if (drawerItem.getIdentifier() == 3) {
