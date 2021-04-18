@@ -1,14 +1,53 @@
 package com.w8india.w8;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RatingBar;
+import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Rate_us extends AppCompatActivity {
 
+
+    RatingBar ratingBar;
+    Button rate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_us);
+        rate = findViewById(R.id.rate);
+        rate = findViewById(R.id.rate);
+        rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+
+                    try {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "W8");
+                    String shareMessgae = " W8 is an Application which Track the Real Time Location Of College Buses https://play.google.com/store/apps/details?" + BuildConfig.APPLICATION_ID + "\n\n";
+                    intent.putExtra(Intent.EXTRA_TEXT, shareMessgae);
+                    startActivity(Intent.createChooser(intent, "SHARE"));
+                } catch (Exception e) {
+                    Toast.makeText(Rate_us.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+
+                        String s = String.valueOf(ratingBar.getRating());
+                        Toast.makeText(getApplicationContext(), s+" Star"
+                                , Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
+
 }
+
+
+

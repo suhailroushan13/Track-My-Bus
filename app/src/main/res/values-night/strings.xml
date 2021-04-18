@@ -101,13 +101,23 @@
     <string name="support_us">Support Us</string>
     <string name="rate_this_app">Rate This App</string>
     <string name="log_out">Log Out</string>
-    <string name="tell_a_friend">Tell a Friend</string>
-    <string name="Menu">Menus</string>
+ <string name="Menu">Menus</string>
     <string name="or_login_with_google">or Login With Google</string>
     <string name="select_your_bus">Select Your Bus</string>
     <string name="bus_no_1">Bus No.1</string>
-    <string name="button">Button</string>
+
     <string name="share1">SHARE</string>
+    <string name="tell_a_friend">Tell a Friend</string>
+    <string name="tell_your_friend_how_you_reach_your_college_on_time_with_tracking_real_time_location_of_their_college_buses">Tell your friend, How you reach your college on time ,with Tracking Real Time Location of their College Buses</string>
+    <string name="about_us">About Us</string>
+    <string name="terms_and_conditions">Terms And Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="versoion_1_0_0">Versoion: 1.0.0</string>
+    <string name="w8_is_an_application_which_track_the_real_time_location_of_college_buses">W8 is an Application which Track the Real Time Location Of College Buses</string>
+
+    <string name="why_you_should_rate_us">Why you should Rate Us ?</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="we_are_the_students_ofbachelor_engineering_rating_us_will_gave_a_more_confident_to_make_more_appwhich_would_help_you_in_future">We are the Students ofBachelor Engineering Rating us will gave a more Confident to make more appWhich would help you in Future</string>
 
 
 </resources>

@@ -25,12 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="-90dp"
         android:gravity="center"
 
         android:text="@string/select_your_bus"
         android:textColor="@color/maincolor"
         android:textSize="30sp"
         android:textStyle="normal" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

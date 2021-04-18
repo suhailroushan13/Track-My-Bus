@@ -56,7 +56,7 @@ public class Home extends AppCompatActivity {
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
-                .withHeaderBackground(R.drawable.header)
+                .withHeaderBackground(R.drawable.header1)
                 .withSavedInstance(savedInstanceState)
                 .build();
 
@@ -89,15 +89,19 @@ public class Home extends AppCompatActivity {
                                     if (drawerItem.getIdentifier() == 1) {
                                         intent = new Intent(Home.this, Select_Bus.class);
                                     } else if (drawerItem.getIdentifier() == 2) {
-                                        //    intent = new Intent(Home.this, ActionBarActivity.class);
+                                        intent = new Intent(Home.this, Rate_us.class);
+
                                     } else if (drawerItem.getIdentifier() == 3) {
-                                        //  intent = new Intent(DrawerActivity.this, MultiDrawerActivity.class);
+                                        intent = new Intent(Home.this, Share.class);
                                     } else if (drawerItem.getIdentifier() == 4) {
-                                        //intent = new Intent(DrawerActivity.this, NonTranslucentDrawerActivity.class);
+                                        intent = new Intent(Home.this, Team.class);
                                     } else if (drawerItem.getIdentifier() == 5) {
-                                        //intent = new Intent(DrawerActivity.this, AdvancedActivity.class);
+                                       //link
+                                    } else if (drawerItem.getIdentifier() == 6) {
+                                        intent = new Intent(Home.this, About.class);
+
                                     } else if (drawerItem.getIdentifier() == 7) {
-                                        // intent = new Intent(DrawerActivity.this, EmbeddedDrawerActivity.class);
+
 
                                         auth.signOut();
                                         intent = new Intent(Home.this,Selection.class);

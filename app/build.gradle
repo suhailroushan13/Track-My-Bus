@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.github.joielechong:countrycodepicker:2.4.1'
     implementation 'com.chaos.view:pinview:1.4.3'
     implementation 'com.chaos.view:pinview:1.4.3'
-
+    implementation 'com.github.ome450901:SimpleRatingBar:1.1.2'
 
 
     implementation platform('com.google.firebase:firebase-bom:26.8.0')
