@@ -79,8 +79,8 @@ public class Home extends AppCompatActivity {
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(7).withSelectable(false),
                         new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.follow).withIdentifier(12).withSelectable(false).withSubItems(
-                                new SecondaryDrawerItem().withName("Facebook").withLevel(2).withIdentifier(2000),
-                                new SecondaryDrawerItem().withName("Instagram").withLevel(2).withIdentifier(2001)
+                                new SecondaryDrawerItem().withName("Facebook").withLevel(2).withIdentifier(2000).withSelectable(false),
+                                new SecondaryDrawerItem().withName("Instagram").withLevel(2).withIdentifier(2001).withSelectable(false)
                         )
                                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                                     @Override
@@ -111,6 +111,7 @@ public class Home extends AppCompatActivity {
                 ) .build();
 
 
+        result.setSelection(0);
 
 
 
