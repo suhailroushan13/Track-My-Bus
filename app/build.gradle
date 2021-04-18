@@ -57,7 +57,7 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:26.8.0')
     implementation 'com.firebaseui:firebase-ui-auth:6.2.1'
-    implementation "com.mikepenz:materialdrawer:6.1.2"
+    implementation 'com.mikepenz:materialdrawer:6.1.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
     implementation 'androidx.cursoradapter:cursoradapter:1.0.0'
