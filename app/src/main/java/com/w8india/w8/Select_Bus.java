@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,6 +31,12 @@ public class Select_Bus extends AppCompatActivity {
         lv =  findViewById(R.id.bus_list);
         MyAdapter adapter = new MyAdapter(Select_Bus.this,titles,descriptions,images);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(Select_Bus.this, Home.class));
+            }
+        });
     }
     public void Home(){
         Intent intent = new Intent(this, Home.class);

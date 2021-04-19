@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
+
     android:layout_height="match_parent"
-    android:background="@color/maincolor">
+    android:background="@drawable/maps">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,9 +16,7 @@
         android:background="@color/white"
         android:clickable="true"
         android:focusable="true"
-
-
-        app:backgroundTint="@android:color/white"
+        app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"

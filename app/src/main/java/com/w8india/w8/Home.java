@@ -1,6 +1,7 @@
 package com.w8india.w8;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -71,11 +72,12 @@ public class Home extends AppCompatActivity {
                         new PrimaryDrawerItem().withName("Meet the Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
                         new PrimaryDrawerItem().withName("Join our Circle").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(7).withSelectable(false),
-                        new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.follow).withIdentifier(12).withSelectable(false).withSubItems(
-                                new SecondaryDrawerItem().withName("Facebook").withLevel(2).withIdentifier(2000).withSelectable(false),
-                                new SecondaryDrawerItem().withName("Instagram").withLevel(2).withIdentifier(2001).withSelectable(false)
-                        )).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                        new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems(
+                                new SecondaryDrawerItem().withName("Facebook").withIcon(R.drawable.bus).withLevel(2).withIdentifier(2000).withSelectable(false),
+                                new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.follow).withLevel(2).withIdentifier(2001).withSelectable(false)
+                        ),
+                        new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
+                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                             @Override
                             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                                 //check if the drawerItem is set.
@@ -96,18 +98,25 @@ public class Home extends AppCompatActivity {
                                     } else if (drawerItem.getIdentifier() == 4) {
                                         intent = new Intent(Home.this, Team.class);
                                     } else if (drawerItem.getIdentifier() == 5) {
+                                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
                                        //link
                                     } else if (drawerItem.getIdentifier() == 6) {
                                         intent = new Intent(Home.this, About.class);
 
-                                    } else if (drawerItem.getIdentifier() == 7) {
+                                    } else if (drawerItem.getIdentifier() == 11) {
 
 
                                         auth.signOut();
                                         intent = new Intent(Home.this,Selection.class);
                                         finish();
 
-                                    } else if (drawerItem.getIdentifier() == 20) {
+                                    } else if (drawerItem.getIdentifier() == 2000) {
+                                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+
+
+                                    } else if (drawerItem.getIdentifier() == 2001){
+                                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+
 
                                     }
                                     if (intent != null) {

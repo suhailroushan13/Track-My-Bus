@@ -85,12 +85,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-        app:layout_constraintVertical_bias="0.278" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <com.willy.ratingbar.ScaleRatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="170dp"
-        android:layout_height="45dp"
+        android:layout_width="276dp"
+        android:layout_height="61dp"
         android:gravity="center"
 
 
@@ -109,9 +109,9 @@
         app:srb_rating="2"
         app:srb_scrollable="true"
         app:srb_starHeight="30dp"
-        app:srb_starPadding="15dp"
+        app:srb_starPadding="7dp"
         app:srb_starWidth="100dp"
-        app:srb_stepSize="1">
+        app:srb_stepSize="4">
 
     </com.willy.ratingbar.ScaleRatingBar>
 
