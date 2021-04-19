@@ -182,6 +182,10 @@
     <string name="click" />
     <string name="buttons">rf</string>
     <string name="orS">OR</string>
+    <string name="we_are_the_students_of_bachelor_engineering_rating_us_will_gave_a_more_confident_to_make_more_app_which_would_help_you_in_future">We are the Students of Bachelor Engineering. Rating us will gave a more Confident to make more app Which would help you in Future.</string>
+    <string name="refer_a_friend">Refer A Friend</string>
+    <string name="tell_you_friend_how_you_reach_your_college_on_time_with_realtime_location_tracking_of_your_college_buses">Tell You Friend, How you reach your College on Time ,with Realtime Location Tracking Of your College Buses.</string>
+    <string name="version_1_0_0">Version: 1.0.0</string>
 
 
 </resources>

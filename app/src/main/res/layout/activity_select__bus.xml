@@ -13,19 +13,19 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:scaleType="fitStart"
-        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginStart="25dp"
-        android:layout_marginEnd="-10dp"
-       android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="-2dp"
+        android:scaleType="fitStart"
         app:srcCompat="@drawable/busfiinal" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
         android:layout_marginTop="-90dp"
+        android:fontFamily="@font/medium"
         android:gravity="center"
 
         android:text="@string/select_your_bus"

@@ -58,15 +58,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
-        android:text="@string/we_are_the_students_ofbachelor_engineering_rating_us_will_gave_a_more_confident_to_make_more_appwhich_would_help_you_in_future"
+        android:fontFamily="@font/light"
+        android:text="@string/we_are_the_students_of_bachelor_engineering_rating_us_will_gave_a_more_confident_to_make_more_app_which_would_help_you_in_future"
         android:textColor="@color/black"
-        android:textSize="25sp"
 
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
     <Button
@@ -75,6 +75,7 @@
         android:layout_height="51dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/circleround"
+        android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/rate_us"
         android:textAllCaps="false"
@@ -88,8 +89,8 @@
 
     <com.willy.ratingbar.ScaleRatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="154dp"
-        android:layout_height="33dp"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
         android:gravity="center"
 
 
