@@ -8,18 +8,48 @@
     tools:context=".Rate_us">
 
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="408dp"
+
+
+        android:layout_height="366dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005"
+        app:srcCompat="@drawable/rate2" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/medium"
+        android:text="@string/rate_us"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:fontFamily="@font/medium"
         android:text="@string/why_you_should_rate_us"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
     <TextView
@@ -37,21 +67,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/rate_us"
-        android:textColor="@color/black"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
 
 
     <Button
@@ -73,14 +88,16 @@
 
     <com.willy.ratingbar.ScaleRatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="276dp"
-        android:layout_height="85dp"
+        android:layout_width="154dp"
+        android:layout_height="33dp"
         android:gravity="center"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.114"
+        app:layout_constraintVertical_bias="0.22"
         app:srb_clearRatingEnabled="true"
         app:srb_clickable="true"
         app:srb_drawableEmpty="@drawable/empty"
@@ -92,19 +109,9 @@
         app:srb_scrollable="true"
         app:srb_starHeight="30dp"
         app:srb_starPadding="15dp"
-        app:srb_starWidth="30dp"
-        app:srb_stepSize="0.5">
+        app:srb_starWidth="100dp"
+        app:srb_stepSize="1">
 
     </com.willy.ratingbar.ScaleRatingBar>
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="408dp"
-
-
-        android:layout_height="366dp"
-
-        app:srcCompat="@drawable/rateing"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

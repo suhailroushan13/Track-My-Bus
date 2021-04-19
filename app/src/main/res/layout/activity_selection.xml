@@ -12,6 +12,7 @@
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/welcome"
         android:textColor="#000000"
@@ -26,62 +27,66 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="171dp"
-        android:layout_height="185dp"
+        android:layout_width="200dp"
+        android:layout_height="186dp"
         android:layout_below="@id/text2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="148dp"
         android:background="#FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/compressed" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="228dp"
-        android:layout_height="186dp"
-        android:layout_below="@id/slogin"
-        android:layout_centerHorizontal="true"
-        android:background="#FFFFFF"
-        android:layout_marginTop="20dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/slogin"
-        app:layout_constraintVertical_bias="0.382"
-        app:srcCompat="@drawable/drivercompressed" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263"
+        app:srcCompat="@drawable/studentok" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="197dp"
+        android:layout_height="186dp"
+        android:layout_below="@id/text2"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:srcCompat="@drawable/driverok" />
 
     <Button
         android:id="@+id/slogin"
-        android:layout_width="260dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="60dp"
+        android:layout_width="224dp"
+        android:layout_height="56dp"
         android:layout_below="@id/imageButton2"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:background="@drawable/round"
+        android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/student_login"
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="18sp"
         app:backgroundTint="#03A9F4"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintVertical_bias="0.538" />
+
 
     <Button
         android:id="@+id/dlogin"
-        android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_width="224dp"
+        android:layout_height="56dp"
+        android:layout_below="@id/imageButton2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:background="@drawable/round"
+        android:fontFamily="@font/medium"
         android:gravity="center"
-        android:layout_marginTop="20dp"
         android:text="@string/driver_login"
         android:textAllCaps="false"
         android:textColor="#FFF"
@@ -89,10 +94,10 @@
         app:backgroundTint="#03A9F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.418" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

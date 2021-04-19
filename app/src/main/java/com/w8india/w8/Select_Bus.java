@@ -1,5 +1,6 @@
 package com.w8india.w8;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,7 +54,7 @@ public class Select_Bus extends AppCompatActivity {
 
             //Inflating the layout
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.example_cuslistview_row,parent,false);
+            @SuppressLint("ViewHolder") View row = inflater.inflate(R.layout.example_cuslistview_row,parent,false);
             //Get the reference to the view objects
             ImageView myImage =  row.findViewById(R.id.idPic);
             TextView myTitle =  row.findViewById(R.id.idTitle);
