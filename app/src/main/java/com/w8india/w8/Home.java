@@ -1,14 +1,26 @@
 package com.w8india.w8;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,10 +40,13 @@ public class Home extends AppCompatActivity {
     Button menu;
     FloatingActionButton drawebtn;
     AccountHeader headerResult;
+    FusedLocationProviderClient fusedLocationProviderClient;
     Drawer result;
+    private static final String TAG = "Home";
+    int LOCATION_REQUEST_CODE = 10001;
     private FirebaseAuth auth;
-    FirebaseUser user;
 
+    FirebaseUser user;
 
 
     @Override
@@ -39,6 +54,8 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         drawebtn = findViewById(R.id.drawerBtn);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -79,96 +96,94 @@ public class Home extends AppCompatActivity {
                         ),
                         new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                            @Override
-                            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                                //check if the drawerItem is set.
-                                //there are different reasons for the drawerItem to be null
-                                //--> click on the header
-                                //--> click on the footer
-                                //those items don't contain a drawerItem
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        //check if the drawerItem is set.
+                        //there are different reasons for the drawerItem to be null
+                        //--> click on the header
+                        //--> click on the footer
+                        //those items don't contain a drawerItem
 
-                                if (drawerItem != null) {
-                                    Intent intent = null;
-                                    if (drawerItem.getIdentifier() == 1) {
-                                        intent = new Intent(Home.this, Select_Bus.class);
-                                    } else if (drawerItem.getIdentifier() == 2) {
-                                        intent = new Intent(Home.this, Rate_us.class);
+                        if (drawerItem != null) {
+                            Intent intent = null;
+                            if (drawerItem.getIdentifier() == 1) {
+                                intent = new Intent(Home.this, Select_Bus.class);
+                            } else if (drawerItem.getIdentifier() == 2) {
+                                intent = new Intent(Home.this, Rate_us.class);
 
-                                    } else if (drawerItem.getIdentifier() == 3) {
-                                        intent = new Intent(Home.this, Share.class);
-                                    } else if (drawerItem.getIdentifier() == 4) {
-                                        intent = new Intent(Home.this, Team.class);
-                                    } else if (drawerItem.getIdentifier() == 16) {
-                                        intent = new Intent(Home.this, Share.class);
-                                    } else if (drawerItem.getIdentifier() == 5) {
-                                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
-                                       //link
-                                    } else if (drawerItem.getIdentifier() == 6) {
-                                        intent = new Intent(Home.this, About.class);
+                            } else if (drawerItem.getIdentifier() == 3) {
+                                intent = new Intent(Home.this, Share.class);
+                            } else if (drawerItem.getIdentifier() == 4) {
+                                intent = new Intent(Home.this, Team.class);
+                            } else if (drawerItem.getIdentifier() == 16) {
+                                intent = new Intent(Home.this, Share.class);
+                            } else if (drawerItem.getIdentifier() == 5) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
+                                //link
+                            } else if (drawerItem.getIdentifier() == 6) {
+                                intent = new Intent(Home.this, About.class);
 
-                                    } else if (drawerItem.getIdentifier() == 11) {
-
-
-                                        auth.signOut();
-                                        intent = new Intent(Home.this,Selection.class);
-                                        finish();
-
-                                    } else if (drawerItem.getIdentifier() == 2000) {
-                                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+                            } else if (drawerItem.getIdentifier() == 11) {
 
 
-                                    } else if (drawerItem.getIdentifier() == 2001){
-                                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+                                auth.signOut();
+                                intent = new Intent(Home.this, Selection.class);
+                                finish();
+
+                            } else if (drawerItem.getIdentifier() == 2000) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
 
 
-                                    }
-                                    if (intent != null) {
-                                        Home.this.startActivity(intent);
-                                    }
-                                }
+                            } else if (drawerItem.getIdentifier() == 2001) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
 
-                                return false;
+
                             }
-                        }).build();
-                               /** .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                                    @Override
-                                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                                        // do something with the clicked item :D
-                                        if (drawerItem != null) {
-                                            Intent intent = null;
-                                            if (drawerItem.getIdentifier() == 1) {
-                                                intent = new Intent(Home.this,Select_Bus.class);
-                                                Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
+                            if (intent != null) {
+                                Home.this.startActivity(intent);
+                            }
+                        }
+
+                        return false;
+                    }
+                }).build();
+        /** .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+        @Override public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+        // do something with the clicked item :D
+        if (drawerItem != null) {
+        Intent intent = null;
+        if (drawerItem.getIdentifier() == 1) {
+        intent = new Intent(Home.this,Select_Bus.class);
+        Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
 
 
 
 
-                                            } else if (drawerItem.getIdentifier() == 2) {
-                                                Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
-                                            } else if (drawerItem.getIdentifier() == 3) {
+        } else if (drawerItem.getIdentifier() == 2) {
+        Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
+        } else if (drawerItem.getIdentifier() == 3) {
 
-                                            } else if (drawerItem.getIdentifier() == 4) {
+        } else if (drawerItem.getIdentifier() == 4) {
 
-                                            } else if (drawerItem.getIdentifier() == 5) {
+        } else if (drawerItem.getIdentifier() == 5) {
 
-                                            } else if (drawerItem.getIdentifier() == 6) {
+        } else if (drawerItem.getIdentifier() == 6) {
 
-                                            } else if (drawerItem.getIdentifier() == 7) {
+        } else if (drawerItem.getIdentifier() == 7) {
 
-                                                auth.signOut();
-                                                startActivity(new Intent(Home.this, Selection.class));
-                                                finish();
+        auth.signOut();
+        startActivity(new Intent(Home.this, Selection.class));
+        finish();
 
 
-                                            }
-                                        }
+        }
+        }
 
-                                        return false;
-                                    }
-                                })
+        return false;
+        }
+        })
 
-                )**/
-
+         )**/
 
 
         result.setSelection(0);
@@ -183,6 +198,7 @@ public class Home extends AppCompatActivity {
 
 
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -191,13 +207,101 @@ public class Home extends AppCompatActivity {
             startActivity(new Intent(Home.this, Student_OTP.class));
             finish();
         }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            getLastLocation();
+        } else {
+            askLocationPermission();
+        }
+    }
+
+
+    private void getLastLocation() {
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
+
+        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location != null){
+                    Log.d(TAG, "onSuccess: "+location.toString());
+                    Log.d(TAG, "onSuccess: "+location.getLatitude());
+                    Log.d(TAG, "onSuccess: "+location.getLongitude());
+
+
+
+
+                }
+                else {
+
+                    Log.d(TAG, "onSuccess: Location Was Null...");
+                }
+
+
+            }
+        });
+
+        locationTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e.getLocalizedMessage());
+
+
+
+            }
+        });
+    }
+    private void askLocationPermission() {
+
+
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
+        {
+
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION))
+            {
+                Log.d(TAG, "askLocationPermission: You Should Show An Alert Dailog......");
+                ActivityCompat.requestPermissions(this,new String[]{ Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
+            } else {
+
+                ActivityCompat.requestPermissions(this,new String[]{ Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
+
+            }
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == LOCATION_REQUEST_CODE){
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //Permission Required
+
+                getLastLocation();
+             } else
+                 {
+                     //Permission Not Granted
+
+
+
+                 }
+        }
+        }
     }
 
 
 
 
 
-
-}
 
 
