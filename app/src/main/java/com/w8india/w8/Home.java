@@ -2,10 +2,12 @@ package com.w8india.w8;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +18,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -37,14 +46,32 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class Home extends AppCompatActivity {
     private DrawerLayout drawer;
-    Button menu;
+    Button menu,go;
     FloatingActionButton drawebtn;
     AccountHeader headerResult;
     FusedLocationProviderClient fusedLocationProviderClient;
+    LocationRequest locationRequest;
+
+
+    LocationCallback locationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(@NonNull LocationResult locationResult) {
+            if(locationResult == null){
+
+                return;
+            }
+                   for (Location location: locationResult.getLocations()){
+                       Log.d(TAG, "onLocationResult: "+location.toString());
+
+                   }
+        }
+    };
     Drawer result;
     private static final String TAG = "Home";
     int LOCATION_REQUEST_CODE = 10001;
     private FirebaseAuth auth;
+
+
 
     FirebaseUser user;
 
@@ -54,8 +81,14 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         drawebtn = findViewById(R.id.drawerBtn);
+        go=findViewById(R.id.go);
+        go.setOnClickListener(v -> MapsActivity());
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        locationRequest = LocationRequest.create();
+        locationRequest.setInterval(4000);
+        locationRequest.setFastestInterval(2000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -208,12 +241,83 @@ public class Home extends AppCompatActivity {
             finish();
         }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            getLastLocation();
+            // getLastLocation();
+            checkSettingsAndStartLocationUpdates();
         } else {
             askLocationPermission();
         }
+
     }
 
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        startLocationUpdates();
+    }
+
+
+    private void checkSettingsAndStartLocationUpdates() {
+
+
+        LocationSettingsRequest request = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest).build();
+        SettingsClient client = LocationServices.getSettingsClient(this);
+        Task<LocationSettingsResponse> locationSettingsResponseTask = client.checkLocationSettings(request);
+        locationSettingsResponseTask.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+
+                //Setting of devices are satisfied and we can start location updates
+                startLocationUpdates();
+
+            }
+        });
+
+        locationSettingsResponseTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                if (e instanceof ResolvableApiException) {
+
+                    ResolvableApiException apiException = (ResolvableApiException) e;
+                    try {
+                        apiException.startResolutionForResult(Home.this, 1001);
+                    } catch (IntentSender.SendIntentException sendIntentException) {
+                        sendIntentException.printStackTrace();
+                    }
+
+                }
+
+            }
+        });
+    }
+
+
+    private void startLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+
+                           }
+
+                                  private void stopLocationUpdates()
+
+                                        {
+
+                                            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+
+
+                                          }
 
     private void getLastLocation() {
 
@@ -287,7 +391,8 @@ public class Home extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //Permission Required
 
-                getLastLocation();
+               // getLastLocation();
+                checkSettingsAndStartLocationUpdates();
              } else
                  {
                      //Permission Not Granted
@@ -296,6 +401,13 @@ public class Home extends AppCompatActivity {
 
                  }
         }
+        }
+
+
+        public void MapsActivity(){
+
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
         }
     }
 

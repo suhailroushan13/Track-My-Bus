@@ -59,6 +59,11 @@ public class Select_Bus extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
+
+
+
+
+
             //Inflating the layout
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             @SuppressLint("ViewHolder") View row = inflater.inflate(R.layout.example_cuslistview_row,parent,false);
