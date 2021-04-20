@@ -1,19 +1,28 @@
 package com.w8india.w8;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.willy.ratingbar.BaseRatingBar;
+import com.willy.ratingbar.BaseRatingBar.OnRatingChangeListener;
 import com.willy.ratingbar.ScaleRatingBar;
+
+import java.util.UUID;
 
 public class Rate_us extends AppCompatActivity {
 
@@ -43,7 +52,7 @@ public class Rate_us extends AppCompatActivity {
         ratingBar.setClickable(true);
 
 
-        ratingBar.setOnRatingChangeListener(new BaseRatingBar.OnRatingChangeListener() {
+        ratingBar.setOnRatingChangeListener(new OnRatingChangeListener() {
             @Override
             public void onRatingChange(BaseRatingBar baseRatingBar, int i) {
 
@@ -59,9 +68,67 @@ public class Rate_us extends AppCompatActivity {
 
 
         });
+        ScaleRatingBar scaleRatingBar = new ScaleRatingBar(Rate_us.this);
+        ratingBar.setNumStars(5);
+       
+        ratingBar.setRating(3);
+        ratingBar.setStarPadding(10);
+      
+        ratingBar.setClickable(true);
+       
+        ratingBar.setEmptyDrawableRes(R.drawable.empty);
+        ratingBar.setFilledDrawableRes(R.drawable.filled);
+        ratingBar.setOnRatingChangeListener(new OnRatingChangeListener() {
+
+
+            @Override
+            public void onRatingChange(BaseRatingBar baseRatingBar, int i) {
+                
+            }
+
+            
+            public void onRatingChange(BaseRatingBar ratingBar, int rating, boolean fromUser) {
+
+            }
+        });
+
 
     }
+    public class AnimationRatingBar extends BaseRatingBar {
 
+        protected Handler mHandler;
+        protected Runnable mRunnable;
+        protected String mRunnableToken = UUID.randomUUID().toString();
+
+        protected AnimationRatingBar(Context context) {
+            super(context);
+            init();
+        }
+
+        protected AnimationRatingBar(Context context, @Nullable AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        protected AnimationRatingBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+            init();
+        }
+
+        private void init() {
+            mHandler = new Handler();
+        }
+
+        protected void postRunnable(Runnable runnable, long ANIMATION_DELAY) {
+            if (mHandler == null) {
+                mHandler = new Handler();
+            }
+
+            long timeMillis = SystemClock.uptimeMillis() + ANIMATION_DELAY;
+            mHandler.postAtTime(runnable, mRunnableToken, timeMillis);
+        }
+
+    }
     @Override
     public void onBackPressed() {
         showAlertDialog();
@@ -107,6 +174,8 @@ public class Rate_us extends AppCompatActivity {
         });
         builder.create().show();
     }
+
+    
 
 }
 

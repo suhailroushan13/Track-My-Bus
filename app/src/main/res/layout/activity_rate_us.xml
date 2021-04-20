@@ -30,7 +30,7 @@
         android:fontFamily="@font/medium"
         android:text="@string/rate_us"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,7 +45,7 @@
         android:fontFamily="@font/medium"
         android:text="@string/why_you_should_rate_us"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
         android:text="@string/we_are_the_students_of_bachelor_engineering_rating_us_will_gave_a_more_confident_to_make_more_app_which_would_help_you_in_future"
         android:textColor="@color/black"
 
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,22 +83,28 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-        app:layout_constraintVertical_bias="0.148" />
+        app:layout_constraintVertical_bias="0.206" />
 
     <com.willy.ratingbar.ScaleRatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="276dp"
-        android:layout_height="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_min="9dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.22"
+        app:layout_constraintVertical_bias="0.341"
         app:srb_clearRatingEnabled="true"
         app:srb_clickable="true"
         app:srb_drawableEmpty="@drawable/empty"
@@ -108,10 +114,10 @@
         app:srb_numStars="3"
         app:srb_rating="2"
         app:srb_scrollable="true"
-        app:srb_starHeight="30dp"
-        app:srb_starPadding="7dp"
-        app:srb_starWidth="100dp"
-        app:srb_stepSize="4">
+        app:srb_starHeight="10dp"
+        app:srb_starPadding="2dp"
+        app:srb_starWidth="10dp"
+        app:srb_stepSize="2">
 
     </com.willy.ratingbar.ScaleRatingBar>
 

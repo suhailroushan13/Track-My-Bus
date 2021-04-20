@@ -70,6 +70,7 @@ public class Home extends AppCompatActivity {
                         new PrimaryDrawerItem().withName("Support Our Work").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
                         new PrimaryDrawerItem().withName("Meet the Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(16).withSelectable(false),
                         new PrimaryDrawerItem().withName("Join our Circle").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems(
@@ -97,6 +98,8 @@ public class Home extends AppCompatActivity {
                                         intent = new Intent(Home.this, Share.class);
                                     } else if (drawerItem.getIdentifier() == 4) {
                                         intent = new Intent(Home.this, Team.class);
+                                    } else if (drawerItem.getIdentifier() == 16) {
+                                        intent = new Intent(Home.this, Share.class);
                                     } else if (drawerItem.getIdentifier() == 5) {
                                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
                                        //link

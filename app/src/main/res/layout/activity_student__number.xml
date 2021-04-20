@@ -156,7 +156,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/send_codebtn"
-        app:layout_constraintVertical_bias="0.628"
         app:srcCompat="@drawable/line" />
 
     <ImageView
@@ -166,7 +165,7 @@
         android:layout_marginTop="18dp"
         app:layout_constraintBottom_toTopOf="@+id/loginwithgoogle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintHorizontal_bias="0.994"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/send_codebtn"
         app:layout_constraintVertical_bias="0.235"
