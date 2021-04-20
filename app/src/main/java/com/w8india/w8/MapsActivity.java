@@ -173,6 +173,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
          if(userLocationAccuracyCircle == null)
          {
+             /// IZHAN CHECK THIS COLORS AND ACCURACY AND SIZE OF IT ......
 //             CircleOptions circleOptions = new CircleOptions();
 //             circleOptions.center(latLng);
 //             circleOptions.strokeWidth(4);
