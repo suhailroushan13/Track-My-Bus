@@ -45,7 +45,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import android.location.Address;
 import android.location.Geocoder;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -98,7 +97,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_home);
         //NAVI BUTTON LOGIC
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
