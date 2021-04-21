@@ -32,7 +32,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".Home"
             android:label="@string/title_activity_maps">
 
         </activity>
@@ -44,7 +44,7 @@
         <activity android:name=".Share" />
         <activity android:name=".Rate_us" />
         <activity android:name=".Internet_loss" />
-        <activity android:name=".Home" />
+
         <activity android:name=".Driver_Home" />
         <activity
             android:name=".Student_OTP"

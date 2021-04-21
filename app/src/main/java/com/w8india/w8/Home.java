@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -44,59 +43,78 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-public class Home extends AppCompatActivity {
+import android.location.Address;
+import android.location.Geocoder;
+import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.List;
+
+public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
+
+    private GoogleMap mMap;
     private DrawerLayout drawer;
     Button menu,go;
     FloatingActionButton drawebtn;
     AccountHeader headerResult;
+
+    private Geocoder geocoder;
+    private static final String TAG = "Home";
+    private final int ACCESS_LOCATION_REQUEST_CODE = 10001;
+
+    Marker userLocationMarker;
+    Circle userLocationAccuracyCircle;
+     boolean firsttime = true;
+    Drawer result;
+
+
+    int LOCATION_REQUEST_CODE = 10001;
+
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
 
 
-    LocationCallback locationCallback = new LocationCallback() {
-        @Override
-        public void onLocationResult(@NonNull LocationResult locationResult) {
-            if(locationResult == null){
 
-                return;
-            }
-                   for (Location location: locationResult.getLocations()){
-                       Log.d(TAG, "onLocationResult: "+location.toString());
 
-                   }
-        }
-    };
-    Drawer result;
-    private static final String TAG = "Home";
-    int LOCATION_REQUEST_CODE = 10001;
+
     private FirebaseAuth auth;
 
 
 
     FirebaseUser user;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        drawebtn = findViewById(R.id.drawerBtn);
-        go=findViewById(R.id.go);
-        go.setOnClickListener(v -> MapsActivity());
+        setContentView(R.layout.activity_maps);
+        //NAVI BUTTON LOGIC
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(4000);
         locationRequest.setFastestInterval(2000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
         if (auth.getCurrentUser() == null) {
             finish();
             startActivity(new Intent(this, Student_Number.class));
         }
-
+             drawebtn = findViewById(R.id.drawerBtn);
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home");
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
 
@@ -106,6 +124,7 @@ public class Home extends AppCompatActivity {
                 .withIdentifier(100);
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
+
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header1)
                 .withSavedInstance(savedInstanceState)
@@ -230,72 +249,166 @@ public class Home extends AppCompatActivity {
         });
 
 
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        geocoder = new Geocoder(this);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        locationRequest = LocationRequest.create();
+        locationRequest.setInterval(15000);
+        locationRequest.setFastestInterval(15000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+
+
+
     }
 
+
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
     @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser == null) {
-            startActivity(new Intent(Home.this, Student_OTP.class));
-            finish();
-        }
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        //MAP TYPE LAYERS
+//        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        mMap.setOnMapLongClickListener(this);
+        mMap.setOnMarkerDragListener(this);
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            // getLastLocation();
-            checkSettingsAndStartLocationUpdates();
+
+            enableUserLocation();
+//            zoomToUserLocation();
+
+
         } else {
-            askLocationPermission();
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                //We Can show user why this permission is required
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_LOCATION_REQUEST_CODE);
+
+
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_LOCATION_REQUEST_CODE);
+            }
+
+
         }
 
+
+//        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+//        // Add a marker in Sydney and move the camera
+//        LatLng latLng = new LatLng(27.1751,78.0421);
+//        MarkerOptions markerOptions  = new MarkerOptions().position(latLng).title("Taj Mahal").snippet("Wonder Of The World");
+//        mMap.addMarker(markerOptions);
+//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,16);
+//        mMap.animateCamera(cameraUpdate);
+
+
+        try {
+            List<Address> addresses = geocoder.getFromLocationName("Lords Institute Of Engineering And Technology", 1);
+            Address address = addresses.get(0);
+
+            LatLng london = (new LatLng(address.getLatitude(), address.getLongitude()));
+//            MarkerOptions markerOptions = new MarkerOptions()
+//
+//                    .position(new LatLng(address.getLatitude(), address.getLongitude()))
+//                    .title(address.getLocality());
+//            mMap.addMarker(markerOptions);
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 16));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    LocationCallback locationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(@NonNull LocationResult locationResult) {
+            super.onLocationResult(locationResult);
+            Log.d(TAG, "onLocationResult: " + locationResult.getLastLocation());
+            if (mMap != null) {
 
-    @Override
-    protected void onStop()
-    {
-        super.onStop();
-        startLocationUpdates();
-    }
-
-
-    private void checkSettingsAndStartLocationUpdates() {
-
-
-        LocationSettingsRequest request = new LocationSettingsRequest.Builder()
-                .addLocationRequest(locationRequest).build();
-        SettingsClient client = LocationServices.getSettingsClient(this);
-        Task<LocationSettingsResponse> locationSettingsResponseTask = client.checkLocationSettings(request);
-        locationSettingsResponseTask.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
-            @Override
-            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-
-                //Setting of devices are satisfied and we can start location updates
-                startLocationUpdates();
+                setUserLocationMarker(locationResult.getLastLocation());
 
             }
-        });
+        }
+    };
 
-        locationSettingsResponseTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+         //BUS ICON LOGIC
+    private void setUserLocationMarker(Location location) {
+        double lati = 17.34224271146274;
+        double longi = 78.36742817618388;
+        LatLng latLng = new LatLng(lati, longi);
+        try {
+            List<Address> addresses = geocoder.getFromLocation(lati, longi, 1);
+            Address address = addresses.get(0);
+            String streetAddress = address.getAddressLine(0);
+        }catch (Exception er){
+            er.printStackTrace();
+        }
+        LatLng current =  new LatLng(location.getLatitude(), location.getLongitude());
+        if (firsttime){
+//            Toast.makeText(this, "The Place You Live", Toast.LENGTH_SHORT).show();
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(current, 20));
+            firsttime = false;
+        }else {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+        }
+        if (userLocationMarker == null) {
 
-                if (e instanceof ResolvableApiException) {
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(latLng);
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
+            markerOptions.rotation(location.getBearing());
 
-                    ResolvableApiException apiException = (ResolvableApiException) e;
-                    try {
-                        apiException.startResolutionForResult(Home.this, 1001);
-                    } catch (IntentSender.SendIntentException sendIntentException) {
-                        sendIntentException.printStackTrace();
-                    }
+            markerOptions.anchor((float) 0.5, (float) 0.5);
+            //We create a new marker
+            userLocationMarker = mMap.addMarker(markerOptions);
 
-                }
 
-            }
-        });
+        } else {
+
+            userLocationMarker.setPosition(latLng);
+            userLocationMarker.setRotation(location.getBearing());
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+
+
+        }
+        if (userLocationAccuracyCircle == null) {
+            /// IZHAN CHECK THIS COLORS AND ACCURACY AND SIZE OF IT ......
+//             CircleOptions circleOptions = new CircleOptions();
+//             circleOptions.center(latLng);
+//             circleOptions.strokeWidth(4);
+//             circleOptions.strokeColor(Color.argb(255, 0,0, 255));
+//             circleOptions.fillColor(Color.argb(0,0,0,0));
+//             circleOptions.radius(location.getAccuracy());
+//             mMap.addCircle(circleOptions);
+//             userLocationAccuracyCircle = mMap.addCircle(circleOptions);
+        } else {
+
+
+            userLocationAccuracyCircle.setCenter(latLng);
+            userLocationAccuracyCircle.setRadius(location.getAccuracy());
+        }
+
+
     }
-
 
     private void startLocationUpdates() {
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -308,20 +421,58 @@ public class Home extends AppCompatActivity {
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
 
-                           }
+    }
 
-                                  private void stopLocationUpdates()
+    private void stopLocationUpdates() {
 
-                                        {
-
-                                            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
 
 
-                                          }
-
-    private void getLastLocation() {
+    }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) {
+            startActivity(new Intent(Home.this, Student_OTP.class));
+            finish();
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+            startLocationUpdates();
+        } else {
+
+            //you need to request permission....
+        }
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopLocationUpdates();
+    }
+
+    private void enableUserLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+
+    }
+
+
+    private void zoomToUserLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -333,87 +484,159 @@ public class Home extends AppCompatActivity {
             return;
         }
         Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
-
         locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location != null){
-                    Log.d(TAG, "onSuccess: "+location.toString());
-                    Log.d(TAG, "onSuccess: "+location.getLatitude());
-                    Log.d(TAG, "onSuccess: "+location.getLongitude());
-
-
-
-
-                }
-                else {
-
-                    Log.d(TAG, "onSuccess: Location Was Null...");
-                }
-
-
+                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+//                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
+                //  mMap.addMarker(new MarkerOptions().position(latLng));
             }
         });
 
+
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+
+//        Log.d(TAG, "onMapLongClick: " + latLng.toString());
+//        try {
+//            List<Address> addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+//            if (addresses.size() > 0) {
+//                Address address = addresses.get(0);
+//                String streertAddress = address.getAddressLine(0);
+//                mMap.addMarker(new MarkerOptions().position(latLng).title(streertAddress).draggable(true));
+//
+//
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+
+    }
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
+
+        Log.d(TAG, "onMarkerDragStart: ");
+
+    }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+        Log.d(TAG, "onMarkerDrag: ");
+
+    }
+
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        Log.d(TAG, "onMarkerDragEnd: ");
+//        LatLng latLng = marker.getPosition();
+//        try {
+//            List<Address> addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+//            if (addresses.size() > 0) {
+//                Address address = addresses.get(0);
+//                String streertAddress = address.getAddressLine(0);
+//                marker.setTitle(streertAddress);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+
+    }
+
+
+
+
+    private void checkSettingsAndStartLocationUpdates() {
+        LocationSettingsRequest request = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest).build();
+        SettingsClient client = LocationServices.getSettingsClient(this);
+
+        Task<LocationSettingsResponse> locationSettingsResponseTask = client.checkLocationSettings(request);
+        locationSettingsResponseTask.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                //Settings of device are satisfied and we can start location updates
+                startLocationUpdates();
+            }
+        });
+        locationSettingsResponseTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof ResolvableApiException) {
+                    ResolvableApiException apiException = (ResolvableApiException) e;
+                    try {
+                        apiException.startResolutionForResult(Home.this, 1001);
+                    } catch (IntentSender.SendIntentException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+
+
+    private void getLastLocation() {
+        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
+        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    //We have a location
+                    Log.d(TAG, "onSuccess: " + location.toString());
+                    Log.d(TAG, "onSuccess: " + location.getLatitude());
+                    Log.d(TAG, "onSuccess: " + location.getLongitude());
+                } else  {
+                    Log.d(TAG, "onSuccess: Location was null...");
+                }
+            }
+        });
         locationTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: " + e.getLocalizedMessage());
-
-
-
+                Log.e(TAG, "onFailure: " + e.getLocalizedMessage() );
             }
         });
     }
+
     private void askLocationPermission() {
-
-
-        if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
-        {
-
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION))
-            {
-                Log.d(TAG, "askLocationPermission: You Should Show An Alert Dailog......");
-                ActivityCompat.requestPermissions(this,new String[]{ Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Log.d(TAG, "askLocationPermission: you should show an alert dialog...");
+                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
             } else {
-
-                ActivityCompat.requestPermissions(this,new String[]{ Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
-
+                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
             }
         }
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == LOCATION_REQUEST_CODE){
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted
+//                getLastLocation();
+                checkSettingsAndStartLocationUpdates();
+            } else {
+                //Permission not granted
+            }
+        }
+        if (requestCode == ACCESS_LOCATION_REQUEST_CODE) {
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Permission Required
+                enableUserLocation();
 
-               // getLastLocation();
-                checkSettingsAndStartLocationUpdates();
-             } else
-                 {
-                     //Permission Not Granted
+            } else {
+                //why we want to enable user location
+            }
 
-
-
-                 }
-        }
-        }
-
-
-        public void MapsActivity(){
-
-            Intent intent = new Intent(this, MapsActivity.class);
-            startActivity(intent);
         }
     }
 
 
 
-
-
-
-
+}

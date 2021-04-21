@@ -27,13 +27,43 @@ import java.util.UUID;
 public class Rate_us extends AppCompatActivity {
 
 
-    RatingBar ratingBar;
+    RatingBar ratingBar, mratingbar;
     Button rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_us);
+
+
+        ratingBar = findViewById(R.id.ratingBar);
+        mratingbar = findViewById(R.id.idratingBar);
+        mratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if(rating<=3){
+                    Toast.makeText(Rate_us.this, "Please provide a feedback", Toast.LENGTH_SHORT).show();
+                    try {
+
+                        String uriText =
+                                "mailto:w8india@gmail.com" +
+                                        "?subject=" + Uri.encode("Feedback for App") +
+                                        "&body=" + Uri.encode("Hi Developer's");
+                        Uri uri = Uri.parse(uriText);
+                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                        emailIntent.setData(uri);
+                        startActivity(Intent.createChooser(emailIntent, "Send email using..."));
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(Rate_us.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }else if(rating>=4){
+                    Toast.makeText(Rate_us.this, "You're Too Good ", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+                }
+            }
+        });
+
         rate = findViewById(R.id.rate);
         rate = findViewById(R.id.rate);
         rate.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +86,6 @@ public class Rate_us extends AppCompatActivity {
             @Override
             public void onRatingChange(BaseRatingBar baseRatingBar, int i) {
 
-                Toast.makeText(Rate_us.this, " baseRatingBar.getRating()", Toast.LENGTH_SHORT).show();
                 if (baseRatingBar.getRating() < 3) {
                     Toast.makeText(Rate_us.this, "WHy low rating?", Toast.LENGTH_SHORT).show();
                 } else if (baseRatingBar.getRating() > 3) {
@@ -175,7 +204,7 @@ public class Rate_us extends AppCompatActivity {
         builder.create().show();
     }
 
-    
+
 
 }
 
