@@ -42,7 +42,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Student_Number extends AppCompatActivity {
 
-    private Button mSendOTPBtn,loginwithgoogle;
+    private Button mSendOTPBtn;
     private TextView processText;
     private EditText countryCodeEdit , phoneNumberEdit;
     private FirebaseAuth auth;
@@ -61,8 +61,6 @@ public class Student_Number extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-       loginwithgoogle=findViewById(R.id.loginwithgoogle);
-       loginwithgoogle.setOnClickListener(v -> Login());
 
         mSendOTPBtn = findViewById(R.id.send_codebtn);
         phoneNumberEdit = findViewById(R.id.input_phone);
@@ -77,16 +75,20 @@ public class Student_Number extends AppCompatActivity {
 
                 String phone = phoneNumberEdit.getText().toString();
                 String phoneNumber = "+91"+ phone;
-               if (phone.isEmpty()){
-                    phoneNumberEdit.setError("Enter Your Number ");
+                if(Constants.isOnline()) {
+                    if (phone.isEmpty()) {
+                        phoneNumberEdit.setError("Enter Your Number ");
 
-                }else if(phone.length()<10){
-                    phoneNumberEdit.setError("Have You Forget Your Number ??");
+                    } else if (phone.length() < 10) {
+                        phoneNumberEdit.setError("Have You Forget Your Number ??");
+                    } else {
+                        Intent intent = new Intent(Student_Number.this, Student_OTP.class);
+                        intent.putExtra("no", phoneNumber);
+
+                        startActivityForResult(intent, 2);
+                    }
                 }else {
-                    Intent intent = new Intent(Student_Number.this, Student_OTP.class);
-                    intent.putExtra("no",phoneNumber);
-
-                    startActivityForResult(intent,2);
+                    startActivity(new Intent(Student_Number.this, Internet_loss.class));
                 }
             }
         });
@@ -125,17 +127,15 @@ public class Student_Number extends AppCompatActivity {
             }
         };**/
     }
-    public void Login(){
-        Intent intent = new Intent(Student_Number.this, Login.class);
-        startActivity(intent);
-    }
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (user !=null){
+        if (user !=null) {
             sendToMain();
         }
+
     }
     private void sendToMain(){
         Intent mainIntent = new Intent(Student_Number.this , Home.class);
@@ -143,8 +143,12 @@ public class Student_Number extends AppCompatActivity {
         finish();
     }
 
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (user !=null) {
+            sendToMain();
+        }
+    }
 }
 

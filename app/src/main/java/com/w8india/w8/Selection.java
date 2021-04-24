@@ -22,7 +22,7 @@ public class Selection extends AppCompatActivity {
         slogin.setOnClickListener(v -> Student_Number());
 
         dlogin=findViewById(R.id.dlogin);
-        dlogin.setOnClickListener(v -> Driver_Home());
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         /**if (auth.getCurrentUser() == null) {
@@ -40,11 +40,5 @@ public class Selection extends AppCompatActivity {
 
 
     }
-    public void Driver_Home(){
-        Intent intent = new Intent(this, Driver_Home.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
-    }
 }

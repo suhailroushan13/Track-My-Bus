@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Theme.W8"
+    android:fitsSystemWindows="true"
+    tools:context="com.w8india.w8.Home">
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <include layout="@layout/content_home" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/locationbtn"
@@ -33,38 +37,32 @@
 
         app:srcCompat="@drawable/hamburger"
         app:useCompatPadding="true" />
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:id="@+id/coordinator"
-        android:layout_height="match_parent">
+    <include layout="@layout/bottom_sheet" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <FrameLayout
-            android:id="@+id/frameLayout"
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
+<!--<FrameLayout xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    style="@style/Theme.W8"-->
 
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:orientation="vertical"-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android">-->
 
-            android:background="@drawable/rounded"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+<!--   -->
 
+<!--    <androidx.fragment.app.FragmentContainerView-->
 
-
-
-        </FrameLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <androidx.fragment.app.FragmentContainerView
-
-        android:id="@+id/map"
+<!--        android:id="@+id/map"-->
 
 
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="top|right"
-        tools:context=".Home">
+<!--        android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="top|right"-->
+<!--        tools:context=".Home">-->
 
 
-    </androidx.fragment.app.FragmentContainerView>
+<!--    </androidx.fragment.app.FragmentContainerView>-->
 
-</FrameLayout>
+<!--</FrameLayout>-->

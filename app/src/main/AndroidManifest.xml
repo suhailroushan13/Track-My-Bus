@@ -45,7 +45,7 @@
         <activity android:name=".Rate_us" />
         <activity android:name=".Internet_loss" />
 
-        <activity android:name=".Driver_Home" />
+
         <activity
             android:name=".Student_OTP"
             android:screenOrientation="portrait" />

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,7 +43,7 @@ public class Student_OTP extends AppCompatActivity {
     private EditText otpEdit;
     private String OTP;
     private FirebaseAuth firebaseAuth;
-
+    private static final int COUNTDOWN_STEP = 100;
     int TIME = 60500;
     CountDownTimer countDownTimer;
     private FirebaseAuth mAuth;
@@ -150,6 +151,7 @@ public class Student_OTP extends AppCompatActivity {
         }.start();
     }
 
+
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
@@ -170,6 +172,8 @@ public class Student_OTP extends AppCompatActivity {
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
 
+            Toast.makeText(Student_OTP.this, "Verification Failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("VERIFICATION", e.getStackTrace().toString()+e.getMessage());
         }
 
 
@@ -192,7 +196,7 @@ public class Student_OTP extends AppCompatActivity {
                 mCallbacks);**/
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
                 .setPhoneNumber(no)
-                .setTimeout(60L , TimeUnit.SECONDS)
+                .setTimeout(60L, TimeUnit.SECONDS)
                 .setActivity(Student_OTP.this)
                 .setCallbacks(mCallbacks)
                 .build();

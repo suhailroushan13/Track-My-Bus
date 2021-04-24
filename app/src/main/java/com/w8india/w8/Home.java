@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -68,7 +69,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     private GoogleMap mMap;
     private DrawerLayout drawer;
     Button menu, go, yellowbus;
-    BottomSheetBehavior behavior;
+    BottomSheetBehavior sheetBehavior;
     FloatingActionButton drawebtn, locationbtn;
     AccountHeader headerResult;
     String locality;
@@ -89,7 +90,37 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        LinearLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         //NAVI BUTTON LOGIC
+        sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
+
+        /**
+         * bottom sheet state change listener
+         * we are changing button text when sheet changed state
+         * */
+
+        sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        break;
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                    break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                    break;
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        break;
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        break;
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         locationbtn = findViewById(R.id.locationbtn);
@@ -182,43 +213,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         return false;
                     }
                 }).build();
-        /** .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-        @Override public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-        // do something with the clicked item :D
-        if (drawerItem != null) {
-        Intent intent = null;
-        if (drawerItem.getIdentifier() == 1) {
-        intent = new Intent(Home.this,Select_Bus.class);
-        Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
 
-
-
-
-        } else if (drawerItem.getIdentifier() == 2) {
-        Toast.makeText(Home.this, "Clicked", Toast.LENGTH_SHORT).show();
-        } else if (drawerItem.getIdentifier() == 3) {
-
-        } else if (drawerItem.getIdentifier() == 4) {
-
-        } else if (drawerItem.getIdentifier() == 5) {
-
-        } else if (drawerItem.getIdentifier() == 6) {
-
-        } else if (drawerItem.getIdentifier() == 7) {
-
-        auth.signOut();
-        startActivity(new Intent(Home.this, Selection.class));
-        finish();
-
-
-        }
-        }
-
-        return false;
-        }
-        })
-
-         )**/
         result.setSelection(0);
         drawebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,6 +268,17 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_LOCATION_REQUEST_CODE);
             }
         }
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                } else {
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+                return false;
+            }
+        });
 //      mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
 //        // Add a marker in Sydney and move the camera
@@ -328,6 +334,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
         }
+        userLocationMarker.setTag(latLng);
+
         if (userLocationMarker == null) {
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(latLng);
@@ -335,6 +343,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             markerOptions.rotation(location.getBearing());
 
             markerOptions.title("Bus");
+
             markerOptions.snippet(locality);
 
 
@@ -346,6 +355,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         } else {
             userLocationMarker.setPosition(latLng);
             userLocationMarker.setRotation(location.getBearing());
+
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
         }
         if (userLocationAccuracyCircle == null) {

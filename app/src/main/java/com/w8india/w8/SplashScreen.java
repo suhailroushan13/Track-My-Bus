@@ -17,12 +17,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashScreen extends AppCompatActivity {
 
 
+    FirebaseAuth auth;
 
     //Button connectwithdriver;
     ImageView busmain;
@@ -36,6 +40,7 @@ public class SplashScreen extends AppCompatActivity {
         /**connectwithdriver=findViewById(R.id.connectwithdriver);
         connectwithdriver.setOnClickListener(v -> Selection());**/
 
+        auth = FirebaseAuth.getInstance();
         busmain=findViewById(R.id.busmain);
 
         busmain.animate().translationX(25).translationY(25).start();
@@ -59,9 +64,14 @@ public class SplashScreen extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intent = new Intent(SplashScreen.this, Home.class);
-                                    startActivity(intent);
-                                    finish();
+                                    if (auth.getCurrentUser() == null) {
+                                        finish();
+                                        startActivity(new Intent(SplashScreen.this, Student_Number.class));
+                                    }else{
+                                        startActivity(new Intent(SplashScreen.this, Home.class));
+                                        finish();
+
+                                    }
 
                                 }
                             }, 2100);

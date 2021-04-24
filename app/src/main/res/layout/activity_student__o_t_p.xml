@@ -74,7 +74,7 @@
         android:layout_height="45dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/bold"
-        android:text="@string/resend"
+        android:text="Resend"
         android:textAllCaps="false"
         android:textColor="@color/maincolor"
         android:textSize="20sp"
