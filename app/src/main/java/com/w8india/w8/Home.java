@@ -336,7 +336,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
         }
-        userLocationMarker.setTag(latLng);
 
         if (userLocationMarker == null) {
             MarkerOptions markerOptions = new MarkerOptions();
