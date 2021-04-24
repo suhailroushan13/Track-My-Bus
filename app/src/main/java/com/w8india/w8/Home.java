@@ -67,7 +67,7 @@ import java.util.List;
 public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
     private GoogleMap mMap;
     private DrawerLayout drawer;
-    Button menu, go,yellowbus;
+    Button menu, go, yellowbus;
     BottomSheetBehavior behavior;
     FloatingActionButton drawebtn, locationbtn;
     AccountHeader headerResult;
@@ -168,7 +168,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, About.class);
                             } else if (drawerItem.getIdentifier() == 11) {
                                 auth.signOut();
-                                intent = new Intent(Home.this, Selection.class);
+                                intent = new Intent(Home.this, Login.class);
                                 finish();
                             } else if (drawerItem.getIdentifier() == 2000) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
@@ -336,7 +336,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
             markerOptions.title("Bus");
             markerOptions.snippet(locality);
-
 
 
 //            behavior.setPeekHeight(100);
@@ -513,6 +512,16 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     }
 
     private void getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
         locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override

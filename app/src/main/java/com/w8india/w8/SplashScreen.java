@@ -47,7 +47,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 //call the method
-                if (isConnected()){
+                if (Constants.isOnline()){
                     timer.cancel();
                     runOnUiThread(new Runnable() {
                         @Override
@@ -59,7 +59,7 @@ public class SplashScreen extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intent = new Intent(SplashScreen.this, Selection.class);
+                                    Intent intent = new Intent(SplashScreen.this, Home.class);
                                     startActivity(intent);
                                     finish();
 
@@ -96,16 +96,5 @@ public class SplashScreen extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }**/
-    public boolean isConnected() {
-        boolean connected = false;
-        try {
-            ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo nInfo = cm.getActiveNetworkInfo();
-            connected = nInfo != null && nInfo.isAvailable() && nInfo.isConnected();
-            return connected;
-        } catch (Exception e) {
-            Log.e("Connectivity Exception", e.getMessage());
-        }
-        return connected;
-    }
+
 }
