@@ -1,77 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinator"
-
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
 
-    <FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/locationbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="170dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="#FFFFFF"
+        app:backgroundTintMode="src_over"
+        app:srcCompat="@drawable/finallocation"
+        app:useCompatPadding="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/drawerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="#FFFFFF"
+
+        app:srcCompat="@drawable/hamburger"
+        app:useCompatPadding="true" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:id="@+id/coordinator"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+
+
+            android:background="@drawable/rounded"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+
+
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+
+        android:id="@+id/map"
+
+
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:orientation="vertical">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/locationbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom|right"
-            android:layout_marginBottom="170dp"
-            android:background="@color/white"
-            android:clickable="true"
-            android:focusable="true"
-            app:backgroundTint="#FFFFFF"
-            app:backgroundTintMode="src_over"
-            app:srcCompat="@drawable/finallocation"
-            app:useCompatPadding="true" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/drawerBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:clickable="true"
-            android:focusable="true"
-            app:backgroundTint="#FFFFFF"
-
-            app:srcCompat="@drawable/hamburger"
-            app:useCompatPadding="true" />
+        android:layout_gravity="top|right"
+        tools:context=".Home">
 
 
+    </androidx.fragment.app.FragmentContainerView>
 
-
-        <androidx.fragment.app.FragmentContainerView
-
-            android:id="@+id/map"
-
-
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="top|right"
-            tools:context=".Home">
-
-
-        </androidx.fragment.app.FragmentContainerView>
-
-    </FrameLayout>
-
-    <RelativeLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/rounded"
-        app:behavior_hideable="true"
-
-        app:behavior_peekHeight="0dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        tools:ignore="MissingPrefix">
-
-
-    </RelativeLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

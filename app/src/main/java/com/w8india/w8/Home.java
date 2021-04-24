@@ -11,11 +11,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -44,6 +46,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -64,7 +67,7 @@ import java.util.List;
 public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
     private GoogleMap mMap;
     private DrawerLayout drawer;
-    Button menu, go;
+    Button menu, go,yellowbus;
     BottomSheetBehavior behavior;
     FloatingActionButton drawebtn, locationbtn;
     AccountHeader headerResult;
@@ -87,42 +90,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         //NAVI BUTTON LOGIC
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator);
-        final View bottomSheet = coordinatorLayout.findViewById(R.id.frameLayout);
-        behavior = BottomSheetBehavior.from(bottomSheet);
-        //View bottomSheet = findViewById(R.id.frameLayout);
-        behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                switch (newState) {
-                    case BottomSheetBehavior.STATE_DRAGGING:
-                        //Write your Logic here
-                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_DRAGGING");
-                        break;
-                    case BottomSheetBehavior.STATE_SETTLING:
-                        //Write your Logic here
-                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_SETTLING");
-                        break;
-                    case BottomSheetBehavior.STATE_EXPANDED:
-                        //Write your Logic here
-                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_EXPANDED");
-                        break;
-                    case BottomSheetBehavior.STATE_COLLAPSED:
-                        //Write your Logic here
-                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_COLLAPSED");
-                        break;
-                    case BottomSheetBehavior.STATE_HIDDEN:
-                        //Wrte your Logic hereLog.i("BottomSheetCallback", "BottomSheetBehavior.STATE_HIDDEN");
-                        break;
-                }
-            }
-
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {//Write your Logic here
-                Log.i("BottomSheetCallback", "slideOffset: " + slideOffset);
-            }
-        });
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         locationbtn = findViewById(R.id.locationbtn);
@@ -130,7 +97,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             @Override
             public void onClick(View v) {
                 zoomToUserLocation();
-
 
             }
         });
@@ -272,6 +238,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -281,6 +248,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -295,11 +263,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             enableUserLocation();
 //          zoomToUserLocation();
-            if (behavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
-                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            } else {
-                behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            }
+
         } else {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 //We Can show user why this permission is required
@@ -368,13 +332,16 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             markerOptions.position(latLng);
             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
             markerOptions.rotation(location.getBearing());
+
             markerOptions.title("Bus");
             markerOptions.snippet(locality);
-            behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+
 //            behavior.setPeekHeight(100);
             markerOptions.anchor((float) 0.5, (float) 0.5);
             //We create a new marker
             userLocationMarker = mMap.addMarker(markerOptions);
+
         } else {
             userLocationMarker.setPosition(latLng);
             userLocationMarker.setRotation(location.getBearing());

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <View
+            android:id="@+id/touch_outside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:soundEffectsEnabled="false"
+            tools:ignore="UnusedAttribute" />
+
+        <com.andrefrsousa.superbottomsheet.CornerRadiusFrameLayout
+            android:id="@+id/super_bottom_sheet"
+            style="?attr/bottomSheetStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            app:layout_behavior="@string/bottom_sheet_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</FrameLayout>
+
+    <!--    <TextView-->
+<!--        android:id="@+id/textView11"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/medium"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="18dp"-->
+<!--        android:text="@string/bus_details"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="30sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        tools:layout_editor_absoluteX="0dp" />-->
+
+
+    <!--    <com.makeramen.roundedimageview.RoundedImageView-->
+<!--        android:id="@+id/roundedImageView"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_marginRight="10dp"/>-->
+
+<!--        android:background="@drawable/b"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.128"-->
+<!--        app:riv_corner_radius="10dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView12"-->
+<!--        android:layout_width="121dp"-->
+<!--        android:layout_height="29dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/bus_no_1"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="22sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.325"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/roundedImageView"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView11" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView13"-->
+<!--        android:layout_width="96dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_marginTop="44dp"-->
+<!--        android:text="@string/naseer"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="normal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.126"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/roundedImageView"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView11" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView14"-->
+<!--        android:layout_width="156dp"-->
+<!--        android:layout_height="28dp"-->
+<!--        android:layout_marginTop="68dp"-->
+<!--        android:text="@string/_91_9966255198"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="normal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.18"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/roundedImageView"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView11" />-->
+
+
+

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">W8</string>
     <string name="todo1">TODO</string>
     <string name="lords">Lords</string>
@@ -189,6 +189,12 @@
     <string name="title_activity_maps">Map</string>
     <string name="off">OFF</string>
     <string name="on">ON</string>
+    <string name="bus_details">Bus Details</string>
+
+    <string name="naseer_bhai">Naseer Bhai</string>
+
+    <string name="naseer">NASEER</string>
+    <string name="_91_9966255198">+91 9966255198</string>
 
 
 </resources>

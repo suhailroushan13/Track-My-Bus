@@ -53,4 +53,11 @@
     <dimen name="material_mini_drawer_item_padding_sides">8dp</dimen>
     <dimen name="material_mini_drawer_item_profile_icon">40dp</dimen>
     <dimen name="material_mini_drawer_item_profile_icon_padding">16dp</dimen>
+
+    <dimen name="super_bottom_sheet_width">0dp</dimen>
+    <dimen name="super_bottom_sheet_radius">16dp</dimen>
+    <dimen name="super_bottom_sheet_peek_height">64dp</dimen>
+    <item name="super_bottom_sheet_dim" format="float" type="dimen">0.6</item>
+    <integer name="super_bottom_expanded_behaviour">-1</integer>
+
 </resources>

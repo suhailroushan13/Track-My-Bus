@@ -127,6 +127,12 @@
     <string name="version_1_0_0">Version: 1.0.0</string>
     <string name="off">OFF</string>
     <string name="on">ON</string>
+    <string name="bus_details">Bus Details</string>
+
+    <string name="naseer_bhai">Naseer Bhai</string>
+
+    <string name="naseer">NASEER</string>
+    <string name="_91_9966255198">+91 9966255198</string>
 
 
 </resources>
