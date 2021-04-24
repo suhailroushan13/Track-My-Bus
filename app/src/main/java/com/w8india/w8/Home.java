@@ -259,6 +259,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.isTrafficEnabled();
+        mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnMarkerDragListener(this);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             enableUserLocation();
@@ -335,6 +336,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
             markerOptions.title("Bus");
             markerOptions.snippet(locality);
+
 
 
 //            behavior.setPeekHeight(100);
@@ -544,7 +546,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     }
 
+
     @Override
+
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == LOCATION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

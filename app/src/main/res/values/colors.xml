@@ -3,8 +3,8 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">@color/maincolor</color>
     <color name="purple_700">@color/maincolor</color>
-    <color name="teal_200">@color/black</color>
-    <color name="teal_700">@color/black</color>
+    <color name="teal_200">@color/maincolor</color>
+    <color name="teal_700">@color/maincolor</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorDivider">#FFFFFF</color>

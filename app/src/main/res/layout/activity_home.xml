@@ -2,6 +2,7 @@
 <FrameLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Theme.W8"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"

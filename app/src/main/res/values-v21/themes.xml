@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.W8.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/maincolor</item>
+        <item name="android:navigationBarColor">@color/maincolor</item>
+
+
+    </style>
+
+    <style name="Theme.W8" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#03A9F4</item>
+        <item name="colorPrimaryVariant">#03A9F4</item>
+        <item name="colorOnPrimary">#03A9F4</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#03A9F4</item>
+        <item name="colorSecondaryVariant">#03A9F4</item>
+        <item name="colorOnSecondary">#03A9F4</item>
+
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>
