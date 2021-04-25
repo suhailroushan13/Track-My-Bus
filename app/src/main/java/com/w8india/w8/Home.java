@@ -73,7 +73,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     BottomSheetBehavior sheetBehavior;
     FloatingActionButton drawebtn, locationbtn;
     AccountHeader headerResult;
-    String locality;
+    String locality, name, number;
+    int selectedbus;
     private Geocoder geocoder;
     private static final String TAG = "Home";
     private final int ACCESS_LOCATION_REQUEST_CODE = 10001;
@@ -86,7 +87,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     LocationRequest locationRequest;
     private FirebaseAuth auth;
     FirebaseUser user;
-    TextView two,four;
+    TextView busname,four;
     ImageView one,three;
 
      String num = "9618211626";
@@ -95,14 +96,18 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ConstraintLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
+/*TODO Bus shared pref*/
+        selectedbus = 5;
+
+
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        two=findViewById(R.id.two);
+        busname=findViewById(R.id.busname);
         one=findViewById(R.id.one);
         three=findViewById(R.id.three);
         four=findViewById(R.id.four);
-        two.setOnClickListener(new View.OnClickListener() {
+        busname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -141,6 +146,62 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         });
 
+        switch (selectedbus){
+            case 1:
+                name = "NASEER";
+//                number="9966255198";
+                number="9618211626";
+                busname.setText(name);
+                four.setText(number);
+                break;
+            case 2:
+                name = "SHAKEEL";
+//                number="9959707274";
+                number="9618211626";
+                busname.setText(name);
+                four.setText(number);
+                break;
+            case 3:
+                name = "RAJU";
+//                number="9392413957";
+                number="9618211626";
+                busname.setText(name);
+                four.setText(number);
+                break;
+
+            case 4:
+                name = "ALEEM";
+//                number="7995726523";
+                number="9618211626";
+                busname.setText(name);
+                four.setText(number);
+                break;
+            case 5:
+                name = "HANEEF";
+//                number="9581991734";
+                number="9618211626";
+                busname.setText(name);
+                four.setText(number);
+                break;
+            case 6:
+                name = "Not Available";
+                number="-";
+                busname.setText(name);
+                four.setText(number);
+                break;
+            case 7:
+                name = "SALEEM";
+//                number="7095175669";
+                number="9618211626";
+                busname.setText(name);
+                four.setText(number);
+                break;
+
+            default:
+                busname.setText(name);
+                four.setText(number);
+
+        }
 
 
 
@@ -229,8 +290,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
                                 (
-                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.bus).withLevel(2).withIdentifier(2000).withSelectable(false),
-                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.follow).withLevel(2).withIdentifier(2001).withSelectable(false)
+                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false),
+                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.twitter).withLevel(2).withIdentifier(2001).withSelectable(false)
                                 ),
                         new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {

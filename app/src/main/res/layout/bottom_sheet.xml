@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="60dp"
-        android:layout_height="4dp"
+        android:layout_width="61dp"
+        android:layout_height="6dp"
         android:background="@drawable/ic_baseline_remove_24"
         android:clickable="true"
 
@@ -31,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -46,22 +46,23 @@
         app:layout_constraintVertical_bias="0.41000003" />
 
     <TextView
-        android:id="@+id/textView11S"
-        android:layout_width="92dp"
-        android:layout_height="25dp"
+        android:id="@+id/busname"
+        android:layout_width="93dp"
+        android:layout_height="26dp"
 
-        android:layout_marginTop="52dp"
         android:layout_weight="2"
         android:fontFamily="@font/medium"
-        android:gravity="center"
+        android:gravity="left"
         android:text="@string/naseer"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.735"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -76,7 +77,7 @@
         android:fontFamily="@font/thin"
         android:gravity="left"
         android:text="Name :"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -94,7 +95,7 @@
         android:fontFamily="@font/thin"
         android:gravity="left"
         android:text="Number : "
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,22 +106,22 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="152dp"
-        android:layout_height="33dp"
+        android:layout_width="153dp"
+        android:layout_height="24dp"
         android:layout_weight="2"
 
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/_9966255198"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.606"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView11S"
-        app:layout_constraintVertical_bias="0.188"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.534"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -132,7 +133,7 @@
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="Call Driver"
-        android:textColor="@color/colorDivider"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +152,7 @@
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/Message"
-        android:textColor="@color/colorDivider"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +167,7 @@
         android:id="@+id/one"
         android:layout_width="44dp"
         android:layout_height="40dp"
-        android:background="@drawable/callaction"
+        android:background="@drawable/call"
         android:clickable="true"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
