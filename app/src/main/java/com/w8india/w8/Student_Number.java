@@ -42,7 +42,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Student_Number extends AppCompatActivity {
 
-    private Button mSendOTPBtn;
+    private Button mSendOTPBtn,loginwithgoogle;
     private TextView processText;
     private EditText countryCodeEdit , phoneNumberEdit;
     private FirebaseAuth auth;
@@ -64,6 +64,8 @@ public class Student_Number extends AppCompatActivity {
 
         mSendOTPBtn = findViewById(R.id.send_codebtn);
         phoneNumberEdit = findViewById(R.id.input_phone);
+        loginwithgoogle=findViewById(R.id.loginwithgoogle);
+        loginwithgoogle.setOnClickListener(v -> Login());
 
 
 
@@ -149,6 +151,14 @@ public class Student_Number extends AppCompatActivity {
         if (user !=null) {
             sendToMain();
         }
+    }
+
+
+    public void Login(){
+
+        startActivity(new Intent(Student_Number.this, Login.class));
+
+
     }
 }
 

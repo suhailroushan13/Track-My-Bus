@@ -11,15 +11,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -46,10 +42,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
-//import android.support.design.widget.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,6 +59,8 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.io.IOException;
 import java.util.List;
+
+//import android.support.design.widget.BottomSheetBehavior;
 
 public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
     private GoogleMap mMap;
@@ -92,15 +87,13 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        LinearLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
+        ConstraintLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
-
         /**
          * bottom sheet state change listener
          * we are changing button text when sheet changed state
          * */
-
         sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -154,23 +147,22 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 .withHeaderBackground(R.drawable.header1)
                 .withSavedInstance(savedInstanceState)
                 .build();
-
         result = new DrawerBuilder()
                 .withActivity(this)
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Change Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Support Our Work").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Meet the Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(16).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Join our Circle").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
+                        new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Join our Cult").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
-                        new ExpandableDrawerItem().withName("Follow us on").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
+                        new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
                                 (
-                                        new SecondaryDrawerItem().withName("Facebook").withIcon(R.drawable.bus).withLevel(2).withIdentifier(2000).withSelectable(false),
-                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.follow).withLevel(2).withIdentifier(2001).withSelectable(false)
+                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.bus).withLevel(2).withIdentifier(2000).withSelectable(false),
+                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.follow).withLevel(2).withIdentifier(2001).withSelectable(false)
                                 ),
                         new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -193,7 +185,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                             } else if (drawerItem.getIdentifier() == 4) {
                                 intent = new Intent(Home.this, Team.class);
                             } else if (drawerItem.getIdentifier() == 16) {
-                                intent = new Intent(Home.this, Share.class);
+                                intent = new Intent(Home.this, Request.class);
                             } else if (drawerItem.getIdentifier() == 5) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
                                 //link
@@ -206,7 +198,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                             } else if (drawerItem.getIdentifier() == 2000) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
                             } else if (drawerItem.getIdentifier() == 2001) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
                             }
                             if (intent != null) {
                                 Home.this.startActivity(intent);
@@ -554,7 +546,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         });
     }
-
     private void askLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -565,10 +556,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         }
     }
-
-
     @Override
-
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == LOCATION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -587,5 +575,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         }
     }
+
 
 }

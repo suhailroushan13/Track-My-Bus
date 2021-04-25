@@ -18,6 +18,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="170dp"
+        android:layout_marginRight="20dp"
         android:background="@color/white"
         android:clickable="true"
         android:focusable="true"
@@ -28,15 +29,18 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/drawerBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:clickable="true"
+        android:layout_marginLeft="30dp"
+       android:layout_marginTop="30dp"
+        android:paddingLeft="20dp"
         android:focusable="true"
         app:backgroundTint="#FFFFFF"
-
         app:srcCompat="@drawable/hamburger"
         app:useCompatPadding="true" />
+
     <include layout="@layout/bottom_sheet" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

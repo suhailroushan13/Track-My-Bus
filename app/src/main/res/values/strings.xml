@@ -193,8 +193,11 @@
 
     <string name="naseer_bhai">Naseer Bhai</string>
 
-    <string name="naseer">NASEER</string>
+
     <string name="_91_9966255198">+91 9966255198</string>
+    <string name="bus_no_1_">BUS NO.1</string>
+    <string name="naseer">NASEER</string>
+    <string name="_91_9966255198_">91+ 9966255198</string>
 
 
 </resources>

@@ -1,24 +1,13 @@
 package com.w8india.w8;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.AnimatedImageDrawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -37,8 +26,8 @@ public class SplashScreen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        /**connectwithdriver=findViewById(R.id.connectwithdriver);
-        connectwithdriver.setOnClickListener(v -> Selection());**/
+//        /**connectwithdriver=findViewById(R.id.connectwithdriver);
+//        connectwithdriver.setOnClickListener(v -> Selection());**/
 
         auth = FirebaseAuth.getInstance();
         busmain=findViewById(R.id.busmain);
@@ -52,7 +41,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 //call the method
-                if (Constants.isOnline()){
+                if (2<3){
                     timer.cancel();
                     runOnUiThread(new Runnable() {
                         @Override
@@ -74,7 +63,7 @@ public class SplashScreen extends AppCompatActivity {
                                     }
 
                                 }
-                            }, 2100);
+                            }, 2000);
                         }
                     });
 
@@ -101,10 +90,10 @@ public class SplashScreen extends AppCompatActivity {
 
 
     }
-    /**public void Selection(){
-        Intent intent = new Intent(this, Selection.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }**/
+//    /*public void Selection(){
+//        Intent intent = new Intent(this, Selection.class);
+//        startActivity(intent);
+//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//    }**/
 
 }
