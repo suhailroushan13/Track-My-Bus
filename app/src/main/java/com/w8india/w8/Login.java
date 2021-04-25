@@ -108,12 +108,12 @@ public class Login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Log.d(TAG, "signInWithCredential:success: currentUser: " + user.getEmail());
-                            showToastMessage("Firebase Authentication Succeeded ");
+//                            showToastMessage("Firebase Authentication Succeeded ");
                             launchMainActivity(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            showToastMessage("Firebase Authentication failed:" + task.getException());
+                            showToastMessage("Google SignIn Failed:" + task.getException());
                         }
                     }
                 });
