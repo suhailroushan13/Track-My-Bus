@@ -8,11 +8,15 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -82,9 +86,10 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     LocationRequest locationRequest;
     private FirebaseAuth auth;
     FirebaseUser user;
+    TextView two,four;
+    ImageView one,three;
 
-
-
+     String num = "9618211626";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +98,67 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        two=findViewById(R.id.two);
+        one=findViewById(R.id.one);
+        three=findViewById(R.id.three);
+        four=findViewById(R.id.four);
+        two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onCallBtnClick();
+
+            }
+        });
+        four.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Uri uri = Uri.parse("https://wa.link/ghug2k"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
+            }
+        });
+
+        one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onCallBtnClick();
+
+
+            }
+        });
+
+        three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://wa.link/ghug2k"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /**
+         *
          * bottom sheet state change listener
          * we are changing button text when sheet changed state
          * */
@@ -560,7 +625,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     }
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == LOCATION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted
@@ -577,7 +643,53 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 //why we want to enable user location
             }
         }
+        boolean permissionGranted = false;
+        switch(requestCode){
+            case 9:
+                permissionGranted = grantResults[0]== PackageManager.PERMISSION_GRANTED;
+                break;
+        }
+        if(permissionGranted){
+            phoneCall();
+        }else {
+            Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
+        }
     }
+
+
+
+
+
+    private void onCallBtnClick(){
+        if (Build.VERSION.SDK_INT < 23) {
+            phoneCall();
+        }else {
+
+            if (ActivityCompat.checkSelfPermission(Home.this,
+                    Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+
+                phoneCall();
+            }else {
+                final String[] PERMISSIONS_STORAGE = {Manifest.permission.CALL_PHONE};
+                //Asking request Permissions
+                ActivityCompat.requestPermissions(Home.this, PERMISSIONS_STORAGE, 9);
+            }
+        }
+    }
+
+
+
+    private void phoneCall(){
+        if (ActivityCompat.checkSelfPermission(Home.this,
+                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:"+num));
+            Home.this.startActivity(callIntent);
+        }else{
+            Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
 }
