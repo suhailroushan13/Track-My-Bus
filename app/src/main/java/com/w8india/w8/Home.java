@@ -83,6 +83,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     private FirebaseAuth auth;
     FirebaseUser user;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,7 +158,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
                         new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
+                        //new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
                         new PrimaryDrawerItem().withName("Join our Cult").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
