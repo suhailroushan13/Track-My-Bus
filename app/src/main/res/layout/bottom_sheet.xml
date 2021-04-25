@@ -17,13 +17,14 @@
 
 
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:gravity="center"
 
-        android:text="@string/bus_no_1_"
-        android:textColor="#444"
+        android:gravity="center"
+        android:text="Swipe Up"
+        android:textColor="@color/maincolor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
@@ -40,18 +41,17 @@
         android:background="@drawable/b"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView11S"
         android:layout_width="122dp"
         android:layout_height="30dp"
 
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
         android:layout_weight="2"
         android:gravity="center"
         android:text="@string/naseer"
@@ -61,7 +61,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311"
+        app:layout_constraintVertical_bias="0.382"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -77,11 +77,26 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView11S"
-        app:layout_constraintVertical_bias="0.011"
+        app:layout_constraintTop_toTopOf="@+id/textView11S"
+        app:layout_constraintVertical_bias="0.226"
         tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:layout_width="66dp"
+        android:layout_height="31dp"
+        android:fontFamily="@font/medium"
+        android:gravity="center"
+        android:text="@string/call"
+        android:textColor="@color/maincolor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintVertical_bias="0.38" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

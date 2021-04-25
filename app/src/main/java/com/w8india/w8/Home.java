@@ -92,6 +92,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         ConstraintLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
+        sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         /**
          * bottom sheet state change listener
          * we are changing button text when sheet changed state
@@ -337,7 +338,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
             markerOptions.rotation(location.getBearing());
 
-            markerOptions.title("Bus");
+            markerOptions.title("Bus No.1");
 
             markerOptions.snippet(locality);
 
