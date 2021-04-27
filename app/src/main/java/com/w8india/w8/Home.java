@@ -97,7 +97,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         setContentView(R.layout.activity_home);
         ConstraintLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
 /*TODO Bus shared pref*/
-        selectedbus = 5;
+        selectedbus = 1;
 
 
         //NAVI BUTTON LOGIC
@@ -436,10 +436,10 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     };
 
-    //BUS ICON LOGIC
+    //BUS ICON LOGIC17.449616397619273, 78.4230210144581
     private void setUserLocationMarker(Location location) {
-        double lati = 17.39499650523271;
-        double longi = 78.43981142071546;
+        double lati = 17.449616397619273;
+        double longi = 78.4230210144581;
         LatLng latLng = new LatLng(lati, longi);
         try {
             List<Address> addresses = geocoder.getFromLocation(lati, longi, 1);
@@ -738,8 +738,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     }
 
-
-
     private void phoneCall(){
         if (ActivityCompat.checkSelfPermission(Home.this,
                 Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
@@ -750,7 +748,4 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
 }

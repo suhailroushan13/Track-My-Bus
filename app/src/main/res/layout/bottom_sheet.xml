@@ -21,173 +21,177 @@
         android:id="@+id/imageView9"
         android:layout_width="61dp"
         android:layout_height="6dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ic_baseline_remove_24"
+
         android:clickable="true"
 
+        android:focusable="true"
         android:foregroundGravity="center"
         android:scaleType="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView11S"
+        app:layout_constraintBottom_toTopOf="@+id/textView11S4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@drawable/busdriverlogo"
+        android:background="@drawable/busdriver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41000003" />
+        app:layout_constraintVertical_bias="0.423" />
 
     <TextView
         android:id="@+id/busname"
-        android:layout_width="93dp"
-        android:layout_height="26dp"
+        android:layout_width="143dp"
+        android:layout_height="36dp"
 
         android:layout_weight="2"
         android:fontFamily="@font/medium"
-        android:gravity="left"
+        android:gravity="center"
         android:text="@string/naseer"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        android:textSize="24sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.597"
+        app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.735"
+        app:layout_constraintVertical_bias="0.335"
         tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView115"
-        android:layout_width="68dp"
-        android:layout_height="21dp"
+        android:layout_width="100dp"
+        android:layout_height="36dp"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="124dp"
         android:layout_weight="2"
-        android:fontFamily="@font/thin"
+        android:fontFamily="@font/medium"
+
         android:gravity="left"
-        android:text="Name :"
+        android:text="Driver :"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335"
         tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView11S4"
-        android:layout_width="79dp"
-        android:layout_height="26dp"
+        android:layout_width="117dp"
+        android:layout_height="31dp"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_weight="2"
-        android:fontFamily="@font/thin"
+        android:fontFamily="@font/medium"
         android:gravity="left"
         android:text="Number : "
+
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54"
+        app:layout_constraintVertical_bias="0.544"
         tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="153dp"
-        android:layout_height="24dp"
+        android:layout_width="160dp"
+        android:layout_height="31dp"
         android:layout_weight="2"
 
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/_9966255198"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="24sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534"
+        app:layout_constraintVertical_bias="0.544"
         tools:ignore="RtlHardcoded" />
 
     <TextView
 
         android:id="@+id/two"
-        android:layout_width="117dp"
-        android:layout_height="28dp"
+        android:layout_width="122dp"
+        android:layout_height="33dp"
         android:clickable="true"
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="Call Driver"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
+        app:layout_constraintVertical_bias="0.862" />
 
     <TextView
 
         android:id="@+id/four"
-        android:layout_width="132dp"
-        android:layout_height="30dp"
+        android:layout_width="140dp"
+        android:layout_height="34dp"
         android:clickable="true"
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/Message"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
 
-        app:layout_constraintHorizontal_bias="0.924"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/three"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
-
+        app:layout_constraintVertical_bias="0.862" />
 
     <ImageView
         android:id="@+id/one"
-        android:layout_width="44dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/call"
         android:clickable="true"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.943" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <ImageView
         android:id="@+id/three"
-        android:layout_width="32dp"
-        android:layout_height="33dp"
-        android:background="@drawable/wsp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/whatsapp"
         android:clickable="true"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintHorizontal_bias="0.57"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.893" />
 </androidx.constraintlayout.widget.ConstraintLayout>
