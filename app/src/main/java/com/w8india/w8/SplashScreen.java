@@ -55,7 +55,7 @@ public class SplashScreen extends AppCompatActivity {
                                 public void run() {
                                     if (auth.getCurrentUser() == null) {
                                         finish();
-                                        startActivity(new Intent(SplashScreen.this, Student_Number.class));
+                                        startActivity(new Intent(SplashScreen.this, Selection.class));
                                     }else{
                                         startActivity(new Intent(SplashScreen.this, Home.class));
                                         finish();
