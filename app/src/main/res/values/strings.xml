@@ -41,7 +41,7 @@
     <string name="welcome_back">Welcome Back</string>
     <string name="or_sign_in_with_google">Or Sign In With Google</string>
     <string name="todo8">TODO</string>
-    <string name="otp_verification">OTP Verification</string>
+<!--    <string name="otp_verification">OTP Verification</string>-->
     <string name="we_will_send_you_an_one_time_password_on_this_mobile_number">We will send you an One Time Password on this Mobile Number</string>
     <string name="enter_mobile_number">Enter Mobile Number</string>
     <string name="_91">+91</string>
@@ -205,6 +205,8 @@
     <string name="driver">Driver :</string>
     <string name="numbernn">Number :</string>
     <string name="call_driver">Call Driver</string>
+    <string name="hey_buddy_can_i_get_your_number">Hey Buddy, Can I get your Number ?</string>
+    <string name="otp_verification">OTP Verification</string>
 
 
 </resources>

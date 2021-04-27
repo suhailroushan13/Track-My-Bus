@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,7 +50,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Student_Number extends AppCompatActivity {
 
-    private Button mSendOTPBtn,loginwithgoogle;
+    private Button mSendOTPBtn;
+    private ImageButton loginwithgoogle;
     private TextView processText;
     private EditText countryCodeEdit , phoneNumberEdit;
     private FirebaseAuth auth;

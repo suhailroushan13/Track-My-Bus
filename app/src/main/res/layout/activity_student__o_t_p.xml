@@ -42,7 +42,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716" />
+        app:layout_constraintVertical_bias="0.716"
+        android:layout_toLeftOf="@id/resend" />
 
     <com.chaos.view.PinView
         android:id="@+id/verify_code_edit"
@@ -76,6 +77,7 @@
         android:layout_height="45dp"
         android:fontFamily="@font/bold"
         android:textAllCaps="false"
+        android:textColor="@color/maincolor"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/verifycode_btn"
         app:layout_constraintEnd_toEndOf="parent"
