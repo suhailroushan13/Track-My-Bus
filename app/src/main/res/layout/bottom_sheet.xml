@@ -109,7 +109,7 @@
         tools:ignore="RtlHardcoded" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/four"
         android:layout_width="160dp"
         android:layout_height="31dp"
         android:layout_weight="2"
@@ -130,7 +130,7 @@
 
     <TextView
 
-        android:id="@+id/two"
+        android:id="@+id/busmain"
         android:layout_width="122dp"
         android:layout_height="33dp"
         android:clickable="true"
@@ -149,23 +149,23 @@
 
     <TextView
 
-        android:id="@+id/four"
+        android:id="@+id/fours"
         android:layout_width="140dp"
         android:layout_height="34dp"
         android:clickable="true"
         android:fontFamily="@font/medium"
-        android:gravity="center"
-        android:text="@string/Message"
+        android:gravity="left"
+        android:text="@string/whatsapp"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.733"
 
         app:layout_constraintStart_toEndOf="@+id/three"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintVertical_bias="0.861" />
 
     <ImageView
         android:id="@+id/one"
