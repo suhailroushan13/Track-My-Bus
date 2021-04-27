@@ -208,6 +208,7 @@
     <string name="hey_buddy_can_i_get_your_number">Hey Buddy, Can I get your Number ?</string>
     <string name="otp_verification">OTP Verification</string>
     <string name="or_sign_up_with_google">or Sign Up With Google</string>
+    <string name="or_you_can_login_with">Or You can login with</string>
 
 
 </resources>
