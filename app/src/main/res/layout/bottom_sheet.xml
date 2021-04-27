@@ -36,11 +36,50 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/whatsappbtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="188dp"
+        android:layout_height="48dp"
+        android:text=" WhatsApp"
+        app:strokeColor="#25D366"
+        android:textColor="#25D366"
+        app:icon="@drawable/whatsapp"
+        app:iconSize="30dp"
+        app:iconTint="#25D366"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.894" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/callbtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="182dp"
+        android:layout_height="48dp"
+        app:strokeColor="@color/colorAccent"
+        android:text="@string/call"
+        android:textColor="@color/accent"
+        app:icon="@drawable/calls"
+        app:iconSize="30dp"
+        app:iconTint="@color/colorAccent"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.894" />
+
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/busdriver"
+        android:layout_width="87dp"
+        android:layout_height="82dp"
+        android:background="@drawable/driversicon"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
@@ -74,7 +113,7 @@
         android:layout_height="36dp"
 
         android:layout_weight="2"
-        android:fontFamily="@font/medium"
+        android:fontFamily="@font/light"
 
         android:gravity="left"
         android:text="@string/driver"
@@ -94,7 +133,7 @@
         android:layout_height="31dp"
 
         android:layout_weight="2"
-        android:fontFamily="@font/medium"
+        android:fontFamily="@font/light"
         android:gravity="left"
         android:text="@string/numbernn"
         android:textColor="#000000"
@@ -108,7 +147,7 @@
         tools:ignore="RtlHardcoded" />
 
     <TextView
-        android:id="@+id/four"
+        android:id="@+id/busnumber"
         android:layout_width="160dp"
         android:layout_height="31dp"
         android:layout_weight="2"
@@ -126,78 +165,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.544"
         tools:ignore="RtlHardcoded" />
-
-    <TextView
-
-        android:id="@+id/call"
-        android:layout_width="122dp"
-        android:layout_height="33dp"
-        android:clickable="true"
-        android:fontFamily="@font/medium"
-        android:gravity="center"
-        android:text="@string/call_driver"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.228"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862"
-        android:focusable="true" />
-
-    <TextView
-
-        android:id="@+id/Whatsapp"
-        android:layout_width="140dp"
-        android:layout_height="34dp"
-        android:clickable="true"
-        android:fontFamily="@font/medium"
-        android:gravity="left"
-        android:text="@string/whatsapp"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.733"
-
-        app:layout_constraintStart_toEndOf="@+id/three"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
-        android:focusable="true"
-        tools:ignore="RtlHardcoded" />
-
-    <ImageView
-        android:id="@+id/one"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/call"
-        android:clickable="true"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
-        android:focusable="true" />
-
-    <ImageView
-        android:id="@+id/three"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/whatsapp"
-        android:clickable="true"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.893"
-        android:focusable="true" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

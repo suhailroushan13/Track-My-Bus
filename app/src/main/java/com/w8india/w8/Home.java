@@ -14,7 +14,6 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,8 +86,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     LocationRequest locationRequest;
     private FirebaseAuth auth;
     FirebaseUser user;
-    TextView call,Whatsapp;
-    ImageView one,three;
+    Button callbtn,whatsappbtn;
+    TextView busname,busnumber;
+
 
      String num = "9618211626";
     @Override
@@ -103,11 +103,15 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        call=findViewById(R.id.busname);
-        one=findViewById(R.id.one);
-        three=findViewById(R.id.three);
-        Whatsapp=findViewById(R.id.four);
-        call.setOnClickListener(new View.OnClickListener() {
+        callbtn=findViewById(R.id.callbtn);
+        whatsappbtn=findViewById(R.id.whatsappbtn);
+        busname=findViewById(R.id.busname);
+        busnumber=findViewById(R.id.busnumber);
+
+
+
+
+        callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -115,7 +119,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
             }
         });
-        Whatsapp.setOnClickListener(new View.OnClickListener() {
+        whatsappbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -126,90 +130,69 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         });
 
-        one.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                onCallBtnClick();
 
 
-            }
-        });
 
-        three.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://wa.link/ghug2k"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-
-            }
-        });
-
-        call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onCallBtnClick();
-
-            }
-        });
 
         switch (selectedbus){
             case 1:
                 name = "NASEER";
 //                number="9966255198";
                 number="9618211626";
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
                 break;
             case 2:
                 name = "SHAKEEL";
 //                number="9959707274";
                 number="9618211626";
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
                 break;
             case 3:
                 name = "RAJU";
 //                number="9392413957";
                 number="9618211626";
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
                 break;
 
             case 4:
                 name = "ALEEM";
 //                number="7995726523";
                 number="9618211626";
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
                 break;
             case 5:
                 name = "HANEEF";
 //                number="9581991734";
                 number="9618211626";
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
                 break;
             case 6:
                 name = "Not Available";
                 number="-";
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
                 break;
             case 7:
                 name = "SALEEM";
 //                number="7095175669";
                 number="9618211626";
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
                 break;
 
             default:
-                call.setText(name);
-                Whatsapp.setText(number);
+                busname.setText(name);
+                busnumber.setText(number);
 
         }
+
+        busname.setText(name);
+        busnumber.setText(number);
 
 
 
