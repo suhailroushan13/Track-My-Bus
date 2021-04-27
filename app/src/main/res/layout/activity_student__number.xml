@@ -13,7 +13,6 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:fontFamily="@font/medium"
         android:text="@string/otp_authentication"
         android:textColor="#000000"
@@ -25,15 +24,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.575" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/verifycode_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:errorEnabled="true"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="60dp">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/verifycode_btn"-->
+<!--        android:layout_width="443dp"-->
+<!--        android:layout_height="331dp"-->
+<!--        app:errorEnabled="true"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="-16dp"-->
+<!--        tools:layout_editor_absoluteY="-11dp">-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <ImageView
         android:id="@+id/google"

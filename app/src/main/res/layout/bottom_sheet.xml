@@ -38,8 +38,8 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@drawable/busdriver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +77,7 @@
         android:fontFamily="@font/medium"
 
         android:gravity="left"
-        android:text="Driver :"
+        android:text="@string/driver"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,8 +96,7 @@
         android:layout_weight="2"
         android:fontFamily="@font/medium"
         android:gravity="left"
-        android:text="Number : "
-
+        android:text="@string/numbernn"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -130,13 +129,13 @@
 
     <TextView
 
-        android:id="@+id/busmain"
+        android:id="@+id/call"
         android:layout_width="122dp"
         android:layout_height="33dp"
         android:clickable="true"
         android:fontFamily="@font/medium"
         android:gravity="center"
-        android:text="Call Driver"
+        android:text="@string/call_driver"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,11 +144,12 @@
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintVertical_bias="0.862"
+        android:focusable="true" />
 
     <TextView
 
-        android:id="@+id/fours"
+        android:id="@+id/Whatsapp"
         android:layout_width="140dp"
         android:layout_height="34dp"
         android:clickable="true"
@@ -165,7 +165,9 @@
 
         app:layout_constraintStart_toEndOf="@+id/three"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861" />
+        app:layout_constraintVertical_bias="0.861"
+        android:focusable="true"
+        tools:ignore="RtlHardcoded" />
 
     <ImageView
         android:id="@+id/one"
@@ -179,7 +181,8 @@
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintVertical_bias="0.96"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/three"
@@ -193,5 +196,8 @@
         app:layout_constraintHorizontal_bias="0.57"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.893" />
+        app:layout_constraintVertical_bias="0.893"
+        android:focusable="true" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

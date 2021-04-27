@@ -87,7 +87,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     LocationRequest locationRequest;
     private FirebaseAuth auth;
     FirebaseUser user;
-    TextView busname,four;
+    TextView call,Whatsapp;
     ImageView one,three;
 
      String num = "9618211626";
@@ -103,11 +103,11 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        busname=findViewById(R.id.busname);
+        call=findViewById(R.id.busname);
         one=findViewById(R.id.one);
         three=findViewById(R.id.three);
-        four=findViewById(R.id.four);
-        busname.setOnClickListener(new View.OnClickListener() {
+        Whatsapp=findViewById(R.id.four);
+        call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -115,7 +115,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
             }
         });
-        four.setOnClickListener(new View.OnClickListener() {
+        Whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -146,60 +146,68 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         });
 
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCallBtnClick();
+
+            }
+        });
+
         switch (selectedbus){
             case 1:
                 name = "NASEER";
 //                number="9966255198";
                 number="9618211626";
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
                 break;
             case 2:
                 name = "SHAKEEL";
 //                number="9959707274";
                 number="9618211626";
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
                 break;
             case 3:
                 name = "RAJU";
 //                number="9392413957";
                 number="9618211626";
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
                 break;
 
             case 4:
                 name = "ALEEM";
 //                number="7995726523";
                 number="9618211626";
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
                 break;
             case 5:
                 name = "HANEEF";
 //                number="9581991734";
                 number="9618211626";
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
                 break;
             case 6:
                 name = "Not Available";
                 number="-";
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
                 break;
             case 7:
                 name = "SALEEM";
 //                number="7095175669";
                 number="9618211626";
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
                 break;
 
             default:
-                busname.setText(name);
-                four.setText(number);
+                call.setText(name);
+                Whatsapp.setText(number);
 
         }
 
@@ -322,7 +330,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, About.class);
                             } else if (drawerItem.getIdentifier() == 11) {
                                 auth.signOut();
-                                intent = new Intent(Home.this, Login.class);
+                                intent = new Intent(Home.this, Student_Number.class);
                                 finish();
                             } else if (drawerItem.getIdentifier() == 2000) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
