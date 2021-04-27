@@ -152,20 +152,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
+        app:layout_constraintVertical_bias="0.959"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView38"
         android:layout_width="317dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="116dp"
         android:fontFamily="@font/medium"
         android:gravity="center"
 
-        android:text="@string/or_login_with_google"
+        android:text="@string/or_sign_up_with_google"
         android:textColor="#939393"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
