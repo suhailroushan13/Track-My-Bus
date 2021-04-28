@@ -40,12 +40,12 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/whatsappbtn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="140dp"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
         android:layout_alignParentRight="true"
 
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="20dp"
         android:text="@string/whatsapp"
         android:textColor="#25D366"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.894"
         app:strokeColor="#25D366"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="15dp" />
 
     <TextView
         android:id="@+id/textView115"
@@ -87,11 +87,11 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/callbtn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="140dp"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="@string/call"
         android:textColor="@color/accent"
@@ -101,7 +101,7 @@
 
         app:strokeColor="@color/colorAccent"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="15dp" />
 
     <ImageView
         android:id="@+id/imageView7"
