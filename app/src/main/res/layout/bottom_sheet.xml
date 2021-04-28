@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="300dp"
     android:background="@drawable/bottom_sheet_bg"
     android:orientation="vertical"
 
@@ -39,10 +39,9 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/whatsappbtn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="188dp"
-        android:layout_height="48dp"
-        android:text=" WhatsApp"
-        app:strokeColor="#25D366"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/whatsapp"
         android:textColor="#25D366"
         app:icon="@drawable/whatsapp"
         app:iconSize="30dp"
@@ -52,40 +51,60 @@
         app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintVertical_bias="0.894"
+        app:strokeColor="#25D366" />
+    <TextView
+        android:id="@+id/textView115"
+        android:layout_width="100dp"
+        android:layout_height="36dp"
+
+        android:layout_weight="2"
+        android:fontFamily="@font/light"
+
+        android:gravity="left"
+        android:text="@string/driver"
+        android:textColor="#011627"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/callbtn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="182dp"
-        android:layout_height="48dp"
-        app:strokeColor="@color/colorAccent"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+
         android:text="@string/call"
         android:textColor="@color/accent"
         app:icon="@drawable/calls"
         app:iconSize="30dp"
         app:iconTint="@color/colorAccent"
-
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintVertical_bias="0.894"
+        app:strokeColor="@color/colorAccent" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="87dp"
-        android:layout_height="82dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@drawable/driversicon"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <TextView
         android:id="@+id/busname"
@@ -104,11 +123,12 @@
         app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335"
+        app:layout_constraintVertical_bias="0.503"
         tools:ignore="RtlHardcoded" />
 
+
     <TextView
-        android:id="@+id/textView115"
+        android:id="@+id/textView11s5"
         android:layout_width="100dp"
         android:layout_height="36dp"
 
@@ -116,15 +136,35 @@
         android:fontFamily="@font/light"
 
         android:gravity="left"
-        android:text="@string/driver"
+        android:text="@string/address"
         android:textColor="#011627"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335"
+        app:layout_constraintVertical_bias="0.098"
+        tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/textView11sx5"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="2"
+        android:fontFamily="@font/light"
+
+        android:gravity="left"
+        android:text="@string/hyderabadfnlfljfnlnvlkfnvlkfhlfhldhfliuhfliudhflduhvlkjsdvnlsdkjvndsk"
+        android:textColor="#011627"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -143,7 +183,7 @@
         app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544"
+        app:layout_constraintVertical_bias="0.628"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -163,7 +203,7 @@
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544"
+        app:layout_constraintVertical_bias="0.628"
         tools:ignore="RtlHardcoded" />
 
 

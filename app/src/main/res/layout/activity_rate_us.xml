@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/rate2" />
 
     <TextView
@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.452" />
+        app:layout_constraintVertical_bias="0.468" />
 
     <TextView
         android:layout_width="match_parent"
@@ -48,11 +48,12 @@
         android:text="@string/why_you_should_rate_us"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523" />
 
     <TextView
         android:id="@+id/textView9"
@@ -60,24 +61,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="380dp"
         android:fontFamily="@font/light"
-        android:text="@string/we_are_the_students_of_bachelor_engineering_rating_us_will_gave_a_more_confident_to_make_more_app_which_would_help_you_in_future"
 
+        android:text="@string/we_are_the_students_of_bachelor_engineering_rating_us_will_gave_a_more_confident_to_make_more_app_which_would_help_you_in_future"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.216" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/rate"
         android:layout_width="214dp"
         android:layout_height="64dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="28dp"
         android:clickable="true"
         android:fontFamily="@font/medium"
         android:gravity="center"
@@ -89,14 +91,12 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar"
         app:layout_constraintVertical_bias="0.206"
         app:strokeColor="@color/white"
         app:strokeWidth="3dp"
         tools:ignore="UnknownId" />
-
 
     <com.hsalf.smileyrating.SmileyRating
         android:id="@+id/smile_rating"
@@ -107,10 +107,9 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintVertical_bias="0.832" />
 
     <!--    <RatingBar-->
 

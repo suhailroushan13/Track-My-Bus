@@ -212,7 +212,10 @@
     <string name="call">CALL</string>
     <string name="didn_t_receive_code">Didn\'t receive code?</string>
     <string name="didn_t_recieve_code">Didn\'t Recieve Code ?</string>
-<!--    <string name="resend">Resend</string>-->
+    <string name="hyderabadfnlfljfnlnvlkfnvlkfhlfhldhfliuhfliudhflduhvlkjsdvnlsdkjvndsk">HyderabadfnlfljfnlnvlkfnvlkfhlfhldhfliuhfliudhflduhvlkjsdVNLSDKJVNDSK</string>
+<!--    <string name="whatsapp">WhatsApp</string>-->
+    <string name="address">Address:</string>
+    <!--    <string name="resend">Resend</string>-->
 
 
 </resources>
