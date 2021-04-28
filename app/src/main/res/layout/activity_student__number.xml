@@ -5,7 +5,7 @@
     android:id="@+id/Student_Number"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/studentbg"
+    android:background="@drawable/finallogin"
     tools:context=".Student_Number">
 
 
@@ -19,21 +19,6 @@
     <!--        tools:layout_editor_absoluteY="-11dp">-->
 
     <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-    <ImageView
-        android:layout_width="234dp"
-        android:layout_height="222dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/otp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.265" />
 
     <TextView
         android:id="@+id/textView2s"
@@ -67,10 +52,10 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.604" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/verifylay"
@@ -105,19 +90,18 @@
             android:id="@+id/input_phone"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:ems="10"
+            android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
+            android:layout_marginEnd="0dp"
+
+
             android:layout_marginRight="0dp"
-
-
-
+            android:ems="10"
             android:hint="@string/mobile_number"
             android:inputType="number"
             android:maxLength="10"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="0dp" />
+            android:textSize="20sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,19 +153,19 @@
 
     <ImageButton
         android:id="@+id/loginwithgoogle"
-        android:layout_width="265dp"
-        android:outlineAmbientShadowColor="@color/black"
-        android:outlineSpotShadowColor="@color/black"
-        android:soundEffectsEnabled="true"
-
         style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+        android:layout_width="265dp"
         android:layout_height="61dp"
         android:layout_gravity="center_horizontal"
+
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/google"
         android:fontFamily="@font/medium"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black"
+        android:soundEffectsEnabled="true"
         android:text="Sign Up Via Google"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -193,7 +177,6 @@
         app:layout_constraintVertical_bias="0.966"
         tools:ignore="HardcodedText"
         tools:targetApi="p" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

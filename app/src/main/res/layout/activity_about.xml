@@ -101,7 +101,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/light"
+        android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/version_1_0_0"
         android:textColor="@color/black"
