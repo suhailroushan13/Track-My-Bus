@@ -72,21 +72,26 @@
         android:layout_marginLeft="20dp" />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/rate"
-        android:layout_width="257dp"
-        android:layout_height="51dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="3dp"
+        android:clickable="true"
+        android:shadowColor="@color/black"
+        android:layout_width="214dp"
+        android:layout_height="64dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/circleround"
+        android:layout_marginBottom="60dp"
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/rate_us"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar"
         app:layout_constraintVertical_bias="0.206"

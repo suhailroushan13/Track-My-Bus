@@ -7,43 +7,47 @@
     android:background="@drawable/enterotp"
     tools:context=".Student_OTP">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/verifycode_btn"
-        android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_width="234dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:shadowRadius="@integer/super_bottom_expanded_behaviour"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/round"
         android:fontFamily="@font/medium"
+        android:shadowColor="@color/black"
         android:text="@string/verifyS"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.638"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.867" />
+        app:layout_constraintVertical_bias="0.861"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="221dp"
-        android:layout_height="40dp"
+        android:layout_width="222dp"
+        android:layout_height="52dp"
         android:layout_below="@+id/verify_code_edit"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_toStartOf="@id/resend"
+        android:layout_toLeftOf="@id/resend"
         android:fontFamily="@font/medium"
         android:gravity="center"
-        android:text="Didn't receive code?"
+        android:text="@string/didn_t_recieve_code"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716"
-        android:layout_toLeftOf="@id/resend" />
+        app:layout_constraintVertical_bias="0.71" />
 
     <com.chaos.view.PinView
         android:id="@+id/verify_code_edit"
@@ -74,16 +78,22 @@
         android:id="@+id/resend"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="117dp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+
+
         android:layout_height="45dp"
+
         android:fontFamily="@font/bold"
+        android:text="@string/resend"
         android:textAllCaps="false"
         android:textColor="@color/maincolor"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/verifycode_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.317"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/verify_code_edit"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.315" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,16 +35,21 @@
         <activity
             android:name=".Home"
             android:label="@string/title_activity_maps">
-
+sd
         </activity>
         <activity android:name=".Request">
 
         </activity>
-        <activity android:name=".About" />
-        <activity android:name=".Team" />
-        <activity android:name=".Share" />
-        <activity android:name=".Rate_us" />
-        <activity android:name=".Internet_loss" />
+        <activity android:name=".About"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Team"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Share"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Rate_us"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Internet_loss"
+            android:screenOrientation="portrait"/>
 
 
         <activity

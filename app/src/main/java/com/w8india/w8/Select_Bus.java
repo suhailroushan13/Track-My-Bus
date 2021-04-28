@@ -21,9 +21,10 @@ public class Select_Bus extends AppCompatActivity {
 
     Button bus1,bus2,bus3,bus4,bus5,bus6,bus7;
     String [] titles={"Bus No.1 ","Bus No.2","Bus No.3","Bus No.4","Bus No.5","Bus No.6","Bus No.7"};
-    String [] descriptions={"JNTUH - MEHDIPATNAM - COLLEGE","BANDLAGUDA - SHALIBANDA - COLLEGE","NERDMERT X ROAD - LAKDIKAPOOL - COLLEGE","LB NAGAR - NAMPALLY - COLLEGE","BAI RAMAL GUDA - RAJENDRA NAGAR - COLLEGE","                  Not in Service","MIYAPUR - LANGER HOUSER - COLLEGE"};
-    int [] images={R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver};
+    String [] descriptions={"JNTUH - MEHDIPATNAM - COLLEGE","BANDLAGUDA - SHA ALI BANDA - COLLEGE","NEREDMERT X ROAD - LAKDIKAPOOL - COLLEGE","LB NAGAR - NAMPALLY - COLLEGE","BAI RAMAL GUDA - RAJENDRA NAGAR - COLLEGE"," Not in Service","MIYAPUR - LANGER HOUZ - COLLEGE"};
+    int [] images={R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss};
     ListView lv;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +32,17 @@ public class Select_Bus extends AppCompatActivity {
         lv =  findViewById(R.id.bus_list);
         MyAdapter adapter = new MyAdapter(Select_Bus.this,titles,descriptions,images);
         lv.setAdapter(adapter);
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 startActivity(new Intent(Select_Bus.this, Home.class));
+               
             }
         });
     }
+
+
     public void Home(){
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
@@ -49,7 +54,7 @@ public class Select_Bus extends AppCompatActivity {
         String[] descArray;
         public MyAdapter(Context context, String[] titles, String[] descriptions, int [] img) {
             //Overriding Default Constructor off ArratAdapter
-            super(context, R.layout.example_cuslistview_row,R.id.idTitle,titles);
+            super(context, R.layout.select_bus_listview,R.id.idTitle,titles);
             this.imageArray=img;
             this.titleArray=titles;
             this.descArray=descriptions;
@@ -66,7 +71,7 @@ public class Select_Bus extends AppCompatActivity {
 
             //Inflating the layout
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            @SuppressLint("ViewHolder") View row = inflater.inflate(R.layout.example_cuslistview_row,parent,false);
+            @SuppressLint("ViewHolder") View row = inflater.inflate(R.layout.select_bus_listview,parent,false);
             //Get the reference to the view objects
             ImageView myImage =  row.findViewById(R.id.idPic);
             TextView myTitle =  row.findViewById(R.id.idTitle);
@@ -75,6 +80,7 @@ public class Select_Bus extends AppCompatActivity {
             myImage.setImageResource(imageArray[position]);
             myTitle.setText(titleArray[position]);
             myDescription.setText(descArray[position]);
+            myTitle.setTextColor(R.id.dark);
             return row;
 
 

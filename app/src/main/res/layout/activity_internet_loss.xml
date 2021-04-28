@@ -8,11 +8,13 @@
     tools:context=".Internet_loss">
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/checkInternet"
         android:layout_width="285dp"
         android:layout_height="58dp"
         android:layout_marginLeft="80dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="10dp"
 
 
         android:layout_marginRight="80dp"

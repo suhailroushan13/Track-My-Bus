@@ -32,6 +32,7 @@
         android:layout_below="@id/text2"
         android:layout_centerHorizontal="true"
         android:background="#FFFFFF"
+
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton2"
         app:srcCompat="@drawable/driverok" />
 
+
     <Button
         android:id="@+id/slogin"
         android:layout_width="224dp"
@@ -72,10 +74,10 @@
         app:backgroundTint="#03A9F4"
         app:layout_constraintBottom_toTopOf="@+id/imageButton3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:layout_constraintVertical_bias="0.538" />
-
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
         android:id="@+id/dlogin"
@@ -83,7 +85,7 @@
         android:layout_height="56dp"
         android:layout_below="@id/imageButton2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/round"
         android:fontFamily="@font/medium"
         android:gravity="center"
@@ -97,7 +99,7 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

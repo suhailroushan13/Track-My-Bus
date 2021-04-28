@@ -21,10 +21,10 @@
         android:contentDescription="@string/todo1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.121"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -96,10 +96,17 @@
         app:srcCompat="@drawable/busmain"
         tools:targetApi="lollipop" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/slogin"
         android:layout_width="320dp"
         android:layout_height="60dp"
+        android:shadowColor="@color/black"
+        app:strokeColor="@color/white"
+        app:strokeWidth="3dp"
+        android:shadowRadius="@integer/super_bottom_expanded_behaviour"
+        android:clickable="true"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+       android:soundEffectsEnabled="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rectangel"
         android:fontFamily="@font/medium"
@@ -114,7 +121,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text2"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintVertical_bias="0.596"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/textView10"
@@ -122,6 +130,7 @@
         android:layout_height="36dp"
         android:fontFamily="@font/bold"
         android:gravity="center"
+        android:layout_marginBottom="20dp"
         android:text="Powered By W8"
         android:textColor="@color/black"
         android:textSize="20dp"

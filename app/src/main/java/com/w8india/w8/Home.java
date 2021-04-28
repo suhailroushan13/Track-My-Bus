@@ -96,6 +96,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ConstraintLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
+
 /*TODO Bus shared pref*/
         selectedbus = 1;
 
@@ -200,15 +201,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
 
 
-
-
-
-
-
-
-
-
-
         /**
          *
          * bottom sheet state change listener
@@ -259,8 +251,10 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home");
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
         //create the drawer and remember the `Drawer` result object
-        final IProfile profile = new ProfileDrawerItem().withName("usernames")
-                .withIdentifier(100);
+
+        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIcon(R.drawable.logo).withIdentifier(100);
+
+
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
@@ -282,7 +276,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
                                 (
                                         new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false),
-                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.twitter).withLevel(2).withIdentifier(2001).withSelectable(false)
+                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
+                                        new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
+
                                 ),
                         new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -319,6 +315,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
                             } else if (drawerItem.getIdentifier() == 2001) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
+                            }
+                            else if (drawerItem.getIdentifier() == 2003) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
                             }
                             if (intent != null) {
                                 Home.this.startActivity(intent);

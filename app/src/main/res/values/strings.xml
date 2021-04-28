@@ -210,6 +210,9 @@
     <string name="or_sign_up_with_google">or Sign Up With Google</string>
     <string name="or_you_can_login_with">Or You can login with</string>
     <string name="call">CALL</string>
+    <string name="didn_t_receive_code">Didn\'t receive code?</string>
+    <string name="didn_t_recieve_code">Didn\'t Recieve Code ?</string>
+<!--    <string name="resend">Resend</string>-->
 
 
 </resources>
