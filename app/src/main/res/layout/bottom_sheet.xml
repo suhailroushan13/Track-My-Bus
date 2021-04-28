@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="350dp"
     android:background="@drawable/bottom_sheet_bg"
     android:orientation="vertical"
 
@@ -21,6 +21,7 @@
         android:id="@+id/imageView9"
         android:layout_width="61dp"
         android:layout_height="6dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="@drawable/ic_baseline_remove_24"
 
@@ -39,8 +40,13 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/whatsappbtn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView7"
+        android:layout_alignParentRight="true"
+
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="20dp"
         android:text="@string/whatsapp"
         android:textColor="#25D366"
         app:icon="@drawable/whatsapp"
@@ -52,12 +58,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.894"
-        app:strokeColor="#25D366" />
+        app:strokeColor="#25D366"
+        android:layout_marginRight="15dp" />
+
     <TextView
         android:id="@+id/textView115"
         android:layout_width="100dp"
         android:layout_height="36dp"
 
+        android:layout_below="@id/cardv"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/imageView7"
         android:layout_weight="2"
         android:fontFamily="@font/light"
 
@@ -76,27 +87,29 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/callbtn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView7"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         android:text="@string/call"
         android:textColor="@color/accent"
         app:icon="@drawable/calls"
         app:iconSize="30dp"
         app:iconTint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894"
-        app:strokeColor="@color/colorAccent" />
+        app:strokeColor="@color/colorAccent"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_margin="15dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/cardv"
+        android:layout_marginTop="10dp"
         android:background="@drawable/driversicon"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -106,92 +119,133 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.545" />
 
+
     <TextView
         android:id="@+id/busname"
-        android:layout_width="143dp"
+        android:layout_width="wrap_content"
         android:layout_height="36dp"
 
+        android:layout_marginStart="17dp"
+
+        android:layout_below="@id/cardv"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/textView115"
         android:layout_weight="2"
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/naseer"
         android:textColor="#000000"
         android:textSize="24sp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.503"
-        tools:ignore="RtlHardcoded" />
+        app:layout_constraintVertical_bias="0.568"
+        tools:ignore="RtlHardcoded"
+        android:layout_marginLeft="20dp" />
 
-
-    <TextView
-        android:id="@+id/textView11s5"
-        android:layout_width="100dp"
-        android:layout_height="36dp"
-
-        android:layout_weight="2"
-        android:fontFamily="@font/light"
-
-        android:gravity="left"
-        android:text="@string/address"
-        android:textColor="#011627"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098"
-        tools:ignore="RtlHardcoded" />
-
-    <TextView
-        android:id="@+id/textView11sx5"
-        android:layout_width="280dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_weight="2"
-        android:fontFamily="@font/light"
-
-        android:gravity="left"
-        android:text="@string/hyderabadfnlfljfnlnvlkfnvlkfhlfhldhfliuhfliudhflduhvlkjsdvnlsdkjvndsk"
-        android:textColor="#011627"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_below="@id/imageView9"
+        android:layout_margin="5dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        app:barrierMargin="10dp"
+        app:cardBackgroundColor="#fff"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127"
-        tools:ignore="RtlHardcoded" />
+        app:layout_constraintVertical_bias="0.347">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView11s5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+
+                android:layout_weight="2"
+                android:fontFamily="@font/medium"
+                android:gravity="left"
+                android:text="Current Location:"
+                android:textColor="#011627"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.098"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/textView11sx5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView11s5"
+                android:layout_toLeftOf="@id/refresh"
+                android:layout_weight="2"
+
+                android:fontFamily="@font/light"
+                android:text="@string/hyderabadfnlfljfnlnvlkfnvlkfhlfhldhfliuhfliudhflduhvlkjsdvnlsdkjvndsk"
+
+                android:textColor="#011627"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.877"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.127"
+                tools:ignore="RtlHardcoded" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentRight="true"
+                app:backgroundTint="#fff"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/sharp_refresh_black_36dp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/textView11S4"
         android:layout_width="117dp"
         android:layout_height="31dp"
 
+        android:layout_below="@id/textView115"
+        android:layout_toRightOf="@id/imageView7"
         android:layout_weight="2"
         android:fontFamily="@font/light"
         android:gravity="left"
         android:text="@string/numbernn"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.628"
+
         tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/busnumber"
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="31dp"
-        android:layout_weight="2"
+        android:layout_below="@id/busname"
 
+        android:layout_toRightOf="@id/textView11S4"
+        android:layout_weight="2"
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/_9966255198"
@@ -203,8 +257,8 @@
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.628"
+        app:layout_constraintVertical_bias="0.713"
         tools:ignore="RtlHardcoded" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

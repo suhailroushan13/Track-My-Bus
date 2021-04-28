@@ -14,6 +14,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,7 +94,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ConstraintLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
+        RelativeLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
 
         /*TODO Bus shared pref*/
         selectedbus = 1;
