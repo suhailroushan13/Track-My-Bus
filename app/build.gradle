@@ -72,6 +72,7 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'androidx.drawerlayout:drawerlayout'
     implementation 'junit:junit:4.13.2'
+    implementation 'com.github.sujithkanna:smileyrating:2.0.0'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.google.android.gms:play-services-location:18.0.0"
