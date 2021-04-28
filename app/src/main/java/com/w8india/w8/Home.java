@@ -64,7 +64,6 @@ import java.io.IOException;
 import java.util.List;
 
 //import android.support.design.widget.BottomSheetBehavior;
-
 public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
     private GoogleMap mMap;
     private DrawerLayout drawer;
@@ -86,32 +85,27 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     LocationRequest locationRequest;
     private FirebaseAuth auth;
     FirebaseUser user;
-    Button callbtn,whatsappbtn;
-    TextView busname,busnumber;
+    Button callbtn, whatsappbtn;
+    TextView busname, busnumber;
+    String num = "9618211626";
 
-
-     String num = "9618211626";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ConstraintLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
 
-/*TODO Bus shared pref*/
+        /*TODO Bus shared pref*/
         selectedbus = 1;
 
 
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        callbtn=findViewById(R.id.callbtn);
-        whatsappbtn=findViewById(R.id.whatsappbtn);
-        busname=findViewById(R.id.busname);
-        busnumber=findViewById(R.id.busnumber);
-
-
-
-
+        callbtn = findViewById(R.id.callbtn);
+        whatsappbtn = findViewById(R.id.whatsappbtn);
+        busname = findViewById(R.id.busname);
+        busnumber = findViewById(R.id.busnumber);
         callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,37 +117,31 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         whatsappbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Uri uri = Uri.parse("https://wa.link/ghug2k"); // missing 'http://' will cause crashed
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
-
             }
         });
 
-
-
-
-
-        switch (selectedbus){
+        switch (selectedbus) {
             case 1:
                 name = "NASEER";
 //                number="9966255198";
-                number="9618211626";
+                number = "9618211626";
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 2:
                 name = "SHAKEEL";
 //                number="9959707274";
-                number="9618211626";
+                number = "9618211626";
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 3:
                 name = "RAJU";
 //                number="9392413957";
-                number="9618211626";
+                number = "9618211626";
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
@@ -161,27 +149,27 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             case 4:
                 name = "ALEEM";
 //                number="7995726523";
-                number="9618211626";
+                number = "9618211626";
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 5:
                 name = "HANEEF";
 //                number="9581991734";
-                number="9618211626";
+                number = "9618211626";
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 6:
                 name = "Not Available";
-                number="-";
+                number = "-";
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 7:
                 name = "SALEEM";
 //                number="7095175669";
-                number="9618211626";
+                number = "9618211626";
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
@@ -196,11 +184,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         busnumber.setText(number);
 
 
-
-
-
-
-
         /**
          *
          * bottom sheet state change listener
@@ -213,9 +196,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                     case BottomSheetBehavior.STATE_HIDDEN:
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
-                    break;
+                        break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
-                    break;
+                        break;
                     case BottomSheetBehavior.STATE_DRAGGING:
                         break;
                     case BottomSheetBehavior.STATE_SETTLING:
@@ -252,10 +235,11 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
         //create the drawer and remember the `Drawer` result object
 
-        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIcon(R.drawable.logo).withIdentifier(100);
+        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIdentifier(100).withIcon(R.drawable.logo);
 
 
         headerResult = new AccountHeaderBuilder()
+
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header1)
@@ -315,8 +299,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
                             } else if (drawerItem.getIdentifier() == 2001) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
-                            }
-                            else if (drawerItem.getIdentifier() == 2003) {
+                            } else if (drawerItem.getIdentifier() == 2003) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
                             }
                             if (intent != null) {
@@ -345,8 +328,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         locationRequest.setFastestInterval(15000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
-
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -665,6 +646,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         });
     }
+
     private void askLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -675,6 +657,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -695,32 +678,28 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         }
         boolean permissionGranted = false;
-        switch(requestCode){
+        switch (requestCode) {
             case 9:
-                permissionGranted = grantResults[0]== PackageManager.PERMISSION_GRANTED;
+                permissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 break;
         }
-        if(permissionGranted){
+        if (permissionGranted) {
             phoneCall();
-        }else {
+        } else {
             Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
         }
     }
 
-
-
-
-
-    private void onCallBtnClick(){
+    private void onCallBtnClick() {
         if (Build.VERSION.SDK_INT < 23) {
             phoneCall();
-        }else {
+        } else {
 
             if (ActivityCompat.checkSelfPermission(Home.this,
                     Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
 
                 phoneCall();
-            }else {
+            } else {
                 final String[] PERMISSIONS_STORAGE = {Manifest.permission.CALL_PHONE};
                 //Asking request Permissions
                 ActivityCompat.requestPermissions(Home.this, PERMISSIONS_STORAGE, 9);
@@ -728,13 +707,13 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     }
 
-    private void phoneCall(){
+    private void phoneCall() {
         if (ActivityCompat.checkSelfPermission(Home.this,
                 Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:"+num));
+            callIntent.setData(Uri.parse("tel:" + num));
             Home.this.startActivity(callIntent);
-        }else{
+        } else {
             Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
         }
     }
