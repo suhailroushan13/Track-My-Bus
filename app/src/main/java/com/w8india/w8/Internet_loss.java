@@ -1,12 +1,10 @@
 package com.w8india.w8;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -26,25 +24,22 @@ public class Internet_loss extends AppCompatActivity {
         setContentView(R.layout.activity_internet_loss);
 
              checkInternet = findViewById(R.id.checkInternet);
-             checkInternet.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     if( isConnected){
+             checkInternet.setOnClickListener(v -> {
+                 if( isConnected){
 
 
-                         Toast.makeText(Internet_loss.this, "Connected", Toast.LENGTH_SHORT).show();
-                         finish();
-
-                     }
-                     else {
-
-                         Toast.makeText(Internet_loss.this, "Please check internet connection", Toast.LENGTH_SHORT).show();
-
-                     }
-
-
+                     Toast.makeText(Internet_loss.this, "Connected", Toast.LENGTH_SHORT).show();
+                     finish();
 
                  }
+                 else {
+
+                     Toast.makeText(Internet_loss.this, "Please check internet connection", Toast.LENGTH_SHORT).show();
+
+                 }
+
+
+
              });
 
     }

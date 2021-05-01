@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -236,80 +235,85 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
         //create the drawer and remember the `Drawer` result object
 
-        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIdentifier(100).withIcon(R.drawable.logo);
+        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIdentifier(100);
 
 
         headerResult = new AccountHeaderBuilder()
-
+//                .addProfiles(profile)
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header1)
                 .withSavedInstance(savedInstanceState)
                 .build();
-        result = new DrawerBuilder()
-                .withActivity(this)
-                .withHasStableIds(true)
-                .withAccountHeader(headerResult)
-                .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
-                        //new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Join our Cult").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
-                        new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
-                        new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
-                                (
-                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false),
-                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
-                                        new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
+        DrawerBuilder drawerBuilder = new DrawerBuilder();
+        drawerBuilder.withActivity(this);
+        drawerBuilder.withHasStableIds(true);
+        drawerBuilder.withAccountHeader(headerResult);
+        drawerBuilder.addDrawerItems(
+                new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
+                new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
+                new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
+                new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
+                new PrimaryDrawerItem().withName("Request W8").withIcon(R.drawable.wait).withIdentifier(99).withSelectable(false),
 
-                                ),
-                        new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
-                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        //check if the drawerItem is set.
-                        //there are different reasons for the drawerItem to be null
-                        //--> click on the header
-                        //--> click on the footer
-                        //those items don't contain a drawerItem
-                        if (drawerItem != null) {
-                            Intent intent = null;
-                            if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(Home.this, Select_Bus.class);
-                            } else if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(Home.this, Rate_us.class);
+                //new PrimaryDrawerItem().withName("Join (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
+                new PrimaryDrawerItem().withName("Join our Cult").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
+                new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
+                new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
+                        (
+                                new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false),
+                                new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
+                                new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
 
-                            } else if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(Home.this, Share.class);
-                            } else if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(Home.this, Team.class);
-                            } else if (drawerItem.getIdentifier() == 16) {
-                                intent = new Intent(Home.this, Request.class);
-                            } else if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
-                                //link
-                            } else if (drawerItem.getIdentifier() == 6) {
-                                intent = new Intent(Home.this, About.class);
-                            } else if (drawerItem.getIdentifier() == 11) {
-                                auth.signOut();
-                                intent = new Intent(Home.this, Student_Number.class);
-                                finish();
-                            } else if (drawerItem.getIdentifier() == 2000) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
-                            } else if (drawerItem.getIdentifier() == 2001) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
-                            } else if (drawerItem.getIdentifier() == 2003) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
-                            }
-                            if (intent != null) {
-                                Home.this.startActivity(intent);
-                            }
+                        ),
+                new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
+        );
+        drawerBuilder.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            @Override
+            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                //check if the drawerItem is set.
+                //there are different reasons for the drawerItem to be null
+                //--> click on the header
+                //--> click on the footer
+                //those items don't contain a drawerItem
+                if (drawerItem != null) {
+                    Intent intent = null;
+                    if (drawerItem.getIdentifier() == 1) {
+                        intent = new Intent(Home.this, Select_Bus.class);
+                    } else if (drawerItem.getIdentifier() == 2) {
+                        intent = new Intent(Home.this, Support_us.class);
+
+                    } else if (drawerItem.getIdentifier() == 3) {
+                        intent = new Intent(Home.this, Friend.class);
+                    } else if (drawerItem.getIdentifier() == 4) {
+                        intent = new Intent(Home.this, Team.class);
+                    } else if (drawerItem.getIdentifier() == 99) {
+                        intent = new Intent(Home.this, Request.class);
+
+                        } else if (drawerItem.getIdentifier() == 5) {
+                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
+                            //link
+                        } else if (drawerItem.getIdentifier() == 6) {
+                            intent = new Intent(Home.this, About.class);
+                        } else if (drawerItem.getIdentifier() == 11) {
+                            auth.signOut();
+                            intent = new Intent(Home.this, Student_Number.class);
+                            finish();
+                        } else if (drawerItem.getIdentifier() == 2000) {
+                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+                        } else if (drawerItem.getIdentifier() == 2001) {
+                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
+                        } else if (drawerItem.getIdentifier() == 2003) {
+                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
                         }
-                        return false;
+                        if (intent != null) {
+                            Home.this.startActivity(intent);
+                        }
                     }
-                }).build();
+                    return false;
+                }
+
+        }); result = drawerBuilder.build();
 
         result.setSelection(0);
         drawebtn.setOnClickListener(new View.OnClickListener() {
@@ -409,9 +413,14 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     };
 
     //BUS ICON LOGIC17.449616397619273, 78.4230210144581
+//    17.342252952575404, 78.36746572652474 clg ka location
+//    17.340287, 78.370062  clg road bazuk location
+//    17.339970, 78.368721 clg entry road
+
+
     private void setUserLocationMarker(Location location) {
-        double lati = 17.449616397619273;
-        double longi = 78.4230210144581;
+        double lati =   17.339970;
+        double longi = 78.368721;
         LatLng latLng = new LatLng(lati, longi);
         try {
             List<Address> addresses = geocoder.getFromLocation(lati, longi, 1);

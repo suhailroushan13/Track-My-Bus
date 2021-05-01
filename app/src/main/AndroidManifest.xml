@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.w8india.w8">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -9,6 +8,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.W8">
-
+        <activity android:name=".Friend"></activity>
+        <activity android:name=".Request" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -35,23 +36,22 @@
         <activity
             android:name=".Home"
             android:label="@string/title_activity_maps">
-sd
+            sd
         </activity>
-        <activity android:name=".Request">
-
-        </activity>
-        <activity android:name=".About"
+        <activity android:name=".Join" />
+        <activity
+            android:name=".About"
             android:screenOrientation="portrait" />
-        <activity android:name=".Team"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Share"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Rate_us"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Internet_loss"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Team"
+            android:screenOrientation="portrait" />
 
-
+        <activity
+            android:name=".Support_us"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Internet_loss"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Student_OTP"
             android:screenOrientation="portrait" />

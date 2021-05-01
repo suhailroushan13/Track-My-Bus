@@ -1,31 +1,20 @@
 package com.w8india.w8;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hsalf.smileyrating.SmileyRating;
-import com.willy.ratingbar.BaseRatingBar;
-import com.willy.ratingbar.BaseRatingBar.OnRatingChangeListener;
-import com.willy.ratingbar.ScaleRatingBar;
 
-import java.util.UUID;
-
-public class Rate_us extends AppCompatActivity {
+public class Support_us extends AppCompatActivity {
 
 
     private static final String TAG = "t";
@@ -35,7 +24,7 @@ public class Rate_us extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rate_us);
+        setContentView(R.layout.activity_support_us);
         SmileyRating smileyRating=findViewById(R.id.smile_rating);
         SmileyRating.Type smiley = smileyRating.getSelectedSmiley();
 // You can compare it with rating Type
@@ -50,7 +39,7 @@ public class Rate_us extends AppCompatActivity {
                 // rating will between 1 to 5
                 int rating = type.getRating();
                 if(rating<=3){
-                    Toast.makeText(Rate_us.this, "Please provide a feedback", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Support_us.this, "Please provide a feedback", Toast.LENGTH_SHORT).show();
                     try {
 
                         String uriText =
@@ -62,11 +51,11 @@ public class Rate_us extends AppCompatActivity {
                         emailIntent.setData(uri);
                         startActivity(Intent.createChooser(emailIntent, "Send email using..."));
                     } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(Rate_us.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Support_us.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else if(rating>=4){
-                    Toast.makeText(Rate_us.this, "You're Too Good ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Support_us.this, "You're Too Good ", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
                 }
             }
@@ -103,7 +92,7 @@ public class Rate_us extends AppCompatActivity {
                     emailIntent.setData(uri);
                     startActivity(Intent.createChooser(emailIntent, "Send email using..."));
                 } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(Rate_us.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Support_us.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
                 }
 
 

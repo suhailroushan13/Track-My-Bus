@@ -22,7 +22,7 @@ public class Select_Bus extends AppCompatActivity {
     Button bus1,bus2,bus3,bus4,bus5,bus6,bus7;
     String [] titles={"Bus No.1 ","Bus No.2","Bus No.3","Bus No.4","Bus No.5","Bus No.6","Bus No.7"};
     String [] descriptions={"JNTUH - MEHDIPATNAM - COLLEGE","BANDLAGUDA - SHA ALI BANDA - COLLEGE","NEREDMERT X ROAD - LAKDIKAPOOL - COLLEGE","LB NAGAR - NAMPALLY - COLLEGE","BAI RAMAL GUDA - RAJENDRA NAGAR - COLLEGE"," Not in Service","MIYAPUR - LANGER HOUZ - COLLEGE"};
-    int [] images={R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss};
+    int [] images={R.drawable.busmain,R.drawable.busss,R.drawable.busdriver,R.drawable.b ,R.drawable.drivers,R.drawable.busss,R.drawable.busss};
     ListView lv;
     
     @Override

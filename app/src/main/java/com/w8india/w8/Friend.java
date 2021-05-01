@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.content.Intent;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Share extends AppCompatActivity {
+public class Friend extends AppCompatActivity {
 
     Button share;
     RatingBar ratingBar;
@@ -20,7 +19,7 @@ public class Share extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_share);
+        setContentView(R.layout.activity_friend);
         ratingBar = findViewById(R.id.ratingBar);
         rate = findViewById(R.id.rate);
 
@@ -38,7 +37,7 @@ public class Share extends AppCompatActivity {
                     startActivity(Intent.createChooser(intent, "SHARE"));
                 } catch (Exception e) {
 
-                    Toast.makeText(Share.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Friend.this, "Error Occurred", Toast.LENGTH_SHORT).show();
                 }
 
             }
