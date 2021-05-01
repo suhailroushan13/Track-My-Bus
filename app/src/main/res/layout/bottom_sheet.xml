@@ -45,7 +45,7 @@
         android:layout_below="@id/imageView7"
         android:layout_alignParentRight="true"
 
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="20dp"
         android:text="@string/whatsapp"
         android:textColor="#25D366"
@@ -59,8 +59,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.894"
         app:strokeColor="#25D366"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginRight="15dp" />
 
     <TextView
         android:id="@+id/textView115"
@@ -92,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="@string/call"
         android:textColor="@color/accent"
@@ -179,28 +178,27 @@
                 android:layout_weight="2"
                 android:fontFamily="@font/medium"
                 android:gravity="left"
-                android:text="@string/current_location"
+                android:text="Current Location:"
                 android:textColor="#011627"
-                android:textSize="10sp"
-                android:textStyle="bold"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.048"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.098"
-                tools:ignore="ObsoleteLayoutParam,RtlHardcoded,SmallSp" />
+                tools:ignore="RtlHardcoded" />
 
             <TextView
-                android:id="@+id/textView11sx5"
+                android:id="@+id/buslocality"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView11s5"
-                android:layout_toLeftOf="@id/refresh"
+                android:layout_alignParentStart="true"
                 android:layout_weight="2"
 
                 android:fontFamily="@font/light"
-               android:text="Next Stop: :Lords Institute Of Engineering and Technology "
+                android:text="Fetching... "
 
                 android:textColor="#011627"
                 android:textSize="24sp"
@@ -210,7 +208,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.127"
-                tools:ignore="RtlHardcoded" />
+                android:layout_alignParentLeft="true" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/refresh"

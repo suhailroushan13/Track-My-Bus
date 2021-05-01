@@ -1,8 +1,10 @@
 package com.w8india.w8;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -19,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -49,6 +53,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -64,6 +73,7 @@ import java.io.IOException;
 import java.util.List;
 
 //import android.support.design.widget.BottomSheetBehavior;
+
 public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
     private GoogleMap mMap;
     private DrawerLayout drawer;
@@ -72,7 +82,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     FloatingActionButton drawebtn, locationbtn;
     AccountHeader headerResult;
     String locality, name, number;
-    int selectedbus;
+    String selectedbus;
     private Geocoder geocoder;
     private static final String TAG = "Home";
     private final int ACCESS_LOCATION_REQUEST_CODE = 10001;
@@ -80,14 +90,19 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     Circle userLocationAccuracyCircle;
     boolean firsttime = true;
     Drawer result;
+    double lat;
+    double lon;
+
+    DocumentReference reference;
     int LOCATION_REQUEST_CODE = 10001;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
     private FirebaseAuth auth;
     FirebaseUser user;
-    Button callbtn, whatsappbtn;
-    TextView busname, busnumber;
-    String num = "9618211626";
+    Button callbtn,whatsappbtn;
+    TextView busname,busnumber;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,17 +110,25 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         setContentView(R.layout.activity_home);
         RelativeLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
 
-        /*TODO Bus shared pref*/
-        selectedbus = 1;
+        SharedPreferences preferences = getSharedPreferences("busno", Context.MODE_PRIVATE);
 
+/*TODO Bus shared pref*/
+        selectedbus = "Bus No. "+preferences.getInt("bus",0);
+
+
+        reference  = FirebaseFirestore.getInstance().document("buses/bus"+preferences.getInt("bus",0));
 
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        callbtn = findViewById(R.id.callbtn);
-        whatsappbtn = findViewById(R.id.whatsappbtn);
-        busname = findViewById(R.id.busname);
-        busnumber = findViewById(R.id.busnumber);
+        callbtn=findViewById(R.id.callbtn);
+        whatsappbtn=findViewById(R.id.whatsappbtn);
+        busname=findViewById(R.id.busname);
+        busnumber=findViewById(R.id.busnumber);
+
+
+
+
         callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,71 +140,88 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         whatsappbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://wa.link/ghug2k"); // missing 'http://' will cause crashed
+
+                //Uri uri = Uri.parse("https://wa.link/ghug2k");
+                Uri uri = Uri.parse("https://wa.me/91"+number);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+
             }
         });
 
-        switch (selectedbus) {
+
+
+
+
+        switch (preferences.getInt("bus",0)){
             case 1:
-                name = "NASEER";
-//                number="9966255198";
-                number = "9618211626";
+                name = "Mr. NASEER";
+                number="9966255198";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 2:
-                name = "SHAKEEL";
-//                number="9959707274";
-                number = "9618211626";
+                name = "Mr. SHAKEEL";
+                number="9959707274";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 3:
-                name = "RAJU";
-//                number="9392413957";
-                number = "9618211626";
+                name = "Mr. BASAVA RAJ";
+                number="9392413957";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
 
             case 4:
-                name = "ALEEM";
-//                number="7995726523";
-                number = "9618211626";
+                name = "Mr. SRINIVAS";
+                number="7995726523";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 5:
-                name = "HANEEF";
-//                number="9581991734";
-                number = "9618211626";
+                name = "Mr. HANEEF";
+                number="9581991734";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 6:
                 name = "Not Available";
-                number = "-";
+                number = "9618211626";
+                busname.setText(name);
+                busnumber.setText("-");
+                break;
+            case 7:
+                name = "Mr. SALEEM";
+                number="7095175669";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
-            case 7:
-                name = "SALEEM";
-//                number="7095175669";
-                number = "9618211626";
+            case 8:
+                name = "Mr. YOUNUS";
+                number="9912235254";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
 
             default:
-                busname.setText(name);
-                busnumber.setText(number);
+                busname.setText("name");
+                busnumber.setText("number");
 
         }
 
-        busname.setText(name);
-        busnumber.setText(number);
+
+
+
+
+
 
 
         /**
@@ -194,15 +234,16 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
                     case BottomSheetBehavior.STATE_HIDDEN:
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        locationbtn.setVisibility(View.VISIBLE);
+
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
-                        break;
-                    case BottomSheetBehavior.STATE_COLLAPSED:
-                        break;
                     case BottomSheetBehavior.STATE_DRAGGING:
-                        break;
-                    case BottomSheetBehavior.STATE_SETTLING:
-                        break;
+                        locationbtn.setVisibility(View.INVISIBLE);
+                    break;
+
                 }
             }
 
@@ -235,85 +276,80 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
         //create the drawer and remember the `Drawer` result object
 
-        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIdentifier(100);
+        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIcon(R.drawable.logo).withIdentifier(100);
 
 
         headerResult = new AccountHeaderBuilder()
-//                .addProfiles(profile)
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header1)
                 .withSavedInstance(savedInstanceState)
                 .build();
-        DrawerBuilder drawerBuilder = new DrawerBuilder();
-        drawerBuilder.withActivity(this);
-        drawerBuilder.withHasStableIds(true);
-        drawerBuilder.withAccountHeader(headerResult);
-        drawerBuilder.addDrawerItems(
-                new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
-                new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
-                new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
-                new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
-                new PrimaryDrawerItem().withName("Request W8").withIcon(R.drawable.wait).withIdentifier(99).withSelectable(false),
+        result = new DrawerBuilder()
+                .withActivity(this)
+                .withHasStableIds(true)
+                .withAccountHeader(headerResult)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
+                        new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
+                        //new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Join our Cult").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
+                        new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
+                        new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
+                                (
+                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false),
+                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
+                                        new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
 
-                //new PrimaryDrawerItem().withName("Join (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
-                new PrimaryDrawerItem().withName("Join our Cult").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
-                new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
-                new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
-                        (
-                                new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false),
-                                new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
-                                new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
+                                ),
+                        new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
+                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        //check if the drawerItem is set.
+                        //there are different reasons for the drawerItem to be null
+                        //--> click on the header
+                        //--> click on the footer
+                        //those items don't contain a drawerItem
+                        if (drawerItem != null) {
+                            Intent intent = null;
+                            if (drawerItem.getIdentifier() == 1) {
+                                intent = new Intent(Home.this, Select_Bus.class);
+                            } else if (drawerItem.getIdentifier() == 2) {
+                                intent = new Intent(Home.this, Rate_us.class);
 
-                        ),
-                new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
-        );
-        drawerBuilder.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-            @Override
-            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                //check if the drawerItem is set.
-                //there are different reasons for the drawerItem to be null
-                //--> click on the header
-                //--> click on the footer
-                //those items don't contain a drawerItem
-                if (drawerItem != null) {
-                    Intent intent = null;
-                    if (drawerItem.getIdentifier() == 1) {
-                        intent = new Intent(Home.this, Select_Bus.class);
-                    } else if (drawerItem.getIdentifier() == 2) {
-                        intent = new Intent(Home.this, Support_us.class);
-
-                    } else if (drawerItem.getIdentifier() == 3) {
-                        intent = new Intent(Home.this, Friend.class);
-                    } else if (drawerItem.getIdentifier() == 4) {
-                        intent = new Intent(Home.this, Team.class);
-                    } else if (drawerItem.getIdentifier() == 99) {
-                        intent = new Intent(Home.this, Request.class);
-
-                        } else if (drawerItem.getIdentifier() == 5) {
-                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
-                            //link
-                        } else if (drawerItem.getIdentifier() == 6) {
-                            intent = new Intent(Home.this, About.class);
-                        } else if (drawerItem.getIdentifier() == 11) {
-                            auth.signOut();
-                            intent = new Intent(Home.this, Student_Number.class);
-                            finish();
-                        } else if (drawerItem.getIdentifier() == 2000) {
-                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
-                        } else if (drawerItem.getIdentifier() == 2001) {
-                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
-                        } else if (drawerItem.getIdentifier() == 2003) {
-                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
+                            } else if (drawerItem.getIdentifier() == 3) {
+                                intent = new Intent(Home.this, Share.class);
+                            } else if (drawerItem.getIdentifier() == 4) {
+                                intent = new Intent(Home.this, Team.class);
+                            } else if (drawerItem.getIdentifier() == 16) {
+                                intent = new Intent(Home.this, Request.class);
+                            } else if (drawerItem.getIdentifier() == 5) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
+                                //link
+                            } else if (drawerItem.getIdentifier() == 6) {
+                                intent = new Intent(Home.this, About.class);
+                            } else if (drawerItem.getIdentifier() == 11) {
+                                auth.signOut();
+                                intent = new Intent(Home.this, Student_Number.class);
+                                finish();
+                            } else if (drawerItem.getIdentifier() == 2000) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+                            } else if (drawerItem.getIdentifier() == 2001) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
+                            }
+                            else if (drawerItem.getIdentifier() == 2003) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
+                            }
+                            if (intent != null) {
+                                Home.this.startActivity(intent);
+                            }
                         }
-                        if (intent != null) {
-                            Home.this.startActivity(intent);
-                        }
+                        return false;
                     }
-                    return false;
-                }
-
-        }); result = drawerBuilder.build();
+                }).build();
 
         result.setSelection(0);
         drawebtn.setOnClickListener(new View.OnClickListener() {
@@ -332,7 +368,12 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         locationRequest.setInterval(15000);
         locationRequest.setFastestInterval(15000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        setBus();
+
     }
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -412,24 +453,66 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     };
 
+    private void setBus(){
+
+    }
     //BUS ICON LOGIC17.449616397619273, 78.4230210144581
-//    17.342252952575404, 78.36746572652474 clg ka location
-//    17.340287, 78.370062  clg road bazuk location
-//    17.339970, 78.368721 clg entry road
-
-
     private void setUserLocationMarker(Location location) {
-        double lati =   17.339970;
-        double longi = 78.368721;
-        LatLng latLng = new LatLng(lati, longi);
-        try {
-            List<Address> addresses = geocoder.getFromLocation(lati, longi, 1);
-            Address address = addresses.get(0);
-            String streetAddress = address.getAddressLine(0);
-            locality = address.getAddressLine(0);
-        } catch (Exception er) {
-            er.printStackTrace();
-        }
+        LatLng latLng = new LatLng(lat, lon);
+        reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    Log.d(TAG, "Current data: " + snapshot.getData());
+                    lat = snapshot.getDouble("latitude");
+                    lon = snapshot.getDouble("longitude");
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+                        Address address = addresses.get(0);
+                        locality = address.getAddressLine(0);
+                        TextView tv = findViewById(R.id.buslocality);
+                        tv.setText(locality);
+                    } catch (Exception er) {
+                        er.printStackTrace();
+                    }
+                    if (userLocationMarker == null) {
+                        MarkerOptions markerOptions = new MarkerOptions();
+                        markerOptions.position(latLng);
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
+                        markerOptions.rotation(location.getBearing());
+
+                        markerOptions.title(selectedbus);
+
+
+
+
+
+//            behavior.setPeekHeight(100);
+                        markerOptions.anchor((float) 0.5, (float) 0.5);
+                        //We create a new marker
+                        userLocationMarker = mMap.addMarker(markerOptions);
+
+                    } else {
+                        userLocationMarker.setPosition(latLng);
+                        userLocationMarker.setRotation(location.getBearing());
+
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                    }
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
+
+
+
+
         LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
         if (firsttime) {
 //            Toast.makeText(this, "The Place You Live", Toast.LENGTH_SHORT).show();
@@ -439,28 +522,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
         }
 
-        if (userLocationMarker == null) {
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLng);
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
-            markerOptions.rotation(location.getBearing());
 
-            markerOptions.title("Bus No.1");
-
-            markerOptions.snippet(locality);
-
-
-//            behavior.setPeekHeight(100);
-            markerOptions.anchor((float) 0.5, (float) 0.5);
-            //We create a new marker
-            userLocationMarker = mMap.addMarker(markerOptions);
-
-        } else {
-            userLocationMarker.setPosition(latLng);
-            userLocationMarker.setRotation(location.getBearing());
-
-//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
-        }
         if (userLocationAccuracyCircle == null) {
             /// IZHAN CHECK THIS COLORS AND ACCURACY AND SIZE OF IT ......
 //             CircleOptions circleOptions = new CircleOptions();
@@ -656,7 +718,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         });
     }
-
     private void askLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -667,7 +728,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -688,28 +748,32 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         }
         boolean permissionGranted = false;
-        switch (requestCode) {
+        switch(requestCode){
             case 9:
-                permissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                permissionGranted = grantResults[0]== PackageManager.PERMISSION_GRANTED;
                 break;
         }
-        if (permissionGranted) {
+        if(permissionGranted){
             phoneCall();
-        } else {
+        }else {
             Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void onCallBtnClick() {
+
+
+
+
+    private void onCallBtnClick(){
         if (Build.VERSION.SDK_INT < 23) {
             phoneCall();
-        } else {
+        }else {
 
             if (ActivityCompat.checkSelfPermission(Home.this,
                     Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
 
                 phoneCall();
-            } else {
+            }else {
                 final String[] PERMISSIONS_STORAGE = {Manifest.permission.CALL_PHONE};
                 //Asking request Permissions
                 ActivityCompat.requestPermissions(Home.this, PERMISSIONS_STORAGE, 9);
@@ -717,13 +781,13 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     }
 
-    private void phoneCall() {
+    private void phoneCall(){
         if (ActivityCompat.checkSelfPermission(Home.this,
                 Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:" + num));
+            callIntent.setData(Uri.parse("tel:"+number));
             Home.this.startActivity(callIntent);
-        } else {
+        }else{
             Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
         }
     }
