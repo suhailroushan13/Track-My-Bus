@@ -1,8 +1,10 @@
 package com.w8india.w8;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -50,6 +53,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -74,7 +82,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     FloatingActionButton drawebtn, locationbtn;
     AccountHeader headerResult;
     String locality, name, number;
-    int selectedbus;
+    String selectedbus;
     private Geocoder geocoder;
     private static final String TAG = "Home";
     private final int ACCESS_LOCATION_REQUEST_CODE = 10001;
@@ -82,6 +90,10 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     Circle userLocationAccuracyCircle;
     boolean firsttime = true;
     Drawer result;
+    double lat;
+    double lon;
+
+    DocumentReference reference;
     int LOCATION_REQUEST_CODE = 10001;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
@@ -91,16 +103,20 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     TextView busname,busnumber;
 
 
-     String num = "9618211626";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         RelativeLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
 
-/*TODO Bus shared pref*/
-        selectedbus = 1;
+        SharedPreferences preferences = getSharedPreferences("busno", Context.MODE_PRIVATE);
 
+/*TODO Bus shared pref*/
+        selectedbus = "Bus No. "+preferences.getInt("bus",0);
+
+
+        reference  = FirebaseFirestore.getInstance().document("buses/bus"+preferences.getInt("bus",0));
 
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
@@ -125,7 +141,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             @Override
             public void onClick(View v) {
 
-                Uri uri = Uri.parse("https://wa.link/ghug2k"); // missing 'http://' will cause crashed
+                //Uri uri = Uri.parse("https://wa.link/ghug2k");
+                Uri uri = Uri.parse("https://wa.me/91"+number);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
 
@@ -136,65 +153,70 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
 
 
-        switch (selectedbus){
+        switch (preferences.getInt("bus",0)){
             case 1:
-                name = "NASEER";
-//                number="9966255198";
-                number="9618211626";
+                name = "Mr. NASEER";
+                number="9966255198";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 2:
-                name = "SHAKEEL";
-//                number="9959707274";
-                number="9618211626";
+                name = "Mr. SHAKEEL";
+                number="9959707274";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 3:
-                name = "RAJU";
-//                number="9392413957";
-                number="9618211626";
+                name = "Mr. BASAVA RAJ";
+                number="9392413957";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
 
             case 4:
-                name = "ALEEM";
-//                number="7995726523";
-                number="9618211626";
+                name = "Mr. SRINIVAS";
+                number="7995726523";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 5:
-                name = "HANEEF";
-//                number="9581991734";
-                number="9618211626";
+                name = "Mr. HANEEF";
+                number="9581991734";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 6:
                 name = "Not Available";
-                number="-";
+                number = "9618211626";
+                busname.setText(name);
+                busnumber.setText("-");
+                break;
+            case 7:
+                name = "Mr. SALEEM";
+                number="7095175669";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
-            case 7:
-                name = "SALEEM";
-//                number="7095175669";
-                number="9618211626";
+            case 8:
+                name = "Mr. YOUNUS";
+                number="9912235254";
+
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
 
             default:
-                busname.setText(name);
-                busnumber.setText(number);
+                busname.setText("name");
+                busnumber.setText("number");
 
         }
 
-        busname.setText(name);
-        busnumber.setText(number);
 
 
 
@@ -212,15 +234,16 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
                     case BottomSheetBehavior.STATE_HIDDEN:
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        locationbtn.setVisibility(View.VISIBLE);
+
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
-                    break;
-                    case BottomSheetBehavior.STATE_COLLAPSED:
-                    break;
                     case BottomSheetBehavior.STATE_DRAGGING:
-                        break;
-                    case BottomSheetBehavior.STATE_SETTLING:
-                        break;
+                        locationbtn.setVisibility(View.INVISIBLE);
+                    break;
+
                 }
             }
 
@@ -345,6 +368,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         locationRequest.setInterval(15000);
         locationRequest.setFastestInterval(15000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        setBus();
+
     }
 
 
@@ -427,19 +453,66 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     };
 
+    private void setBus(){
+
+    }
     //BUS ICON LOGIC17.449616397619273, 78.4230210144581
     private void setUserLocationMarker(Location location) {
-        double lati = 17.449616397619273;
-        double longi = 78.4230210144581;
-        LatLng latLng = new LatLng(lati, longi);
-        try {
-            List<Address> addresses = geocoder.getFromLocation(lati, longi, 1);
-            Address address = addresses.get(0);
-            String streetAddress = address.getAddressLine(0);
-            locality = address.getAddressLine(0);
-        } catch (Exception er) {
-            er.printStackTrace();
-        }
+        LatLng latLng = new LatLng(lat, lon);
+        reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    Log.d(TAG, "Current data: " + snapshot.getData());
+                    lat = snapshot.getDouble("latitude");
+                    lon = snapshot.getDouble("longitude");
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+                        Address address = addresses.get(0);
+                        locality = address.getAddressLine(0);
+                        TextView tv = findViewById(R.id.buslocality);
+                        tv.setText(locality);
+                    } catch (Exception er) {
+                        er.printStackTrace();
+                    }
+                    if (userLocationMarker == null) {
+                        MarkerOptions markerOptions = new MarkerOptions();
+                        markerOptions.position(latLng);
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
+                        markerOptions.rotation(location.getBearing());
+
+                        markerOptions.title(selectedbus);
+
+
+
+
+
+//            behavior.setPeekHeight(100);
+                        markerOptions.anchor((float) 0.5, (float) 0.5);
+                        //We create a new marker
+                        userLocationMarker = mMap.addMarker(markerOptions);
+
+                    } else {
+                        userLocationMarker.setPosition(latLng);
+                        userLocationMarker.setRotation(location.getBearing());
+
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                    }
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
+
+
+
+
         LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
         if (firsttime) {
 //            Toast.makeText(this, "The Place You Live", Toast.LENGTH_SHORT).show();
@@ -449,28 +522,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
         }
 
-        if (userLocationMarker == null) {
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLng);
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
-            markerOptions.rotation(location.getBearing());
 
-            markerOptions.title("Bus No.1");
-
-            markerOptions.snippet(locality);
-
-
-//            behavior.setPeekHeight(100);
-            markerOptions.anchor((float) 0.5, (float) 0.5);
-            //We create a new marker
-            userLocationMarker = mMap.addMarker(markerOptions);
-
-        } else {
-            userLocationMarker.setPosition(latLng);
-            userLocationMarker.setRotation(location.getBearing());
-
-//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
-        }
         if (userLocationAccuracyCircle == null) {
             /// IZHAN CHECK THIS COLORS AND ACCURACY AND SIZE OF IT ......
 //             CircleOptions circleOptions = new CircleOptions();
@@ -733,7 +785,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         if (ActivityCompat.checkSelfPermission(Home.this,
                 Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:"+num));
+            callIntent.setData(Uri.parse("tel:"+number));
             Home.this.startActivity(callIntent);
         }else{
             Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();

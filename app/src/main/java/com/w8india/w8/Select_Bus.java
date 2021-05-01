@@ -3,6 +3,7 @@ package com.w8india.w8;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Select_Bus extends AppCompatActivity {
 
+    SharedPreferences preferences;
     Button bus1,bus2,bus3,bus4,bus5,bus6,bus7;
-    String [] titles={"Bus No.1 ","Bus No.2","Bus No.3","Bus No.4","Bus No.5","Bus No.6","Bus No.7"};
-    String [] descriptions={"JNTUH - MEHDIPATNAM - COLLEGE","BANDLAGUDA - SHA ALI BANDA - COLLEGE","NEREDMERT X ROAD - LAKDIKAPOOL - COLLEGE","LB NAGAR - NAMPALLY - COLLEGE","BAI RAMAL GUDA - RAJENDRA NAGAR - COLLEGE"," Not in Service","MIYAPUR - LANGER HOUZ - COLLEGE"};
-    int [] images={R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss};
+    String [] titles={"Bus No.1 ","Bus No.2","Bus No.3","Bus No.4","Bus No.5","Bus No.6","Bus No.7"," Bus No.8"};
+    String [] descriptions={"JNTU - AMEERPET - MEHDIPATNAM","CHANDRAYANGUTTA - SHALIBANDA - RAJENDRANAGAR","NEREDMERT - MUSHEERABAD - MDPTM","LB NAGAR - NAMPALLY - BAPUGHAT","SAGAR X ROAD - BAHADURPURA - RJNR","NANAL NAGAR - 7 TOMBS- GOLCONDA","MIYAPUR - GACHIBOWLI - LANGER HOUSE", "IS SADAN - DABIRPURA - KARWAN"};
+    int [] images={R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss};
     ListView lv;
     
     @Override
@@ -32,22 +34,71 @@ public class Select_Bus extends AppCompatActivity {
         lv =  findViewById(R.id.bus_list);
         MyAdapter adapter = new MyAdapter(Select_Bus.this,titles,descriptions,images);
         lv.setAdapter(adapter);
+        preferences = getSharedPreferences("busno",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(Select_Bus.this, Home.class));
-               
+
+               switch (position){
+                   case 0:
+                       editor.putInt("bus",1);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+                   case 1:
+                       editor.putInt("bus",2);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+                   case 2:
+                       editor.putInt("bus",3);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+                   case 3:
+                       editor.putInt("bus",4);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+                   case 4:
+                       editor.putInt("bus",5);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+                   case 5:
+                       editor.putInt("bus",6);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+                   case 6:
+                       editor.putInt("bus",7);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+                   case 7:
+                       editor.putInt("bus",8);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
+
+               }
             }
         });
     }
 
 
-    public void Home(){
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
+
     class MyAdapter extends ArrayAdapter {
         int[] imageArray;
         String[] titleArray;

@@ -190,15 +190,15 @@
                 tools:ignore="RtlHardcoded" />
 
             <TextView
-                android:id="@+id/textView11sx5"
+                android:id="@+id/buslocality"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView11s5"
-                android:layout_toLeftOf="@id/refresh"
+                android:layout_alignParentStart="true"
                 android:layout_weight="2"
 
                 android:fontFamily="@font/light"
-                android:text="@string/hyderabadfnlfljfnlnvlkfnvlkfhlfhldhfliuhfliudhflduhvlkjsdvnlsdkjvndsk"
+                android:text="Fetching... "
 
                 android:textColor="#011627"
                 android:textSize="24sp"
@@ -208,7 +208,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.127"
-                tools:ignore="RtlHardcoded" />
+                android:layout_alignParentLeft="true" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/refresh"
