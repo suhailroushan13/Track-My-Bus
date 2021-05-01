@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/bottom_sheet_bg"
     android:orientation="vertical"
 
@@ -171,6 +171,7 @@
                 android:id="@+id/textView11s5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
 
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"

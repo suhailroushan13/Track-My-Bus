@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -318,10 +317,10 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                             if (drawerItem.getIdentifier() == 1) {
                                 intent = new Intent(Home.this, Select_Bus.class);
                             } else if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(Home.this, Rate_us.class);
+                                intent = new Intent(Home.this, Team.class);
 
                             } else if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(Home.this, Share.class);
+                                intent = new Intent(Home.this, Request.class);
                             } else if (drawerItem.getIdentifier() == 4) {
                                 intent = new Intent(Home.this, Team.class);
                             } else if (drawerItem.getIdentifier() == 16) {
