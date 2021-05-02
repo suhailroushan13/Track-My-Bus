@@ -6,7 +6,7 @@
     android:layout_height="50dp"
 
     android:textColor="@color/black"
-    android:background="@drawable/my_button_bg"
+    android:background="#fff"
 
     android:gravity="center"
     android:textSize="16sp"
