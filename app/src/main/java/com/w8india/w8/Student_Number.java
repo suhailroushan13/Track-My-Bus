@@ -200,7 +200,7 @@ public class Student_Number extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
 
                             finish();
-                            startActivity(new Intent(Student_Number.this, Home.class));
+                            startActivity(new Intent(Student_Number.this, Select_Bus.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

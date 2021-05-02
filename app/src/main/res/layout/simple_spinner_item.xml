@@ -8,12 +8,15 @@
     android:ellipsize="marquee"
     android:textColor="@color/black"
     android:background="@drawable/my_button_bg"
-    android:gravity="center"
+    android:gravity="left|center"
+
+    android:layout_marginLeft="20dp"
     android:textSize="16sp"
+
     android:layoutDirection="ltr"
     android:singleLine="true"
 
-    android:paddingLeft="2dp"
+    android:paddingLeft="20dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" />
 
