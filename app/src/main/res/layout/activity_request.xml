@@ -18,11 +18,11 @@
         android:layout_below="@id/textView3"
         android:layout_centerHorizontal="true"
 
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/names" />
+        app:layout_constraintTop_toBottomOf="@+id/inplayreqname" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -105,27 +105,35 @@
     <!--        app:layout_constraintStart_toStartOf="parent"-->
     <!--        app:layout_constraintTop_toTopOf="parent"-->
     <!--        app:layout_constraintVertical_bias="0.728" />-->
-
-    <EditText
-        android:id="@+id/messages"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:id="@+id/inplayreqmsg"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="@string/any_message_for_driver"
-        android:lines="2"
-        android:paddingStart="20dp"
-        android:paddingLeft="20dp"
-        android:textColor="@color/black"
-        android:textColorHint="#ABABAB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:helperText="Please provide a valid reason"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
         app:layout_constraintVertical_bias="0.164"
-        tools:ignore="RtlSymmetry" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/messages"
+            android:lines="2"
+            android:maxLength="80"
+            android:maxLines="3"
+            android:hint="@string/any_message_for_driver"
+            android:textColorHint="#ABABAB"
+            android:textColor="@color/black"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sms"
@@ -169,22 +177,29 @@
         app:layout_constraintVertical_bias="0.945"
         app:strokeColor="#25D366" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:id="@+id/inplayreqname"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
-        android:id="@+id/names"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:hint="@string/name"
-        android:paddingStart="20dp"
-        android:paddingLeft="20dp"
-        android:textColor="@color/black"
-        android:textColorHint="#ABABAB"
+        android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="RtlSymmetry"/>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/names"
+            android:hint="@string/name"
+            android:maxLength="15"
+            android:textColorHint="#ABABAB"
+            android:textColor="@color/black"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
