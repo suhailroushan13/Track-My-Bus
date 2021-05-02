@@ -10,24 +10,24 @@
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
 
-
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_below="@id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintTop_toBottomOf="@+id/names" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="423dp"
-        android:layout_height="311dp"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -52,9 +52,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintVertical_bias="0.396" />
 
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/medium"
@@ -63,70 +64,68 @@
         android:textColor="@color/black"
         android:textColorHighlight="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.549" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/light"
         android:gravity="center"
+
         android:text="@string/fill_your_details"
         android:textColor="@color/black"
-        android:textColorHighlight="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <!--    <jrizani.jrspinner.JRSpinner-->
+    <!--        android:id="@+id/JRSpinner"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginLeft="40dp"-->
+    <!--        android:layout_marginRight="40dp"-->
+    <!--        android:hint="@string/time_to_w8_bus"-->
+    <!--        android:paddingStart="20dp"-->
+    <!--        android:paddingLeft="20dp"-->
+    <!--        android:singleLine="false"-->
+    <!--        android:textColor="@color/colorPrimary"-->
+    <!--        app:backgroundTint="@color/colorPrimary"-->
+    <!--        app:jrs_icon_tint="@color/colorPrimary"-->
+    <!--        app:jrs_multiple="false"-->
+    <!--        app:jrs_title="Choose Item"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.728" />-->
 
     <EditText
         android:id="@+id/messages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:textColorHint="#ABABAB"
-        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="@string/any_message_for_driver"
+        android:lines="2"
         android:paddingStart="20dp"
         android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#ABABAB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794"
-        tools:ignore="RtlSymmetry">
-    </EditText>
-
-<!--    <jrizani.jrspinner.JRSpinner-->
-<!--        android:id="@+id/JRSpinner"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="40dp"-->
-<!--        android:layout_marginRight="40dp"-->
-<!--        android:hint="@string/time_to_w8_bus"-->
-<!--        android:paddingStart="20dp"-->
-<!--        android:paddingLeft="20dp"-->
-<!--        android:singleLine="false"-->
-<!--        android:textColor="@color/colorPrimary"-->
-<!--        app:backgroundTint="@color/colorPrimary"-->
-<!--        app:jrs_icon_tint="@color/colorPrimary"-->
-<!--        app:jrs_multiple="false"-->
-<!--        app:jrs_title="Choose Item"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.728" />-->
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.164"
+        tools:ignore="RtlSymmetry" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sms"
@@ -171,24 +170,21 @@
         app:strokeColor="#25D366" />
 
     <EditText
-
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
         android:id="@+id/names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:textColor="@color/black"
-        android:layout_marginRight="40dp"
+        android:layout_marginTop="37dp"
         android:hint="@string/name"
-        android:textColorHint="#ABABAB"
         android:paddingStart="20dp"
         android:paddingLeft="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/black"
+        android:textColorHint="#ABABAB"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663"
-        tools:ignore="RtlSymmetry">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="RtlSymmetry"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
