@@ -292,7 +292,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Request W8").withIcon(R.drawable.wait).withIdentifier(9).withSelectable(false),
                         new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
+
                         //new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
                         new PrimaryDrawerItem().withName("Join our Cult").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
@@ -317,14 +319,15 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                             if (drawerItem.getIdentifier() == 1) {
                                 intent = new Intent(Home.this, Select_Bus.class);
                             } else if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(Home.this, Team.class);
+                                intent = new Intent(Home.this, Support_us.class);
 
                             } else if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(Home.this, Request.class);
+                                intent = new Intent(Home.this, Friend.class);
                             } else if (drawerItem.getIdentifier() == 4) {
                                 intent = new Intent(Home.this, Team.class);
-                            } else if (drawerItem.getIdentifier() == 16) {
+                            } else if (drawerItem.getIdentifier() == 9) {
                                 intent = new Intent(Home.this, Request.class);
+
                             } else if (drawerItem.getIdentifier() == 5) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/5j2CHowTT3M0ZmM1"));
                                 //link

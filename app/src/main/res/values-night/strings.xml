@@ -154,6 +154,12 @@
 <!--    <string name="whatsapp">WhatsApp</string>-->
     <string name="address">Address:</string>
     <string name="current_location">Current Location:</string>
+    <string name="name">Name</string>
+    <string name="request_w8">Request W8</string>
+    <string name="if_you_are_l8_make_your_bus_w8">If You Are L8 Make Your Bus W8</string>
+    <string name="time_to_w8_bus">Time To W8 Bus</string>
+    <string name="fill_your_details">Fill Your Details</string>
+    <string name="any_message_for_driver">Any Message For Driver</string>
     <!--    <string name="resend">Resend</string>-->
 
 

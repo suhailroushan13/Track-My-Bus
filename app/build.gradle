@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
+//    implementation 'com.github.jrizani:JRSpinner:1.1.0'
     implementation 'androidx.cursoradapter:cursoradapter:1.0.0'
     implementation platform('com.google.firebase:firebase-bom:27.0.0')
     implementation 'com.google.firebase:firebase-auth'
@@ -73,6 +74,8 @@ dependencies {
     implementation 'androidx.drawerlayout:drawerlayout'
     implementation 'junit:junit:4.13.2'
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+    implementation 'com.github.arcadefire:nice-spinner:1.4.4'
+
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.google.android.gms:play-services-location:18.0.0"

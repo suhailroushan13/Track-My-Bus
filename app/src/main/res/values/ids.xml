@@ -20,5 +20,7 @@
     <item name="bus6" type="id"/>
     <item name="textView4" type="id"/>
     <item name="mapView" type="id"/>
+    <item name="selectedIndex" type="id"/>
+    <item name="btn_reset" type="id"/>
 
 </resources>
