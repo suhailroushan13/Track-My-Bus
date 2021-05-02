@@ -156,18 +156,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
         android:text="@string/call"
-        android:textColor="@color/accent"
-        app:icon="@drawable/calls"
+        android:textColor="#F5BD16"
+        app:icon="@drawable/sms"
         app:iconSize="30dp"
-        app:iconTint="@color/colorAccent"
+        app:iconTint="#F5BD16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947"
-        app:strokeColor="@color/colorAccent" />
+        app:layout_constraintVertical_bias="0.913"
+        app:strokeColor="#F5BD16" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/whatsappbtn"
@@ -176,19 +177,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginEnd="10dp"
+
         android:text="@string/whatsapp"
         android:textColor="#25D366"
         app:icon="@drawable/whatsapp"
         app:iconSize="30dp"
         app:iconTint="#25D366"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.945"
+        app:layout_constraintVertical_bias="0.911"
         app:strokeColor="#25D366" />
 
     <com.google.android.material.textfield.TextInputLayout
