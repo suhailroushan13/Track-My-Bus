@@ -22,5 +22,6 @@
     <item name="mapView" type="id"/>
     <item name="selectedIndex" type="id"/>
     <item name="btn_reset" type="id"/>
+    <item name="suhail" type="id">sd</item>
 
 </resources>
