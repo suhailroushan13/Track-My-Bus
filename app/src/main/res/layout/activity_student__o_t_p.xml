@@ -32,22 +32,22 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="222dp"
-        android:layout_height="52dp"
+        android:layout_width="213dp"
+        android:layout_height="43dp"
         android:layout_below="@+id/verify_code_edit"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_toStartOf="@id/resend"
         android:layout_toLeftOf="@id/resend"
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="@string/didn_t_recieve_code"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintVertical_bias="0.709" />
 
     <com.chaos.view.PinView
         android:id="@+id/verify_code_edit"
@@ -78,22 +78,22 @@
         android:id="@+id/resend"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="117dp"
-        android:gravity="center"
+        android:layout_height="45dp"
         android:layout_marginBottom="20dp"
 
 
-        android:layout_height="45dp"
-
         android:fontFamily="@font/bold"
+
+        android:gravity="center"
         android:text="@string/resend"
         android:textAllCaps="false"
         android:textColor="@color/maincolor"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/verifycode_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/verify_code_edit"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintVertical_bias="0.293" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

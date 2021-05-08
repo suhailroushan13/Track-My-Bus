@@ -24,7 +24,7 @@ public class Select_Bus extends AppCompatActivity {
     Button bus1,bus2,bus3,bus4,bus5,bus6,bus7;
     String [] titles={"Bus No.1 ","Bus No.2","Bus No.3","Bus No.4","Bus No.5","Bus No.6","Bus No.7"," Bus No.8"};
     String [] descriptions={"JNTU - AMEERPET - MEHDIPATNAM","CHANDRAYANGUTTA - SHALIBANDA - RAJENDRANAGAR","NEREDMERT - MUSHEERABAD - MDPTM","LB NAGAR - NAMPALLY - BAPUGHAT","SAGAR X ROAD - BAHADURPURA - RJNR","NANAL NAGAR - 7 TOMBS- GOLCONDA","MIYAPUR - GACHIBOWLI - LANGER HOUSE", "IS SADAN - DABIRPURA - KARWAN"};
-    int [] images={R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss,R.drawable.busss};
+    int [] images={R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver};
     ListView lv;
     
     @Override

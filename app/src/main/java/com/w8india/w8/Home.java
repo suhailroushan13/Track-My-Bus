@@ -102,12 +102,12 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     TextView busname,busnumber;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         RelativeLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
+        Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG).show();
 
         SharedPreferences preferences = getSharedPreferences("busno", Context.MODE_PRIVATE);
 
@@ -338,9 +338,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, Student_Number.class);
                                 finish();
                             } else if (drawerItem.getIdentifier() == 2000) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/suhailroushan"));
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/w8india.in/"));
                             } else if (drawerItem.getIdentifier() == 2001) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/suhailroushan13"));
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/w8india_in"));
                             }
                             else if (drawerItem.getIdentifier() == 2003) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
@@ -388,6 +388,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
         //MAP TYPE LAYERS
 //        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
@@ -480,6 +481,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         locality = address.getAddressLine(0);
                         TextView tv = findViewById(R.id.buslocality);
                         tv.setText(locality);
+
+
                     } catch (Exception er) {
                         er.printStackTrace();
                     }
@@ -495,10 +498,12 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
 
 
+
 //            behavior.setPeekHeight(100);
                         markerOptions.anchor((float) 0.5, (float) 0.5);
                         //We create a new marker
                         userLocationMarker = mMap.addMarker(markerOptions);
+
 
                     } else {
                         userLocationMarker.setPosition(latLng);
@@ -510,6 +515,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                     Log.d(TAG, "Current data: null");
                 }
             }
+
         });
 
 
@@ -517,11 +523,14 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
         LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
         if (firsttime) {
+
+
 //            Toast.makeText(this, "The Place You Live", Toast.LENGTH_SHORT).show();
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(current, 20));
             firsttime = false;
         } else {
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+//            Toast.makeText(Home.this, "Your Bus Is Ready On Map ", Toast.LENGTH_LONG).show();
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
         }
 
 
@@ -596,6 +605,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     }
 
     private void zoomToUserLocation() {
+
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions

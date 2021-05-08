@@ -17,8 +17,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import java.lang.reflect.Array;
-
 public class Request extends AppCompatActivity {
   EditText names,messgaes;
   Button call,wa;
@@ -33,9 +31,9 @@ public class Request extends AppCompatActivity {
         names=findViewById(R.id.names);
 
         messgaes = findViewById(R.id.messages);
-        call = findViewById(R.id.callbtn);
+        call = findViewById(R.id.sms);
         wa = findViewById(R.id.whatsappbtn);
-        SharedPreferences preferences = getSharedPreferences("bus",MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("busno",MODE_PRIVATE);
         switch (preferences.getInt("bus",0)){
             case 1:
                 number="9966255198";
@@ -153,6 +151,7 @@ public class Request extends AppCompatActivity {
 
             }
         });
+
 
 
 
