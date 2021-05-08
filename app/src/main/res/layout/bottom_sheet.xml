@@ -211,15 +211,7 @@
                 app:layout_constraintVertical_bias="0.127"
                 android:layout_alignParentLeft="true" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/refresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
 
-                android:layout_alignParentRight="true"
-                app:backgroundTint="#fff"
-                app:fabSize="mini"
-                app:srcCompat="@drawable/sharp_refresh_black_36dp" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 

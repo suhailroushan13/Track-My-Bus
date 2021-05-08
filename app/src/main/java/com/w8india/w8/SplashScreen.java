@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,7 +17,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
     FirebaseAuth auth;
-
+    FirebaseUser user;
     //Button connectwithdriver;
     ImageView busmain;
 
@@ -31,7 +32,7 @@ public class SplashScreen extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         busmain=findViewById(R.id.busmain);
-
+        user = auth.getCurrentUser();
         busmain.animate().translationX(25).translationY(25).start();
         Timer timer = new Timer();
         int begin = 0;
@@ -41,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 //call the method
-                if (2<3){
+                if (Constants.checkConnection(SplashScreen.this)){
                     timer.cancel();
                     runOnUiThread(new Runnable() {
                         @Override
@@ -53,7 +54,7 @@ public class SplashScreen extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (auth.getCurrentUser() == null) {
+                                    if (user== null) {
                                         finish();
                                         startActivity(new Intent(SplashScreen.this, Selection.class));
                                     }else{
@@ -63,7 +64,7 @@ public class SplashScreen extends AppCompatActivity {
                                     }
 
                                 }
-                            }, 2000);
+                            }, 1500);
                         }
                     });
 

@@ -8,9 +8,15 @@
     tools:context="com.w8india.w8.Home">
 
 
-
     <include layout="@layout/content_home" />
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:layout_width="match_parent"
+        app:trackColor="#fff"
+        android:id="@+id/mapprg"
+        android:layout_gravity="top"
+        app:trackThickness="6dp"
+        android:layout_height="wrap_content"/>
 <!--205 location ki height-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/locationbtn"

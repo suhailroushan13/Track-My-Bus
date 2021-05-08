@@ -4,7 +4,7 @@
     <string name="lords">Lords</string>
     <string name="powered_by_w8">Powered By W8</string>
     <string name="bus_app">Bus App</string>
-    <string name="connect_with_driver">Connect With Driver</string>
+    <string name="connect_with_driver">Connecting With Driver</string>
     <string name="todo2">TODO</string>
     <string name="welcome">Welcome !</string>
     <string name="todo3">TODO2</string>
@@ -227,12 +227,11 @@
     <string name="as_frontend_developer">As Frontend Developer</string>
     <string name="as_backend_developer">As Backend Developer</string>
     <string name="the_team">The Team</string>
-    <string name="mohammed_izhan">Mohammed Izhan</string>
+    <string name="mohammed_izhan">Mohammed Izhan Ali</string>
     <string name="abdul_mannan">Abdul Mannan</string>
     <string name="syed_fawaz_ali">Syed Fawaz Ali</string>
     <string name="as_web_developer">As Web Developer</string>
     <string name="help_your_friend_finding_an_easy_way_to_reach_college_on_time">Help your Friend finding an Easy way to reach College on Time</string>
-    <string name="syed_fawaz_ali">Syed Fawaz Ali</string>
     <string name="web_developer">Web Developer</string>
     <!--    <string name="resend">Resend</string>-->
 

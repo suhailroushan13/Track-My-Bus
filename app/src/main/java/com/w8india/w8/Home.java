@@ -50,6 +50,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -73,10 +74,11 @@ import java.util.List;
 
 //import android.support.design.widget.BottomSheetBehavior;
 
-public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
+public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener {
     private GoogleMap mMap;
     private DrawerLayout drawer;
     Button menu, go, yellowbus;
+    LinearProgressIndicator prg;
     BottomSheetBehavior sheetBehavior;
     FloatingActionButton drawebtn, locationbtn;
     AccountHeader headerResult;
@@ -109,6 +111,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         RelativeLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG).show();
 
+        prg = findViewById(R.id.mapprg);
+        prg.setIndeterminate(true);
         SharedPreferences preferences = getSharedPreferences("busno", Context.MODE_PRIVATE);
 
 /*TODO Bus shared pref*/
@@ -228,7 +232,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
          * bottom sheet state change listener
          * we are changing button text when sheet changed state
          * */
-        sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+        sheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
@@ -239,6 +243,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
+                    case BottomSheetBehavior.STATE_HALF_EXPANDED:
                     case BottomSheetBehavior.STATE_DRAGGING:
                         locationbtn.setVisibility(View.INVISIBLE);
                     break;
@@ -271,11 +276,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             startActivity(new Intent(this, Student_Number.class));
         }
         drawebtn = findViewById(R.id.drawerBtn);
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home");
-        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
+
         //create the drawer and remember the `Drawer` result object
 
-        final IProfile profile = new ProfileDrawerItem().withName("Lords Bus App").withEmail("Powered By W8").withIcon(R.drawable.logo).withIdentifier(100);
 
 
         headerResult = new AccountHeaderBuilder()
@@ -365,13 +368,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         geocoder = new Geocoder(this);
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        locationRequest = LocationRequest.create();
-        locationRequest.setInterval(15000);
-        locationRequest.setFastestInterval(15000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        setBus();
+
 
     }
 
@@ -380,7 +378,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -395,10 +392,11 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mMap.setOnMapLongClickListener(this);
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
-        mMap.getUiSettings().setCompassEnabled(false);
-        mMap.isTrafficEnabled();
+        mMap.getUiSettings().setCompassEnabled(true);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
+        mMap.setTrafficEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.setOnMarkerDragListener(this);
+        mMap.setOnMapClickListener(this);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             enableUserLocation();
 //          zoomToUserLocation();
@@ -456,9 +454,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
     };
 
-    private void setBus(){
 
-    }
     //BUS ICON LOGIC17.449616397619273, 78.4230210144581
     private void setUserLocationMarker(Location location) {
         LatLng latLng = new LatLng(lat, lon);
@@ -504,6 +500,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         //We create a new marker
                         userLocationMarker = mMap.addMarker(markerOptions);
 
+                        prg.setVisibility(View.GONE);
 
                     } else {
                         userLocationMarker.setPosition(latLng);
@@ -587,6 +584,11 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     @Override
     protected void onStop() {
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         stopLocationUpdates();
     }
 
@@ -646,31 +648,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 //        }
     }
 
-    @Override
-    public void onMarkerDragStart(Marker marker) {
-        Log.d(TAG, "onMarkerDragStart: ");
-    }
 
-    @Override
-    public void onMarkerDrag(Marker marker) {
-        Log.d(TAG, "onMarkerDrag: ");
-    }
-
-    @Override
-    public void onMarkerDragEnd(Marker marker) {
-        Log.d(TAG, "onMarkerDragEnd: ");
-//        LatLng latLng = marker.getPosition();
-//        try {
-//            List<Address> addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
-//            if (addresses.size() > 0) {
-//                Address address = addresses.get(0);
-//                String streertAddress = address.getAddressLine(0);
-//                marker.setTitle(streertAddress);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
 
     private void checkSettingsAndStartLocationUpdates() {
         LocationSettingsRequest request = new LocationSettingsRequest.Builder()
@@ -769,7 +747,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         if(permissionGranted){
             phoneCall();
         }else {
-            Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Home.this, "Please allow call permission", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -803,5 +781,10 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }else{
             Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 }
