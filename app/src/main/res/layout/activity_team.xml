@@ -10,25 +10,27 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="430dp"
+        android:layout_height="292dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.01"
         app:srcCompat="@drawable/teams" />
 
     <TextView
         android:id="@+id/textView13"
         style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="333dp"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:text="Meet the Development Team"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -46,10 +48,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+
+
             android:background="#E2F9FB">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/suhailcrd"
+
+
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_alignParentLeft="true"
