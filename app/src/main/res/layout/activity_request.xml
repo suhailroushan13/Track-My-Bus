@@ -9,8 +9,8 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="392dp"
+        android:layout_height="40dp"
 
         android:layout_below="@id/textView3"
         android:layout_centerHorizontal="true"
@@ -20,10 +20,12 @@
 
 
         android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/sms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inplayreqname" />
+        app:layout_constraintTop_toBottomOf="@+id/inplayreqname"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -151,50 +153,55 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sms"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginBottom="15dp"
         android:text="@string/call"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginRight="130dp"
         android:textColor="@color/colorAccent"
         app:icon="@drawable/calls"
         app:iconSize="30dp"
         app:iconTint="@color/colorAccent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.861"
         app:strokeColor="@color/colorAccent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/whatsappbtn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="155dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginRight="130dp"
         android:layout_marginBottom="16dp"
         android:text="@string/whatsapp"
         android:textColor="#25D366"
         app:icon="@drawable/whatsapp"
         app:iconSize="30dp"
+
+
         app:iconTint="#25D366"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:strokeColor="#25D366"
-        android:layout_marginRight="10dp" />
+        app:layout_constraintVertical_bias="0.961"
+        app:strokeColor="#25D366" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inplayreqname"

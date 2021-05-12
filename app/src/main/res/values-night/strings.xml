@@ -2,4 +2,5 @@
 <resources>
     <string name="enter_the_6_digit_otp">Enter the 6 digit OTP</string>
     <string name="didn_t_recieve_code_">Didn\'t Recieve Code ?</string>
+    <string name="todo54">TODO</string>
 </resources>
