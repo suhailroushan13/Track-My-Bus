@@ -131,7 +131,6 @@ public class Select_Bus extends AppCompatActivity {
             myImage.setImageResource(imageArray[position]);
             myTitle.setText(titleArray[position]);
             myDescription.setText(descArray[position]);
-            myTitle.setTextColor(R.id.dark);
             return row;
 
 
