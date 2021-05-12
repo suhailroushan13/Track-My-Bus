@@ -56,7 +56,7 @@ dependencies {
     implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
-    implementation 'com.github.jrizani:JRSpinner:1.1.0'
+//    implementation 'com.github.jrizani:JRSpinner:1.1.0'
 //    implementation 'androidx.cursoradapter:cursoradapter:1.0.0'
     implementation platform('com.google.firebase:firebase-bom:27.0.0')
     implementation 'com.google.firebase:firebase-auth'
