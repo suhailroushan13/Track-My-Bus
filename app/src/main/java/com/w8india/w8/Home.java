@@ -66,10 +66,8 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.io.IOException;
 import java.util.List;
@@ -356,7 +354,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, About.class);
                             } else if (drawerItem.getIdentifier() == 11) {
                                 auth.signOut();
-                                intent = new Intent(Home.this, Student_Number.class);
+                                intent = new Intent(Home.this, Selection.class);
                                 finish();
                             } else if (drawerItem.getIdentifier() == 2000) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/w8india.in/"));

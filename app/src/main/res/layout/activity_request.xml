@@ -7,25 +7,28 @@
     android:background="@color/white"
     tools:context=".Request">
 
+
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner"
-        android:layout_width="392dp"
-        android:layout_height="40dp"
+        android:layout_width="360dp"
+        android:layout_height="53dp"
 
         android:layout_below="@id/textView3"
         android:layout_centerHorizontal="true"
+        android:layout_margin="20sp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
 
 
         android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintBottom_toTopOf="@+id/sms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inplayreqname"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.006" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -118,7 +121,7 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/any_message_for_driver"
         android:textColorHint="#AAAAAA"
-        app:boxStrokeColor="@color/maincolor"
+
         app:helperText="Please provide a valid reason"
 
         app:helperTextTextColor="#676C6C"
@@ -137,6 +140,8 @@
             android:id="@+id/messages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
 
 
             android:lines="2"
@@ -157,23 +162,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="15dp"
-        android:text="@string/call"
         android:layout_marginStart="130dp"
         android:layout_marginLeft="130dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="130dp"
         android:layout_marginRight="130dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/call"
         android:textColor="@color/colorAccent"
         app:icon="@drawable/calls"
         app:iconSize="30dp"
         app:iconTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
+        app:layout_constraintVertical_bias="0.876"
         app:strokeColor="@color/colorAccent" />
 
     <com.google.android.material.button.MaterialButton
@@ -200,7 +205,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.961"
+        app:layout_constraintVertical_bias="0.974"
         app:strokeColor="#25D366" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -220,7 +225,7 @@
         android:hint="Name"
 
         android:textColorHint="#AAAAAA"
-        app:boxStrokeColor="@color/maincolor"
+        app:boxStrokeColor="@color/accent"
         app:helperTextTextColor="#676C6C"
 
         app:hintEnabled="true"
@@ -233,13 +238,14 @@
             android:id="@+id/names"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name"
+
             android:maxLength="15"
 
             android:maxLines="1"
             android:textColor="@color/black"
 
             />
+
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
