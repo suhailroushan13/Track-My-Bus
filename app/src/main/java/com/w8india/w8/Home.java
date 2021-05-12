@@ -1,6 +1,8 @@
 package com.w8india.w8;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -110,7 +112,23 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         setContentView(R.layout.activity_home);
         RelativeLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG).show();
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create channel to show notifications.
+            String channelId  = getString(R.string.default_notification_channel_id);
+            String channelName = getString(R.string.default_notification_channel_name);
+            NotificationManager notificationManager =
+                    getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(new NotificationChannel(channelId,
+                    channelName, NotificationManager.IMPORTANCE_HIGH));
+        }
+        // Handle possible data accompanying notification message.
+        // [START handle_data_extras]
+        if (getIntent().getExtras() != null) {
+            for (String key : getIntent().getExtras().keySet()) {
+                Object value = getIntent().getExtras().get(key);
+                Log.d(TAG, "Key: " + key + " Value: " + value);
+            }
+        }
         prg = findViewById(R.id.mapprg);
         prg.setIndeterminate(true);
         SharedPreferences preferences = getSharedPreferences("busno", Context.MODE_PRIVATE);

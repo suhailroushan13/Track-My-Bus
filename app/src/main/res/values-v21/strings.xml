@@ -6,4 +6,5 @@
     <string name="call">CALL</string>
     <string name="_9966255198">9966255198</string>
     <string name="number">Number:</string>
+    <string name="default_notification_channel_id">Message</string>
 </resources>
