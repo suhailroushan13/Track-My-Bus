@@ -1,127 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#45C0F8"
     tools:context=".About">
-
-
-    <ImageView
-        android:id="@+id/imageView68"
-        android:layout_width="408dp"
-
-        android:layout_height="366dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028"
-        app:srcCompat="@drawable/about" />
-
-    <TextView
-        android:id="@+id/textView8"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        app:cardCornerRadius="6dp"
+        android:layout_gravity="center"
+
+
+        app:contentPadding="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/about_us"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469"
-        android:layout_marginLeft="20dp">
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:text="@string/about_us"
+                android:id="@+id/abtud"
+                android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:layout_width="150dp"
+                android:id="@+id/abtlogo"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/abtud"
+                android:layout_height="150dp"
+
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/ic_launcher_foreground"/>
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:fontFamily="@font/bold"
+                android:textSize="30sp"
+                android:layout_centerHorizontal="true"
+               android:layout_below="@id/abtlogo"
+                android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/tv111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="14sp"
+                    android:layout_below="@id/textView8"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/w8_is_an_application_which_track_the_real_time_location_of_college_buses"/>
+
+            <View
+                android:layout_below="@id/tv111"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:id="@+id/sepratorabt"
+                android:layout_marginTop="25dp"
+                android:background="#676767"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:id="@+id/contactusbtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="Contact us"
+                android:layout_height="wrap_content"
 
 
-    </TextView>
+                app:icon="@drawable/outline_privacy_tip_black_24dp"
+                android:layout_below="@id/sepratorabt"
+                android:layout_margin="20dp"/>
 
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:id="@+id/privacypolbtn"
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/terms"
-        android:layout_width="312dp"
-        android:layout_height="63dp"
-        android:layout_gravity="center_horizontal"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/medium"
-        android:gravity="center"
-        android:shadowColor="@color/black"
-        android:text="@string/terms_and_conditions"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="@string/privacy_policy"
+                android:layout_height="wrap_content"
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66"
-        app:strokeColor="@color/white"
-        app:strokeWidth="3dp" />
+                app:icon="@drawable/outline_email_black_24dp"
+                android:layout_below="@id/contactusbtn"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:id="@+id/termsbtn"
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/privacy"
-        android:layout_width="312dp"
-        android:layout_height="63dp"
-        android:layout_gravity="center_horizontal"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/medium"
-        android:gravity="center"
-        android:shadowColor="@color/black"
-        android:text="@string/privacy_policy"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:cornerRadius="10dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="@string/terms_and_conditions"
+                android:layout_height="wrap_content"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779"
-        app:strokeColor="@color/white"
-        app:strokeWidth="3dp" />
+                android:layout_marginBottom="20dp"
+                app:icon="@drawable/terms_information_black_24dp"
+                android:layout_below="@id/privacypolbtn"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/medium"
-        android:gravity="center"
-        android:text="@string/version_1_0_0"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/privacy"
-        app:layout_constraintVertical_bias="0.933" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="@string/w8_is_an_application_which_track_the_real_time_location_of_college_buses"
-        android:textColor="@color/black"
-
-        android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/terms"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/versionabt"
+                android:layout_below="@id/termsbtn"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="v1.0"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
 

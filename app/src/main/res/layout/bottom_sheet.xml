@@ -201,7 +201,7 @@
                 android:fontFamily="@font/light"
                 android:text="Fetching... "
 
-                android:textColor="#011627"
+                android:textColor="#092E4C"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -210,7 +210,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.127"
                 android:layout_alignParentLeft="true" />
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/sharelocation"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
 
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                app:backgroundTint="#fff"-->
+<!--                app:fabSize="mini"-->
+<!--                app:srcCompat="@drawable/share"-->
+<!--                android:layout_alignParentEnd="true" />-->
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -8,17 +8,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import static com.w8india.w8.Constants.logit;
 
 public class Team extends AppCompatActivity implements View.OnClickListener{
 
 TextView suhail,mannan,fawaz,izhan;
 ImageView srig, srtw, srli, izig,iztw,izli,faig,fatw,fali,maig,matw,mali;
-
+FirebaseAuth auth;
+String us;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team);
+        auth = FirebaseAuth.getInstance();
+        us = auth.getCurrentUser().getPhoneNumber();
         suhail=findViewById(R.id.suhail);
         suhail.setOnClickListener(this);
         fawaz=findViewById(R.id.fawaz);
@@ -63,12 +70,14 @@ ImageView srig, srtw, srli, izig,iztw,izli,faig,fatw,fali,maig,matw,mali;
     @Override
     public void onClick(View v) {
         String url;
+
        if(v==suhail){
 
            url="https://www.linkedin.com/in/suhail-roushan-bb8b85144/";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==izhan){
            url="https://www.linkedin.com/in/mohdizhanali";
+           logit(Team.this,us);
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==fawaz){
            url="https://www.linkedin.com/in/syedfawazali/";
@@ -82,6 +91,7 @@ ImageView srig, srtw, srli, izig,iztw,izli,faig,fatw,fali,maig,matw,mali;
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==izig){
            url="https://www.instagram.com/aninnocentguy/";
+           logit(Team.this,us);
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==faig){
            url="https://www.instagram.com/fawaz.exe/";
@@ -104,6 +114,7 @@ ImageView srig, srtw, srli, izig,iztw,izli,faig,fatw,fali,maig,matw,mali;
            url="https://www.linkedin.com/in/suhail-roushan-bb8b85144/";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==izli){
+           logit(Team.this,us);
            url="https://www.linkedin.com/in/mohdizhanali";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==fali){

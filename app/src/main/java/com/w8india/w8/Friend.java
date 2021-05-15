@@ -24,7 +24,7 @@ public class Friend extends AppCompatActivity {
         rate = findViewById(R.id.rate);
 
 
-        share=findViewById(R.id.share);
+        share=findViewById(R.id.sharebtn);
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

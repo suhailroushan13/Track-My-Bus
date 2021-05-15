@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -72,11 +74,12 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import java.io.IOException;
 import java.util.List;
 
+import static com.w8india.w8.Constants.isOnline;
+
 //import android.support.design.widget.BottomSheetBehavior;
 
 public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener {
     private GoogleMap mMap;
-    private DrawerLayout drawer;
     Button menu, go, yellowbus;
     LinearProgressIndicator prg;
     BottomSheetBehavior sheetBehavior;
@@ -109,7 +112,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         RelativeLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
-        Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG).show();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.
             String channelId  = getString(R.string.default_notification_channel_id);
@@ -151,8 +154,24 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Home.this, R.style.Theme_MaterialComponents_Dialog);
 
-                onCallBtnClick();
+                builder.setPositiveButton("Proceed",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onCallBtnClick();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.setTitle("Do you want to call?");
+                builder.setMessage("Please note that this may distract the driver so please use this carefully and only if its very urgent!");
+                builder.create();
+                builder.show();
 
             }
         });
@@ -585,6 +604,11 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     @Override
     protected void onStart() {
         super.onStart();
+        if(isOnline()){
+            Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG).show();
+        }else {
+            startActivity(new Intent(Home.this, Internet_loss.class));
+        }
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             startActivity(new Intent(Home.this, Student_OTP.class));
@@ -729,15 +753,14 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 Log.d(TAG, "askLocationPermission: you should show an alert dialog...");
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
             }
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
         }
     }
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == LOCATION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted
@@ -755,14 +778,14 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         }
         boolean permissionGranted = false;
-        switch(requestCode){
+        switch (requestCode) {
             case 9:
-                permissionGranted = grantResults[0]== PackageManager.PERMISSION_GRANTED;
+                permissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 break;
         }
-        if(permissionGranted){
+        if (permissionGranted) {
             phoneCall();
-        }else {
+        } else {
             Toast.makeText(Home.this, "Please allow call permission", Toast.LENGTH_SHORT).show();
         }
     }

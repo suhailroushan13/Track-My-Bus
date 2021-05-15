@@ -4,9 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 
@@ -39,21 +42,29 @@ public class Constants {
             return progressDialog;
         }
     }
-    public static boolean checkConnection(Context context) {
-        final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    public static void logit(Context context, String user){
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
+        Bundle params = new Bundle();
 
-        if (connMgr != null) {
-            NetworkInfo activeNetworkInfo = connMgr.getActiveNetworkInfo();
+        params.putString("who", user);
+        mFirebaseAnalytics.logEvent("them", params);
 
-            if (activeNetworkInfo != null) { // connected to the internet
-                // connected to the mobile provider's data plan
-                if (activeNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-                    // connected to wifi
-                    return true;
-                } else return activeNetworkInfo.getType() == ConnectivityManager.TYPE_MOBILE;
-            }
-        }
-        return false;
     }
+//    public static boolean checkConnection(Context context) {
+//        final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+//
+//        if (connMgr != null) {
+//            NetworkInfo activeNetworkInfo = connMgr.getActiveNetworkInfo();
+//
+//            if (activeNetworkInfo != null) { // connected to the internet
+//                // connected to the mobile provider's data plan
+//                if (activeNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+//                    // connected to wifi
+//                    return true;
+//                } else return activeNetworkInfo.getType() == ConnectivityManager.TYPE_MOBILE;
+//            }
+//        }
+//        return false;
+//    }
 
 }
