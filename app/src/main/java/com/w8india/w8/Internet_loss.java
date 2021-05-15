@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -12,88 +13,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
+import static com.w8india.w8.Constants.isOnline;
+
 public class Internet_loss extends AppCompatActivity {
 
-    boolean isConnected = false;
     Button checkInternet;
-    ConnectivityManager connectivityManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internet_loss);
 
-             checkInternet = findViewById(R.id.checkInternet);
-             checkInternet.setOnClickListener(v -> {
-                 if( isConnected){
+        checkInternet = findViewById(R.id.try_again);
+        checkInternet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                    if(isOnline()){
+                        finish();
+                    }else{
+                        Toast.makeText(Internet_loss.this, "Unable to connect! Check connection and try again", Toast.LENGTH_LONG).show();
+                    }
 
-                     Toast.makeText(Internet_loss.this, "Connected", Toast.LENGTH_SHORT).show();
-                     finish();
-
-                 }
-                 else {
-
-                     Toast.makeText(Internet_loss.this, "Please check internet connection", Toast.LENGTH_SHORT).show();
-
-                 }
-
-
-
-             });
-
-    }
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void registerNetworkCallback(){
-
-
-        try {
-
-            connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-            connectivityManager.registerDefaultNetworkCallback(new ConnectivityManager.NetworkCallback(){
-
-                @Override
-                public void onAvailable(@NonNull Network network) {
-                    isConnected = true;
-                }
-
-                @Override
-                public void onLost(@NonNull Network network) {
-                    isConnected = false;
-                }
-            });
-
-
-
-
-        }catch (Exception e){
-
-            isConnected = false;
-
-        }
+            }
+        });
 
     }
 
-    private void unregisterNetworkCallback(){
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            connectivityManager.unregisterNetworkCallback(new ConnectivityManager.NetworkCallback());
-        }
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            registerNetworkCallback();
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterNetworkCallback();
-    }
 }
 

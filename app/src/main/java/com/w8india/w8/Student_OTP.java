@@ -71,7 +71,8 @@ public class Student_OTP extends AppCompatActivity {
                     Toast.makeText(Student_OTP.this, "OTP Sent Successfully!", Toast.LENGTH_SHORT).show();
                     resend.setEnabled(false);
                 } else {
-                    Toast.makeText(Student_OTP.this, "Unable to connect! Check internet connection", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Student_OTP.this, Internet_loss.class));
+
                 }
 
             }
@@ -95,7 +96,7 @@ public class Student_OTP extends AppCompatActivity {
                 if (isOnline()) {
                     verifyVerificationCode(code);
                 } else {
-                    Toast.makeText(Student_OTP.this, "Unable to connect! Check internet connection", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Student_OTP.this, Internet_loss.class));
                 }
             }
         });
