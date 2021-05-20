@@ -28,8 +28,13 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Friend"></activity>
-        <activity android:name=".Request" />
+        <activity android:name=".Friend"
+            android:screenOrientation="locked">
+
+
+        </activity>
+        <activity android:name=".Request"
+            android:screenOrientation="locked"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -47,31 +52,32 @@
 
         <activity
             android:name=".Home"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="locked"/>
         <activity
             android:name=".About"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".Team"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked"/>
         <activity
             android:name=".Support_us"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".Internet_loss"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".Student_OTP"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".Select_Bus"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".Student_Number"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".SplashScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -80,7 +86,7 @@
         </activity>
         <activity
             android:name=".Selection"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="locked" />
 
         <meta-data
             android:name="preloaded_fonts"
