@@ -96,6 +96,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     Drawer result;
     double lat;
     double lon;
+    float bear;
 
     DocumentReference reference;
     int LOCATION_REQUEST_CODE = 10001;
@@ -504,24 +505,42 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
                 if (snapshot != null && snapshot.exists()) {
                     Log.d(TAG, "Current data: " + snapshot.getData());
-                    lat = snapshot.getDouble("latitude");
-                    lon = snapshot.getDouble("longitude");
-                    try {
-                        List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
-                        Address address = addresses.get(0);
-                        locality = address.getAddressLine(0);
+                    if(snapshot.getDouble("latitude")==10.000001){
+                        lat = 17.341987000671335;
+                        lon = 78.36856298594809;
+
                         TextView tv = findViewById(R.id.buslocality);
-                        tv.setText(locality);
+                        tv.setText("The bus driver is offline");
 
 
-                    } catch (Exception er) {
-                        er.printStackTrace();
+
+                    }else{
+                        lat = snapshot.getDouble("latitude");
+                        lon = snapshot.getDouble("longitude");
+                        try {
+                            List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+                            Address address = addresses.get(0);
+                            locality = address.getAddressLine(0);
+                            TextView tv = findViewById(R.id.buslocality);
+                            tv.setText(locality);
+
+
+                        } catch (Exception er) {
+                            er.printStackTrace();
+                        }
                     }
+                    bear =  snapshot.getLong("bearing").floatValue();
+
                     if (userLocationMarker == null) {
                         MarkerOptions markerOptions = new MarkerOptions();
                         markerOptions.position(latLng);
                         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
-                        markerOptions.rotation(location.getBearing());
+
+                        if(bear==0.0){
+                            markerOptions.rotation(location.getBearing());
+                        }else {
+                            markerOptions.rotation(bear);
+                        }
 
                         markerOptions.title(selectedbus);
 
@@ -539,7 +558,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
                     } else {
                         userLocationMarker.setPosition(latLng);
-                        userLocationMarker.setRotation(location.getBearing());
+                        userLocationMarker.setRotation(bear);
 
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
                     }
@@ -605,7 +624,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     protected void onStart() {
         super.onStart();
         if(isOnline()){
-            Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG);
         }else {
             startActivity(new Intent(Home.this, Internet_loss.class));
         }
@@ -785,8 +804,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
         if (permissionGranted) {
             phoneCall();
-        } else {
-            Toast.makeText(Home.this, "Please allow call permission", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -825,5 +842,25 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     @Override
     public void onMapClick(LatLng latLng) {
         sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
+        builder.setTitle("Are you sure you want to exit?");
+        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Home.super.onBackPressed();
+            }
+        });
+        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create();
+        builder.show();
     }
 }
