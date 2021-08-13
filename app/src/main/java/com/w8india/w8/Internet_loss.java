@@ -32,7 +32,7 @@ public class Internet_loss extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                    if(isOnline()){
+                    if(isOnline(Internet_loss.this)){
                         finish();
                     }else{
                         Toast.makeText(Internet_loss.this, "Unable to connect! Check connection and try again", Toast.LENGTH_LONG).show();

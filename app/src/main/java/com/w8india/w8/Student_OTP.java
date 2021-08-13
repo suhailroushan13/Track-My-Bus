@@ -65,7 +65,7 @@ public class Student_OTP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (isOnline()) {
+                if (isOnline(Student_OTP.this)) {
                     startTimer(1);
                     sendVerificationCode(no);
                     Toast.makeText(Student_OTP.this, "OTP Sent Successfully!", Toast.LENGTH_SHORT).show();
@@ -93,7 +93,7 @@ public class Student_OTP extends AppCompatActivity {
                 }
 
                 //verifying the code entered manually
-                if (isOnline()) {
+                if (isOnline(Student_OTP.this)) {
                     verifyVerificationCode(code);
                 } else {
                     startActivity(new Intent(Student_OTP.this, Internet_loss.class));

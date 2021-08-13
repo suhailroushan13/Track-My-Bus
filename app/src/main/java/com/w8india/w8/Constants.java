@@ -14,18 +14,12 @@ import com.google.firebase.auth.FirebaseUser;
 import java.io.IOException;
 
 public class Constants {
-    public static  boolean isOnline() {
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
-            int     exitValue = ipProcess.waitFor();
-            return (exitValue == 0);
-        }
-        catch (IOException e)          { e.printStackTrace(); }
-        catch (InterruptedException e) { e.printStackTrace(); }
+    private static boolean result = true;
+    public static boolean isOnline(Context context) {
 
-        return false;
+        NetworkHelper.checkNetworkInfo(context, type -> result = type);
 
+        return result;
     }
 
     public static void showSnack(View root, String snacktitle){
@@ -42,12 +36,12 @@ public class Constants {
             return progressDialog;
         }
     }
-    public static void logit(Context context, String user){
+    public static void it(Context context, String user){
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
         Bundle params = new Bundle();
 
         params.putString("who", user);
-        mFirebaseAnalytics.logEvent("them", params);
+        mFirebaseAnalytics.logEvent(user, params);
 
     }
 //    public static boolean checkConnection(Context context) {

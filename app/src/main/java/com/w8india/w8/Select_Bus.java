@@ -13,9 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class Select_Bus extends AppCompatActivity {
 
@@ -54,42 +57,49 @@ public class Select_Bus extends AppCompatActivity {
                        startActivity(new Intent(Select_Bus.this, Home.class));
                        finish();
                        break;
-                   case 2:
-                       editor.putInt("bus",3);
-                       editor.commit();
-                       startActivity(new Intent(Select_Bus.this, Home.class));
-                       finish();
-                       break;
-                   case 3:
-                       editor.putInt("bus",4);
-                       editor.commit();
-                       startActivity(new Intent(Select_Bus.this, Home.class));
-                       finish();
-                       break;
-                   case 4:
-                       editor.putInt("bus",5);
-                       editor.commit();
-                       startActivity(new Intent(Select_Bus.this, Home.class));
-                       finish();
-                       break;
-                   case 5:
-                       editor.putInt("bus",6);
-                       editor.commit();
-                       startActivity(new Intent(Select_Bus.this, Home.class));
-                       finish();
-                       break;
-                   case 6:
-                       editor.putInt("bus",7);
-                       editor.commit();
-                       startActivity(new Intent(Select_Bus.this, Home.class));
-                       finish();
-                       break;
-                   case 7:
-                       editor.putInt("bus",8);
-                       editor.commit();
-                       startActivity(new Intent(Select_Bus.this, Home.class));
-                       finish();
-                       break;
+                   default:
+                       Snackbar.make(lv,"The selected bus is not available right now",Snackbar.LENGTH_INDEFINITE).setAction("Dismiss", new View.OnClickListener() {
+                           @Override
+                           public void onClick(View v) {
+                               Toast.makeText(Select_Bus.this, "Please choose other buses", Toast.LENGTH_SHORT).show();
+                           }
+                       }).show();
+//                   case 2:
+//                       editor.putInt("bus",3);
+//                       editor.commit();
+//                       startActivity(new Intent(Select_Bus.this, Home.class));
+//                       finish();
+//                       break;
+//                   case 3:
+//                       editor.putInt("bus",4);
+//                       editor.commit();
+//                       startActivity(new Intent(Select_Bus.this, Home.class));
+//                       finish();
+//                       break;
+//                   case 4:
+//                       editor.putInt("bus",5);
+//                       editor.commit();
+//                       startActivity(new Intent(Select_Bus.this, Home.class));
+//                       finish();
+//                       break;
+//                   case 5:
+//                       editor.putInt("bus",6);
+//                       editor.commit();
+//                       startActivity(new Intent(Select_Bus.this, Home.class));
+//                       finish();
+//                       break;
+//                   case 6:
+//                       editor.putInt("bus",7);
+//                       editor.commit();
+//                       startActivity(new Intent(Select_Bus.this, Home.class));
+//                       finish();
+//                       break;
+//                   case 7:
+//                       editor.putInt("bus",8);
+//                       editor.commit();
+//                       startActivity(new Intent(Select_Bus.this, Home.class));
+//                       finish();
+//                       break;
 
                }
             }

@@ -125,12 +125,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
         // Handle possible data accompanying notification message.
         // [START handle_data_extras]
-        if (getIntent().getExtras() != null) {
-            for (String key : getIntent().getExtras().keySet()) {
-                Object value = getIntent().getExtras().get(key);
-                Log.d(TAG, "Key: " + key + " Value: " + value);
-            }
-        }
+
         prg = findViewById(R.id.mapprg);
         prg.setIndeterminate(true);
         SharedPreferences preferences = getSharedPreferences("busno", Context.MODE_PRIVATE);
@@ -313,9 +308,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         }
         drawebtn = findViewById(R.id.drawerBtn);
 
+
+
         //create the drawer and remember the `Drawer` result object
-
-
 
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -400,6 +395,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             }
         });
         // Obn the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -623,11 +619,14 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     @Override
     protected void onStart() {
         super.onStart();
-        if(isOnline()){
-            Toast.makeText(this, "Please W8, Getting Things Ready", Toast.LENGTH_LONG);
-        }else {
-            startActivity(new Intent(Home.this, Internet_loss.class));
-        }
+        NetworkHelper.checkNetworkInfo(this, new NetworkHelper.OnConnectionStatusChange() {
+            @Override
+            public void onChange(boolean type) {
+                if(type){
+                    startActivity(new Intent(Home.this,Internet_loss.class));
+                }
+            }
+        });
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             startActivity(new Intent(Home.this, Student_OTP.class));

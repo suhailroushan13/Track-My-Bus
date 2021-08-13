@@ -93,7 +93,7 @@ public class Student_Number extends AppCompatActivity {
 
                 String phone = phoneNumberEdit.getText().toString();
                 String phoneNumber = "+91"+ phone;
-                if(Constants.isOnline()) {
+                if(Constants.isOnline(Student_Number.this)) {
                     if (phone.isEmpty()) {
                         phoneNumberEdit.setError("Enter Your Number ");
 

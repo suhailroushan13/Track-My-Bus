@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MatButtonSourceCode">wdef</style>
 
     <style name="CustomTheme" parent="MaterialDrawerTheme">
         <!-- ...and here we setting appcompat’s color theming attrs -->
@@ -28,7 +27,6 @@
         <style name="DefaultButton">
             <item name="android:layout_width">wrap_content</item>
             <item name="android:layout_height">wrap_content</item>
-            <item name="android:background">@drawable/default_button_selector</item>
         </style>
 
     <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">

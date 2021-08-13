@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.w8india.w8.Constants.logit;
+import static com.w8india.w8.Constants.it;
 
 public class Team extends AppCompatActivity implements View.OnClickListener{
 
@@ -77,7 +77,7 @@ String us;
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==izhan){
            url="https://www.linkedin.com/in/mohdizhanali";
-           logit(Team.this,us);
+           it(Team.this,us);
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==fawaz){
            url="https://www.linkedin.com/in/syedfawazali/";
@@ -90,8 +90,8 @@ String us;
            url="https://www.instagram.com/suhailroushan/";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==izig){
-           url="https://www.instagram.com/aninnocentguy/";
-           logit(Team.this,us);
+           url="https://www.instagram.com/izhan.this/";
+           it(Team.this,us);
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==faig){
            url="https://www.instagram.com/fawaz.exe/";
@@ -103,7 +103,7 @@ String us;
            url="https://twitter.com/suhailroushan13";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==iztw){
-           url="https://twitter.com/AnInnocentGuyy";
+           url="https://twitter.com/_izhanAli";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==fatw){
            url="https://twitter.com/fawaz_exe";
@@ -114,7 +114,7 @@ String us;
            url="https://www.linkedin.com/in/suhail-roushan-bb8b85144/";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==izli){
-           logit(Team.this,us);
+           it(Team.this,us);
            url="https://www.linkedin.com/in/mohdizhanali";
            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
        }else if(v==fali){
