@@ -60,7 +60,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/slogin"
         android:layout_width="224dp"
-        app:cornerRadius="50dp"
+        app:cornerRadius="15dp"
         android:layout_height="65dp"
         android:clickable="true"
         android:focusable="true"
@@ -69,6 +69,8 @@
         android:layout_below="@id/imageButton2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+
+
 
         android:fontFamily="@font/medium"
         android:gravity="center"
@@ -88,7 +90,7 @@
         android:id="@+id/dlogin"
         android:layout_width="224dp"
         android:layout_height="65dp"
-        app:cornerRadius="50dp"
+        app:cornerRadius="15dp"
         android:clickable="true"
         android:focusable="true"
         app:strokeColor="@color/white"

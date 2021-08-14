@@ -26,16 +26,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/medium"
-        android:gravity="center"
+        android:layout_marginLeft="30dp"
 
-        android:text="@string/select_your_bus"
+
+        android:text="@string/pick_your_bus"
         android:textColor="#000"
         android:textSize="30sp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:layout_marginStart="30dp" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
         android:id="@+id/bus_list"/>
 
 

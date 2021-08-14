@@ -1,10 +1,8 @@
 package com.w8india.w8;
 
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 public class Request extends AppCompatActivity {
   EditText names,messgaes;
@@ -84,14 +80,10 @@ public class Request extends AppCompatActivity {
                 builder.setPositiveButton("Proceed",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (ActivityCompat.checkSelfPermission(Request.this,
-                                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                            Intent callIntent = new Intent(Intent.ACTION_CALL);
-                            callIntent.setData(Uri.parse("tel:"+number));
-                            Request.this.startActivity(callIntent);
-                        }else{
-                            Toast.makeText(Request.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
-                        }
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("tel:"+number));
+                        Request.this.startActivity(i);
+
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

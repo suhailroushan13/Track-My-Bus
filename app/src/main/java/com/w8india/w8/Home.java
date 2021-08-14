@@ -21,7 +21,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -334,9 +333,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
                                 (
-                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false),
-                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
-                                        new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
+                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false)
+//                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
+//                                        new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
 
                                 ),
                         new PrimaryDrawerItem().withName("Sign Off").withIcon(R.drawable.logout).withIdentifier(11).withSelectable(false)
@@ -820,32 +819,12 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
 
     private void onCallBtnClick(){
-        if (Build.VERSION.SDK_INT < 23) {
-            phoneCall();
-        }else {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse("tel:"+number));
+        Home.this.startActivity(i);
 
-            if (ActivityCompat.checkSelfPermission(Home.this,
-                    Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-
-                phoneCall();
-            }else {
-                final String[] PERMISSIONS_STORAGE = {Manifest.permission.CALL_PHONE};
-                //Asking request Permissions
-                ActivityCompat.requestPermissions(Home.this, PERMISSIONS_STORAGE, 9);
-            }
-        }
     }
 
-    private void phoneCall(){
-        if (ActivityCompat.checkSelfPermission(Home.this,
-                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-            Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:"+number));
-            Home.this.startActivity(callIntent);
-        }else{
-            Toast.makeText(Home.this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     @Override
     public void onMapClick(LatLng latLng) {
