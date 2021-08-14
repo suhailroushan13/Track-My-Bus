@@ -28,7 +28,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -53,7 +52,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.CancellationToken;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.gms.tasks.Task;
@@ -79,10 +77,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
 import java.util.List;
-
-import static com.w8india.w8.Constants.isOnline;
 
 //import android.support.design.widget.BottomSheetBehavior;
 
@@ -547,7 +542,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                     if (userLocationMarker == null) {
                         MarkerOptions markerOptions = new MarkerOptions();
                         markerOptions.position(bus);
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.buc_ic));
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
 
                         if (bear == 0.0) {
                             markerOptions.rotation(location.getBearing());
@@ -585,7 +580,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
 //Create camera with bounds
                     CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-
+                    mMap.animateCamera(cu);
 //Check map is loaded
                     mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                         @Override
@@ -650,6 +645,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     private void stopLocationUpdates() {
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
+
 
     @Override
     protected void onStart() {
