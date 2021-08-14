@@ -49,6 +49,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/whatsapp"
         android:textColor="#fff"
+        android:textSize="12sp"
         app:icon="@drawable/whatsapp"
         app:iconSize="30dp"
         app:iconTint="#fff"
@@ -92,13 +93,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
         android:layout_alignParentLeft="true"
-
+android:textSize="12sp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="@string/call"
         android:textColor="#fff"
         app:icon="@drawable/calls"
-        app:iconSize="30dp"
+        app:iconSize="20dp"
         app:iconTint="#fff"
 
         app:backgroundTint="@color/colorAccent"

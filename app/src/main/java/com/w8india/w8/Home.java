@@ -325,7 +325,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Request W8").withIcon(R.drawable.wait).withIdentifier(9).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Request Wait").withIcon(R.drawable.timer).withIdentifier(9).withSelectable(false),
                         new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
 
                         //new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),

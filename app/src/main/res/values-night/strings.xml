@@ -4,4 +4,5 @@
     <string name="didn_t_recieve_code_">Didn\'t Recieve Code ?</string>
     <string name="todo54">TODO</string>
     <string name="pick_your_bus">Pick Your Bus</string>
+    <string name="request_wait">Request Wait</string>
 </resources>
