@@ -40,17 +40,22 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -62,6 +67,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.GeoPoint;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -71,6 +77,8 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -78,7 +86,7 @@ import static com.w8india.w8.Constants.isOnline;
 
 //import android.support.design.widget.BottomSheetBehavior;
 
-public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener {
+public class Home extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
     private GoogleMap mMap;
     Button menu, go, yellowbus;
     LinearProgressIndicator prg;
@@ -96,16 +104,21 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     Drawer result;
     double lat;
     double lon;
+    LatLng bus;
     float bear;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private boolean permissionDenied = false;
 
+    private static final String KEY_CAMERA_POSITION = "camera_position";
+    CameraPosition cameraPosition;
     DocumentReference reference;
     int LOCATION_REQUEST_CODE = 10001;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
     private FirebaseAuth auth;
     FirebaseUser user;
-    Button callbtn,whatsappbtn;
-    TextView busname,busnumber;
+    Button callbtn, whatsappbtn;
+    TextView busname, busnumber;
 
 
     @Override
@@ -116,7 +129,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.
-            String channelId  = getString(R.string.default_notification_channel_id);
+            String channelId = getString(R.string.default_notification_channel_id);
             String channelName = getString(R.string.default_notification_channel_name);
             NotificationManager notificationManager =
                     getSystemService(NotificationManager.class);
@@ -130,29 +143,31 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         prg.setIndeterminate(true);
         SharedPreferences preferences = getSharedPreferences("busno", Context.MODE_PRIVATE);
 
-/*TODO Bus shared pref*/
-        selectedbus = "Bus No. "+preferences.getInt("bus",0);
+        /*TODO Bus shared pref*/
+        selectedbus = "Bus No. " + preferences.getInt("bus", 0);
 
 
-        reference  = FirebaseFirestore.getInstance().document("buses/bus"+preferences.getInt("bus",0));
+        reference = FirebaseFirestore.getInstance().document("buses/bus" + preferences.getInt("bus", 0));
 
         //NAVI BUTTON LOGIC
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        callbtn=findViewById(R.id.callbtn);
-        whatsappbtn=findViewById(R.id.whatsappbtn);
-        busname=findViewById(R.id.busname);
-        busnumber=findViewById(R.id.busnumber);
+        callbtn = findViewById(R.id.callbtn);
+        whatsappbtn = findViewById(R.id.whatsappbtn);
+        busname = findViewById(R.id.busname);
+        busnumber = findViewById(R.id.busnumber);
 
 
-
+        if (savedInstanceState != null) {
+            cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+        }
 
         callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Home.this, R.style.Theme_MaterialComponents_Dialog);
 
-                builder.setPositiveButton("Proceed",new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         onCallBtnClick();
@@ -176,7 +191,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             public void onClick(View v) {
 
                 //Uri uri = Uri.parse("https://wa.link/ghug2k");
-                Uri uri = Uri.parse("https://wa.me/91"+number);
+                Uri uri = Uri.parse("https://wa.me/91" + number);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
 
@@ -184,27 +199,24 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         });
 
 
-
-
-
-        switch (preferences.getInt("bus",0)){
+        switch (preferences.getInt("bus", 0)) {
             case 1:
                 name = "Mr. NASEER";
-                number="9966255198";
+                number = "9966255198";
 
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 2:
                 name = "Mr. SHAKEEL";
-                number="9959707274";
+                number = "9959707274";
 
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 3:
                 name = "Mr. BASAVA RAJ";
-                number="9392413957";
+                number = "9392413957";
 
                 busname.setText(name);
                 busnumber.setText(number);
@@ -212,14 +224,14 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
             case 4:
                 name = "Mr. SRINIVAS";
-                number="7995726523";
+                number = "7995726523";
 
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 5:
                 name = "Mr. HANEEF";
-                number="9581991734";
+                number = "9581991734";
 
                 busname.setText(name);
                 busnumber.setText(number);
@@ -232,14 +244,14 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 break;
             case 7:
                 name = "Mr. SALEEM";
-                number="7095175669";
+                number = "7095175669";
 
                 busname.setText(name);
                 busnumber.setText(number);
                 break;
             case 8:
                 name = "Mr. YOUNUS";
-                number="9912235254";
+                number = "9912235254";
 
                 busname.setText(name);
                 busnumber.setText(number);
@@ -250,12 +262,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 busnumber.setText("number");
 
         }
-
-
-
-
-
-
 
 
         /**
@@ -277,7 +283,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                     case BottomSheetBehavior.STATE_HALF_EXPANDED:
                     case BottomSheetBehavior.STATE_DRAGGING:
                         locationbtn.setVisibility(View.INVISIBLE);
-                    break;
+                        break;
 
                 }
             }
@@ -307,7 +313,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             startActivity(new Intent(this, Student_Number.class));
         }
         drawebtn = findViewById(R.id.drawerBtn);
-
 
 
         //create the drawer and remember the `Drawer` result object
@@ -375,8 +380,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/w8india.in/"));
                             } else if (drawerItem.getIdentifier() == 2001) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/w8india_in"));
-                            }
-                            else if (drawerItem.getIdentifier() == 2003) {
+                            } else if (drawerItem.getIdentifier() == 2003) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCZ3TnGujid32zOZ0RSLGeMA"));
                             }
                             if (intent != null) {
@@ -402,9 +406,17 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         geocoder = new Geocoder(this);
 
 
+        checkSettingsAndStartLocationUpdates();
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (mMap != null) {
+            outState.putParcelable(KEY_CAMERA_POSITION, mMap.getCameraPosition());
+        }
+        super.onSaveInstanceState(outState);
+    }
 
     /**
      * Manipulates the map once available.
@@ -429,9 +441,13 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         mMap.setTrafficEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnMapClickListener(this);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(17.39607600582687, 78.42970583310021)));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(10));
+
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            enableUserLocation();
-//          zoomToUserLocation();
+            enableMyLocation();
+          zoomToUserLocation();
 
         } else {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -455,23 +471,27 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 //      mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
 //        // Add a marker in Sydney and move the camera
-//        LatLng latLng = new LatLng(27.1751,78.0421);
+//
 //        MarkerOptions markerOptions  = new MarkerOptions().position(latLng).title("Taj Mahal").snippet("Wonder Of The World");
 //        mMap.addMarker(markerOptions);
 //        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,16);
 //        mMap.animateCamera(cameraUpdate);
-        try {
-            List<Address> addresses = geocoder.getFromLocationName("Lords Institute Of Engineering And Technology", 1);
-            Address address = addresses.get(0);
-            LatLng london = (new LatLng(address.getLatitude(), address.getLongitude()));
-//            MarkerOptions markerOptions = new MarkerOptions()
-//                   .position(new LatLng(address.getLatitude(), address.getLongitude()))
-//                    .title(address.getLocality());
-//            mMap.addMarker(markerOptions);
-//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 16));
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    }
+
+    private void enableMyLocation() {
+        // [START maps_check_location_permission]
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            if (mMap != null) {
+                mMap.setMyLocationEnabled(true);
+            }
+        } else {
+            // Permission to access the location is missing. Show rationale and request permission
+            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
+                    Manifest.permission.ACCESS_FINE_LOCATION, true);
         }
+        // [END maps_check_location_permission]
     }
 
     LocationCallback locationCallback = new LocationCallback() {
@@ -489,7 +509,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
     //BUS ICON LOGIC17.449616397619273, 78.4230210144581
     private void setUserLocationMarker(Location location) {
-        LatLng latLng = new LatLng(lat, lon);
+        //LatLng latLng = new LatLng(lat, lon);
         reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -501,20 +521,17 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
                 if (snapshot != null && snapshot.exists()) {
                     Log.d(TAG, "Current data: " + snapshot.getData());
-                    if(snapshot.getDouble("latitude")==10.000001){
-                        lat = 17.341987000671335;
-                        lon = 78.36856298594809;
+                    GeoPoint geoPoint = snapshot.getGeoPoint("location");
 
+
+                    if(geoPoint.getLatitude()==10){
+                        bus = new LatLng(17.341987000671335,78.36856298594809);
                         TextView tv = findViewById(R.id.buslocality);
                         tv.setText("The bus driver is offline");
-
-
-
-                    }else{
-                        lat = snapshot.getDouble("latitude");
-                        lon = snapshot.getDouble("longitude");
+                    } else {
+                        bus = new LatLng(geoPoint.getLatitude(),geoPoint.getLongitude());
                         try {
-                            List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+                            List<Address> addresses = geocoder.getFromLocation(geoPoint.getLatitude(),geoPoint.getLongitude(), 1);
                             Address address = addresses.get(0);
                             locality = address.getAddressLine(0);
                             TextView tv = findViewById(R.id.buslocality);
@@ -525,24 +542,20 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                             er.printStackTrace();
                         }
                     }
-                    bear =  snapshot.getLong("bearing").floatValue();
+                    bear = snapshot.getLong("bearing").floatValue();
 
                     if (userLocationMarker == null) {
                         MarkerOptions markerOptions = new MarkerOptions();
-                        markerOptions.position(latLng);
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.yellowbus));
+                        markerOptions.position(bus);
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.buc_ic));
 
-                        if(bear==0.0){
+                        if (bear == 0.0) {
                             markerOptions.rotation(location.getBearing());
-                        }else {
+                        } else {
                             markerOptions.rotation(bear);
                         }
 
                         markerOptions.title(selectedbus);
-
-
-
-
 
 
 //            behavior.setPeekHeight(100);
@@ -553,11 +566,35 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         prg.setVisibility(View.GONE);
 
                     } else {
-                        userLocationMarker.setPosition(latLng);
+                        userLocationMarker.setPosition(bus);
                         userLocationMarker.setRotation(bear);
 
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
                     }
+
+//get the latLngbuilder from the marker list
+                   LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                    builder.include(bus);
+                    builder.include(new LatLng(location.getLatitude(),location.getLongitude()));
+
+//Bounds padding here
+                    int padding = 75;
+
+                    //Create bounds here
+                    LatLngBounds bounds = builder.build();
+
+//Create camera with bounds
+                    CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+
+//Check map is loaded
+                    mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                        @Override
+                        public void onMapLoaded() {
+                            //animate camera here
+                            mMap.animateCamera(cu);
+
+                        }
+                    });
                 } else {
                     Log.d(TAG, "Current data: null");
                 }
@@ -566,19 +603,17 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         });
 
 
-
-
-        LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
-        if (firsttime) {
-
-
-//            Toast.makeText(this, "The Place You Live", Toast.LENGTH_SHORT).show();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(current, 20));
-            firsttime = false;
-        } else {
-//            Toast.makeText(Home.this, "Your Bus Is Ready On Map ", Toast.LENGTH_LONG).show();
-//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
-        }
+//        LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
+//        if (firsttime) {
+//
+//
+////            Toast.makeText(this, "The Place You Live", Toast.LENGTH_SHORT).show();
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(current, 20));
+//            firsttime = false;
+//        } else {
+////            Toast.makeText(Home.this, "Your Bus Is Ready On Map ", Toast.LENGTH_LONG).show();
+////            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+//        }
 
 
         if (userLocationAccuracyCircle == null) {
@@ -592,7 +627,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 //             mMap.addCircle(circleOptions);
 //             userLocationAccuracyCircle = mMap.addCircle(circleOptions);
         } else {
-            userLocationAccuracyCircle.setCenter(latLng);
+            userLocationAccuracyCircle.setCenter(bus);
             userLocationAccuracyCircle.setRadius(location.getAccuracy());
         }
     }
@@ -622,8 +657,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         NetworkHelper.checkNetworkInfo(this, new NetworkHelper.OnConnectionStatusChange() {
             @Override
             public void onChange(boolean type) {
-                if(type){
-                    startActivity(new Intent(Home.this,Internet_loss.class));
+                if (!type) {
+                    startActivity(new Intent(Home.this, Internet_loss.class));
                 }
             }
         });
@@ -650,19 +685,6 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         stopLocationUpdates();
     }
 
-    private void enableUserLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        mMap.setMyLocationEnabled(true);
-    }
 
     private void zoomToUserLocation() {
 
@@ -677,16 +699,50 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
+        Task<Location> locationTask = fusedLocationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, new CancellationToken() {
+            @Override
+            public boolean isCancellationRequested() {
+                return false;
+            }
+
+            @NonNull
+            @NotNull
+            @Override
+            public CancellationToken onCanceledRequested(@NonNull @NotNull OnTokenCanceledListener onTokenCanceledListener) {
+                return null;
+            }
+        });
         locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
+                if (location != null) {
+//                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                   setUserLocationMarker(location);
+                } else {
+                    if (ActivityCompat.checkSelfPermission(Home.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Home.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            setUserLocationMarker(location);
+                        }
+                    });
+                }
+
 
 //                 mMap.addMarker(new MarkerOptions().position(latLng));
             }
         });
+
     }
 
     @Override
@@ -713,100 +769,57 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 .addLocationRequest(locationRequest).build();
         SettingsClient client = LocationServices.getSettingsClient(this);
         Task<LocationSettingsResponse> locationSettingsResponseTask = client.checkLocationSettings(request);
-        locationSettingsResponseTask.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
-            @Override
-            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                //Settings of device are satisfied and we can start location updates
-                startLocationUpdates();
-            }
+        locationSettingsResponseTask.addOnSuccessListener(locationSettingsResponse -> {
+            //Settings of device are satisfied and we can start location updates
+            startLocationUpdates();
         });
-        locationSettingsResponseTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                if (e instanceof ResolvableApiException) {
-                    ResolvableApiException apiException = (ResolvableApiException) e;
-                    try {
-                        apiException.startResolutionForResult(Home.this, 1001);
-                    } catch (IntentSender.SendIntentException ex) {
-                        ex.printStackTrace();
-                    }
+        locationSettingsResponseTask.addOnFailureListener(e -> {
+            if (e instanceof ResolvableApiException) {
+                ResolvableApiException apiException = (ResolvableApiException) e;
+                try {
+                    apiException.startResolutionForResult(Home.this, 1001);
+                } catch (IntentSender.SendIntentException ex) {
+                    ex.printStackTrace();
                 }
             }
         });
     }
 
-    private void getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
             return;
         }
-        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
-        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    //We have a location
-                    Log.d(TAG, "onSuccess: " + location.toString());
-                    Log.d(TAG, "onSuccess: " + location.getLatitude());
-                    Log.d(TAG, "onSuccess: " + location.getLongitude());
-                } else {
-                    Log.d(TAG, "onSuccess: Location was null...");
-                }
-            }
-        });
-        locationTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, "onFailure: " + e.getLocalizedMessage());
-            }
-        });
-    }
-    private void askLocationPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Log.d(TAG, "askLocationPermission: you should show an alert dialog...");
-            }
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+
+        if (PermissionUtils.isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            // Enable the my location layer if the permission has been granted.
+            enableMyLocation();
+        } else {
+            // Permission was denied. Display an error message
+            // [START_EXCLUDE]
+            // Display the missing permission error dialog when the fragments resume.
+            permissionDenied = true;
+            showMissingPermissionError();
+            // [END_EXCLUDE]
         }
+    }
+
+    private void showMissingPermissionError() {
+        PermissionUtils.PermissionDeniedDialog
+                .newInstance(true).show(getSupportFragmentManager(), "dialog");
     }
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == LOCATION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted
-//                getLastLocation();
-                checkSettingsAndStartLocationUpdates();
-            } else {
-                //Permission not granted
-            }
-        }
-        if (requestCode == ACCESS_LOCATION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                enableUserLocation();
-            } else {
-                //why we want to enable user location
-            }
-        }
-        boolean permissionGranted = false;
-        switch (requestCode) {
-            case 9:
-                permissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                break;
-        }
-        if (permissionGranted) {
-            phoneCall();
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        if (permissionDenied) {
+            // Permission was not granted, display error dialog.
+            showMissingPermissionError();
+            permissionDenied = false;
         }
     }
-
-
 
 
 
