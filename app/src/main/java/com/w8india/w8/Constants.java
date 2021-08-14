@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
@@ -36,10 +37,24 @@ public class Constants {
             return progressDialog;
         }
     }
-    public static void it(Context context, String user){
+    public static void it(Context context, FirebaseAuth auth){
+
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
         Bundle params = new Bundle();
 
+
+        String user ;
+        if(auth.getCurrentUser()!=null){
+            if(auth.getCurrentUser().getPhoneNumber()!=null){
+                user = auth.getCurrentUser().getPhoneNumber();
+            }else{
+                user = auth.getCurrentUser().getEmail();
+
+            }
+        }else {
+            user = "null";
+
+        }
         params.putString("who", user);
         mFirebaseAnalytics.logEvent(user, params);
 

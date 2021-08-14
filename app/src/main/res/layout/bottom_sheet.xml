@@ -39,7 +39,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/whatsappbtn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
@@ -48,10 +48,11 @@
         android:layout_marginEnd="15dp"
         android:layout_marginTop="20dp"
         android:text="@string/whatsapp"
-        android:textColor="#25D366"
+        android:textColor="#fff"
         app:icon="@drawable/whatsapp"
         app:iconSize="30dp"
-        app:iconTint="#25D366"
+        app:iconTint="#fff"
+        app:backgroundTint="#25D366"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.895"
@@ -86,20 +87,21 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/callbtn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
         android:layout_alignParentLeft="true"
+
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="@string/call"
-        android:textColor="@color/accent"
+        android:textColor="#fff"
         app:icon="@drawable/calls"
         app:iconSize="30dp"
-        app:iconTint="@color/colorAccent"
+        app:iconTint="#fff"
 
-        app:strokeColor="@color/colorAccent"
+        app:backgroundTint="@color/colorAccent"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="15dp" />
 

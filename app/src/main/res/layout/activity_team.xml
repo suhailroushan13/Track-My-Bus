@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-
+            android:paddingBottom="5dp"
 
             android:background="#E2F9FB">
 
@@ -98,7 +98,7 @@
                 android:layout_toRightOf="@id/suhailcrd"
                 android:fontFamily="@font/light"
                 android:gravity="center"
-                android:text="Android Developer"
+                android:text="Android Developer | UI &amp; UX"
                 android:textColor="#919191"
                 android:textSize="12sp" />
 
@@ -114,35 +114,30 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/igs"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/insta" />
-
-                <ImageView
-                    android:id="@+id/tws"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/t" />
-
-                <ImageView
                     android:id="@+id/lis"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/link" />
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_outline_public_24"
+                    app:tint="@color/maincolor"/>
+
+                <TextView
+                    android:id="@+id/tag_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_margin="5dp"
+                    android:autoLink="web"
+                    android:linksClickable="true"
+                    android:text="suhailroushan.com" />
             </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
+            android:paddingBottom="5dp"
 
             android:background="#E2F9FB">
 
@@ -193,7 +188,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/light"
                 android:gravity="center"
-                android:text="Android Developer"
+                android:text="Android Developer | Core"
                 android:textColor="#919191"
                 android:textSize="12sp" />
 
@@ -232,192 +227,6 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:layout_marginTop="10dp"
-            android:background="#E2F9FB">
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/fawazcrd"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-
-                android:layout_marginLeft="10dp"
-                app:cardCornerRadius="50dp"
-                app:strokeColor="@color/maincolor"
-                app:strokeWidth="2dp">
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/fawaz" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/fawaz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="5dp"
-
-                android:layout_toRightOf="@+id/fawazcrd"
-                android:autoLink="web"
-                android:fontFamily="@font/medium"
-                android:linksClickable="true"
-                android:text="@string/syed_fawaz_ali"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/ffd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/fawaz"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_toRightOf="@id/fawazcrd"
-                android:fontFamily="@font/light"
-                android:gravity="center"
-                android:text="Android Developer"
-                android:textColor="#919191"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ffd"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/fawazcrd"
-                android:layout_toRightOf="@id/fawazcrd"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/igf"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/insta" />
-
-                <ImageView
-                    android:id="@+id/twf"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/t" />
-
-                <ImageView
-                    android:id="@+id/lif"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/link" />
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:background="#E2F9FB">
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/mannancrd"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                app:cardCornerRadius="50dp"
-
-                app:strokeColor="@color/maincolor"
-                app:strokeWidth="2dp">
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/mannan" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/mannan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="50dp"
-                android:layout_toLeftOf="@+id/mannancrd"
-
-                android:autoLink="web"
-                android:fontFamily="@font/medium"
-                android:linksClickable="true"
-                android:text="@string/abdul_mannan"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/mid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/mannan"
-                android:layout_alignStart="@id/mannan"
-                android:layout_alignLeft="@id/mannan"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/light"
-                android:gravity="center"
-                android:text="Web Developer"
-                android:textColor="#919191"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/mid"
-                android:layout_alignStart="@id/mid"
-                android:layout_alignLeft="@id/mid"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/igm"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/insta" />
-
-                <ImageView
-                    android:id="@+id/twm"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/t" />
-
-                <ImageView
-                    android:id="@+id/lim"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/link" />
-            </LinearLayout>
-        </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
