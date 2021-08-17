@@ -322,6 +322,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
+
                         new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
