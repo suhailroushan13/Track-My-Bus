@@ -2,4 +2,10 @@
 <resources>
     <string name="pick_your_bus">Pick Your Bus</string>
     <string name="request_wait">Request Wait</string>
+    <string name="say_your_number_i_ll_make_otp_appar_on_screen"><![CDATA[Say your Number & I\'ll make OTP appar on Screen]]></string>
+    <string name="say_your_number_i_ll_make_otp_appear_on_screen">Say your Number and I\'ll make OTP appear on Screen</string>
+    <string name="i_accept">I ACCEPT</string>
+    <string name="raju">Raju</string>
+    <string name="mohammed_suhail_roushan_ali">Mohammed Suhail Roushan Ali</string>
+    <string name="android_developer_ui_ux_designer">Android Developer | UI UX Designer</string>
 </resources>

@@ -325,6 +325,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Add Your Bus").withIcon(R.drawable.addbus).withIdentifier(7).withSelectable(false),
                         new PrimaryDrawerItem().withName("Request Wait").withIcon(R.drawable.timer).withIdentifier(9).withSelectable(false),
                         new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
 
@@ -333,7 +334,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
                                 (
-                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.insta).withLevel(2).withIdentifier(2000).withSelectable(false)
+                                        new SecondaryDrawerItem().withName("Instagram").withIcon(R.drawable.instaico).withLevel(2).withIdentifier(2000).withSelectable(false)
 //                                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.t).withLevel(2).withIdentifier(2001).withSelectable(false),
 //                                        new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.youtube).withLevel(2).withIdentifier(2003).withSelectable(false)
 
@@ -356,6 +357,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
                             } else if (drawerItem.getIdentifier() == 3) {
                                 intent = new Intent(Home.this, Friend.class);
+                            } else if (drawerItem.getIdentifier() == 7) {
+                                intent = new Intent(Home.this, AddBus.class);
                             } else if (drawerItem.getIdentifier() == 4) {
                                 intent = new Intent(Home.this, Team.class);
                             } else if (drawerItem.getIdentifier() == 9) {

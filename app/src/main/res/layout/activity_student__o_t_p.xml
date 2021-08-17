@@ -44,7 +44,7 @@
         android:text="@string/verifyS"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:cornerRadius="10dp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,21 +55,24 @@
 
     <TextView
         android:id="@+id/callbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="193dp"
+        android:layout_height="44dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:gravity="center"
         android:text="@string/didn_t_recieve_code_"
         android:textAllCaps="false"
         android:textColor="@color/black"
+        android:textSize="20dp"
+
 
         app:iconTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714"
+        app:layout_constraintVertical_bias="0.722"
         app:strokeColor="@color/white" />
 
     <com.google.android.material.button.MaterialButton
@@ -81,21 +84,21 @@
         android:layout_alignParentLeft="true"
         android:clickable="true"
         android:focusable="true"
-        android:textSize="14sp"
         android:shadowColor="@color/black"
-
-
         android:text="@string/resend"
+
+
         android:textColor="@color/maincolor"
+        android:textSize="14sp"
         app:cornerRadius="10dp"
         app:iconTint="@color/colorAccent"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintHorizontal_bias="0.758"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.719"
+        app:layout_constraintVertical_bias="0.724"
         app:strokeColor="@color/maincolor"
         app:strokeWidth="1dp" />
 

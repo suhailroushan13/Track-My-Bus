@@ -95,10 +95,10 @@ public class Student_Number extends AppCompatActivity {
                 String phoneNumber = "+91"+ phone;
                 if(Constants.isOnline(Student_Number.this)) {
                     if (phone.isEmpty()) {
-                        phoneNumberEdit.setError("Enter Your Number ");
+                        phoneNumberEdit.setError("Relax & Try to Remember Your Number ");
 
                     } else if (phone.length() < 10) {
-                        phoneNumberEdit.setError("Have You Forget Your Number ??");
+                        phoneNumberEdit.setError(" We didn't asked random number");
                     } else {
                         Intent intent = new Intent(Student_Number.this, Student_OTP.class);
                         intent.putExtra("no", phoneNumber);
