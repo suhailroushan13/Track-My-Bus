@@ -18,11 +18,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -50,14 +48,17 @@ public class Select_Bus extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this,R.style.ThemeOverlay_App_MaterialAlertDialog);
+        builder.setMessage("1.The Driver for this Bus doesn't have a Smartphone\n2.Due to this problem we are unable to track this Bus Location.\n3.Meanwhile We are working on an Alternative solution.");
+
         builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(Select_Bus.this, "Thanks for your cooperation, Please choose other buses", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Select_Bus.this, "Thanks for your Cooperation", Toast.LENGTH_SHORT).show();
 
             }
         });
+
 //The driver for this bus doesn't have a Smart Phone. Due to this Problem
 //we are unable to track this Bus Location
         //The Driver for this Bus doesn't have a Smart Phone. Due to this Problem
@@ -72,8 +73,13 @@ public class Select_Bus extends AppCompatActivity {
                     @Override
                     public void onEvent(@Nullable @org.jetbrains.annotations.Nullable DocumentSnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
                         int count =  value.getDouble("counter").intValue();
-                        builder.setMessage("The Driver for this Bus doesn't have a smartphone due to this problem we are unable to track this bus location. Meanwhile we are working on an alternative solution  \n And we have your back, we are listening to you and "+ count+ " others requests");
+                        builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(Select_Bus.this,  "Thanks for your cooperation \nAnd we have your back, we are listening to you and "+ count+ " others requests", Toast.LENGTH_LONG).show();
 
+                            }
+                        });
                     }
                 });
 
@@ -91,7 +97,14 @@ public class Select_Bus extends AppCompatActivity {
                        finish();
                        break;
                    default:
-                       ref.update("counter", FieldValue.increment(1));
+
+                       if(preferences.getBoolean("first", true)){
+                           ref.update("counter", FieldValue.increment(1));
+                           editor.putBoolean("first", false).apply();
+                           editor.commit();
+                       }
+
+
                        builder.create();
                        builder.show();
 

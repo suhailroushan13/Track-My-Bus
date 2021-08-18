@@ -1,13 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.W8" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
         <!-- Primary brand color. -->
         <item name="colorPrimary">#03A9F4</item>
         <item name="colorPrimaryVariant">#03A9F4</item>
         <item name="colorOnPrimary">#03A9F4</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#03A9F4</item>
+
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+
+
+        <!-- Secondary brand color. -->
+
         <item name="colorSecondaryVariant">#03A9F4</item>
         <item name="statusBarBackground">@color/maincolor</item>
         <item name="statusBarForeground">@color/maincolor</item>
@@ -15,8 +23,29 @@
 
 
         <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!--        Primary Button Color In Dailog Box Yex No -->
+        <!--        Secondary Color Text In Dailog Box -->
+        <!--        Background OF Dailog Box Surface-->
+        <!--        On Surface Shadow Of Background-->
+        <item name="colorPrimary">@color/maincolor</item>
+        <item name="colorSecondary">@color/maincolor</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">#000000</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+
+
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text
+        </item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.App.Button</item>
+
+    </style>
+
 
 </resources>
