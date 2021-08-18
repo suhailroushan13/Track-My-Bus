@@ -27,14 +27,14 @@
                 android:id="@+id/abtud"
                 android:layout_centerHorizontal="true"/>
             <ImageView
-                android:layout_width="150dp"
+                android:layout_width="80dp"
                 android:id="@+id/abtlogo"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/abtud"
-                android:layout_height="150dp"
+                android:layout_height="80dp"
 
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/ic_launcher_foreground"/>
+                app:srcCompat="@drawable/applogo"/>
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"

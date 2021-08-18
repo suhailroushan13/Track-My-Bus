@@ -2,6 +2,7 @@ package com.w8india.w8;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,9 +17,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Select_Bus extends AppCompatActivity {
 
@@ -38,11 +48,34 @@ public class Select_Bus extends AppCompatActivity {
         lv.setAdapter(adapter);
         preferences = getSharedPreferences("busno",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(Select_Bus.this, "Thanks for your cooperation, Please choose other buses", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+//The driver for this bus doesn't have a Smart Phone. Due to this Problem
+//we are unable to track this Bus Location
+        //The Driver for this Bus doesn't have a Smart Phone. Due to this Problem
+        //we are unable to track this Bus Location
+
+        //Number of Students Clicked On This Button __
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DocumentReference ref = db.collection("buses").document("bus"+position);
+                ref.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable @org.jetbrains.annotations.Nullable DocumentSnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
+                        int count =  value.getDouble("counter").intValue();
+                        builder.setMessage("The Driver for this Bus doesn't have a smartphone due to this problem we are unable to track this bus location. Meanwhile we are working on an alternative solution  \n And we have your back, we are listening to you and "+ count+ " others requests");
+
+                    }
+                });
 
                switch (position){
                    case 0:
@@ -58,12 +91,10 @@ public class Select_Bus extends AppCompatActivity {
                        finish();
                        break;
                    default:
-                       Snackbar.make(lv,"The selected bus is not available right now",Snackbar.LENGTH_INDEFINITE).setAction("Dismiss", new View.OnClickListener() {
-                           @Override
-                           public void onClick(View v) {
-                               Toast.makeText(Select_Bus.this, "Please choose other buses", Toast.LENGTH_SHORT).show();
-                           }
-                       }).show();
+                       ref.update("counter", FieldValue.increment(1));
+                       builder.create();
+                       builder.show();
+
 //                   case 2:
 //                       editor.putInt("bus",3);
 //                       editor.commit();
