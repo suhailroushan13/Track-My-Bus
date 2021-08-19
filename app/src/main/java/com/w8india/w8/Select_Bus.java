@@ -20,6 +20,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,6 +30,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import org.jetbrains.annotations.NotNull;
 
 public class Select_Bus extends AppCompatActivity {
 
@@ -51,37 +56,37 @@ public class Select_Bus extends AppCompatActivity {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this,R.style.ThemeOverlay_App_MaterialAlertDialog);
         builder.setMessage("1.The Driver for this Bus doesn't have a Smartphone\n2.Due to this problem we are unable to track this Bus Location.\n3.Meanwhile We are working on an Alternative solution.");
 
-        builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(Select_Bus.this, "Thanks for your Cooperation", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                Toast.makeText(Select_Bus.this, "Thanks for your Cooperation", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 //The driver for this bus doesn't have a Smart Phone. Due to this Problem
 //we are unable to track this Bus Location
         //The Driver for this Bus doesn't have a Smart Phone. Due to this Problem
         //we are unable to track this Bus Location
-
+         int[] count = new int[1];
         //Number of Students Clicked On This Button __
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 DocumentReference ref = db.collection("buses").document("bus"+position);
-                ref.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onEvent(@Nullable @org.jetbrains.annotations.Nullable DocumentSnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
-                        int count =  value.getDouble("counter").intValue();
-                        builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(Select_Bus.this,  "Thanks for your cooperation \nAnd we have your back, we are listening to you and "+ count+ " others requests", Toast.LENGTH_LONG).show();
+                    public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                       count[0] =  task.getResult().getDouble("counter").intValue();
 
-                            }
-                        });
                     }
                 });
+//                ref.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onEvent(@Nullable @org.jetbrains.annotations.Nullable DocumentSnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
+//
+//                    }
+//                });
 
                switch (position){
                    case 0:
@@ -104,7 +109,13 @@ public class Select_Bus extends AppCompatActivity {
                            editor.commit();
                        }
 
+                       builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               Toast.makeText(Select_Bus.this,  "Thanks for your cooperation \nAnd we have your back, we are listening to you and "+ count[0] + " others requests", Toast.LENGTH_LONG).show();
 
+                           }
+                       });
                        builder.create();
                        builder.show();
 
