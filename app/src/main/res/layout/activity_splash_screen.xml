@@ -84,12 +84,11 @@
         android:layout_height="48dp"
 
 
-
         android:layout_marginTop="24dp"
         android:contentDescription="@string/todoss"
         app:layout_constraintBottom_toTopOf="@+id/slogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text2"
         app:layout_constraintVertical_bias="1.0"
@@ -100,12 +99,13 @@
         android:id="@+id/slogin"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/rectangel"
+        android:paddingTop="-30dp"
+
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/medium"
@@ -115,16 +115,18 @@
         android:text="@string/connect_with_driver"
         android:textAllCaps="false"
         android:textColor="#FFF"
+        app:cornerRadius="15dp"
         android:textSize="20sp"
         app:backgroundTint="#03A9F4"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text2"
         app:layout_constraintVertical_bias="0.849"
-        app:strokeColor="@color/white"
-        app:strokeWidth="3dp" />
+        app:strokeColor="@color/ColorPrimary" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

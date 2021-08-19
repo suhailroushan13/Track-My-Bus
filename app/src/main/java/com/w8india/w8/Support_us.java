@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -25,6 +26,14 @@ public class Support_us extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support_us);
+        rate.findViewById(R.id.rate);
+        rate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Support_us.this, "Please Give Us a Review", Toast.LENGTH_LONG).show();
+            }
+        });
         SmileyRating smileyRating=findViewById(R.id.smile_rating);
         SmileyRating.Type smiley = smileyRating.getSelectedSmiley();
 // You can compare it with rating Type
@@ -112,6 +121,7 @@ public class Support_us extends AppCompatActivity {
         });
         builder.create().show();
     }
+
 
 
 

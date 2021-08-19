@@ -34,6 +34,7 @@ TextView version;
 
     }
 
+
     private String vname(Context context){
         try{
             return context.getPackageManager()
@@ -43,6 +44,8 @@ TextView version;
             return "Not Found";
         }
     }
+
+
     @Override
     public void onClick(View v) {
         if(v==mail){

@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Request extends AppCompatActivity {
   EditText names,messgaes;
   Button call,wa;
-    String waittime,number;
+    String waittime = "5 minutes",number;
 
 
 
@@ -85,6 +85,7 @@ public class Request extends AppCompatActivity {
                         Request.this.startActivity(i);
 
 
+
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -102,11 +103,23 @@ public class Request extends AppCompatActivity {
         });
 
         wa.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://wa.me/91"+number+"?text="+names.getText().toString()+messgaes.getText().toString());
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+
+                if(names.getText().toString().isEmpty()) {
+
+                    String msg = "-";
+                    if(!messgaes.getText().toString().isEmpty()){
+                        msg = messgaes.getText().toString();
+                    }
+                    Uri uri = Uri.parse("https://wa.me/91" + number + "?text=Name: "  + names.getText().toString() +"\n Reason: "+ msg + "\nRequested Time: "+waittime);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }else{
+                    names.setError("Name is Required");
+                }
+
             }
         });
 
@@ -133,6 +146,7 @@ public class Request extends AppCompatActivity {
                         waittime = "5 Minutes";
                         if(names.getText().toString().isEmpty()){
                             names.setError("Name is Required");
+
                         }
 
 

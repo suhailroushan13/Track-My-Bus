@@ -251,7 +251,7 @@
         android:layout_gravity="left"
         android:gravity="left"
 
-        android:text="Please provide a valid reason."
+        android:text="Please provide a valid reason. (Optional)"
         app:layout_constraintBottom_toTopOf="@+id/sms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
