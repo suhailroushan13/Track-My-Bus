@@ -39,6 +39,7 @@ public class Select_Bus extends AppCompatActivity {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select__bus);
         lv =  findViewById(R.id.bus_list);
