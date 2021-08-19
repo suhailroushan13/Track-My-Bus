@@ -50,7 +50,7 @@ public class Select_Bus extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this,R.style.ThemeOverlay_App_MaterialAlertDialog);
-        builder.setMessage("1.The Driver for this Bus doesn't have a Smartphone\n2.Due to this problem we are unable to track this Bus Location.\n3.Meanwhile We are working on an Alternative solution.");
+        builder.setMessage("1.The Driver for this Bus doesn't have a Smartphone\n2.Due to this problem we are unable to Track this Bus Location.\n3.Meanwhile We are working on an Alternative solution.");
 
         builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
             @Override
@@ -77,7 +77,7 @@ public class Select_Bus extends AppCompatActivity {
                         builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(Select_Bus.this,  "Thanks for your cooperation \nAnd we have your back, we are listening to you and "+ count+ " others requests", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Select_Bus.this,  "Thanks for your Cooperation \nAnd We have your back, We are listening to You and "+ count+ " Others requests", Toast.LENGTH_LONG).show();
 
                             }
                         });

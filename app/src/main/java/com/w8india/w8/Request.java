@@ -75,7 +75,7 @@ public class Request extends AppCompatActivity {
         }        call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Request.this, R.style.Theme_MaterialComponents_Dialog);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Request.this, R.style.ThemeOverlay_App_MaterialAlertDialog);
 
                 builder.setPositiveButton("Proceed",new DialogInterface.OnClickListener() {
                     @Override
@@ -83,6 +83,7 @@ public class Request extends AppCompatActivity {
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse("tel:"+number));
                         Request.this.startActivity(i);
+
 
                     }
                 });
@@ -93,7 +94,7 @@ public class Request extends AppCompatActivity {
                     }
                 });
                 builder.setTitle("Do you want to call?");
-                builder.setMessage("Please note that this may distract the driver so please use this carefully and only if its very urgent!");
+                builder.setMessage("Please note that this may distract the driver.\nSo please use this carefully and\nOnly use if its Very Urgent!");
                 builder.create();
                 builder.show();
 
