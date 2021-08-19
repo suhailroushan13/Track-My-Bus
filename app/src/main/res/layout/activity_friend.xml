@@ -32,10 +32,106 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/shares" />
 
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="left"
+        android:text="@string/tell_a_friend"
+        android:textColor="@color/black"
+
+
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375"
+        tools:ignore="RtlHardcoded">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView567"
+        android:layout_width="384dp"
+        android:layout_height="51dp"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/light"
+        android:gravity="left"
+        android:text="@string/help_your_classmate_s_finding_an_easy_way_to_reach_college_on_time"
+        android:textColor="@color/black"
+
+
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlHardcoded">
+
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="384dp"
+        android:layout_height="51dp"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/medium"
+        android:gravity="left"
+        android:text="Why Lords Bus App ???"
+        android:textColor="@color/ColorPrimary"
+
+
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.18"
+        tools:ignore="RtlHardcoded">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView56799"
+        android:layout_width="384dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20sp"
+
+        android:fontFamily="@font/light"
+        android:gravity="left"
+
+        android:text="1.  Clear Directions\n2. Preferred Features\n3. User Friendly Design Interface\n4. Real Time Tracking with Live Location\n5. On Time Alert Notifications"
+        android:textColor="@color/black"
+
+
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.319"
+        tools:ignore="RtlHardcoded">
+
+    </TextView>
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sharebtn"
-        android:layout_width="214dp"
-        android:layout_height="64dp"
+        android:layout_width="280dp"
+        android:layout_height="73dp"
         android:layout_gravity="center_horizontal"
         android:clickable="true"
         android:focusable="true"
@@ -47,36 +143,18 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:cornerRadius="15dp"
+        app:cornerRadius="13dp"
         app:icon="@drawable/share"
         app:iconSize="36dp"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView56799"
+        app:layout_constraintVertical_bias="0.426"
         app:strokeColor="@color/white"
         app:strokeWidth="3dp"
         tools:ignore="UnknownId" />
 
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="left"
-        android:text="@string/tell_a_friend"
-
-
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35">
-
-
-    </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

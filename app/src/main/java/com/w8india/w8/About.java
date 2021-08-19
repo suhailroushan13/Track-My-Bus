@@ -1,6 +1,5 @@
 package com.w8india.w8;
 
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,7 +28,7 @@ TextView version;
         mail.setOnClickListener(this);
         version = findViewById(R.id.versionabt);
 
-        version.setText("v"+vname(this));
+        version.setText("Version"+vname(this));
 
 
 
