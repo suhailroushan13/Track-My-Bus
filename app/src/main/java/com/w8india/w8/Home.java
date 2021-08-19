@@ -289,6 +289,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         });
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+
+
         locationbtn = findViewById(R.id.locationbtn);
         locationbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -370,7 +372,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, About.class);
                             } else if (drawerItem.getIdentifier() == 11) {
                                 auth.signOut();
-                                intent = new Intent(Home.this, Selection.class);
+                                intent = new Intent(Home.this, Student_Number.class);
                                 finish();
                             } else if (drawerItem.getIdentifier() == 2000) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/w8india.in/"));
@@ -443,7 +445,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             enableMyLocation();
-          zoomToUserLocation();
+
 
         } else {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -453,6 +455,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_LOCATION_REQUEST_CODE);
             }
         }
+        zoomToLocation();
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -506,6 +509,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     //BUS ICON LOGIC17.449616397619273, 78.4230210144581
     private void setUserLocationMarker(Location location) {
         //LatLng latLng = new LatLng(lat, lon);
+        prg.setVisibility(View.GONE);
         reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -559,7 +563,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         //We create a new marker
                         userLocationMarker = mMap.addMarker(markerOptions);
 
-                        prg.setVisibility(View.GONE);
+
 
                     } else {
                         userLocationMarker.setPosition(bus);
@@ -682,8 +686,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         stopLocationUpdates();
     }
 
-
-    private void zoomToUserLocation() {
+    private void zoomToLocation() {
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -714,8 +717,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
             public void onSuccess(Location location) {
                 if (location != null) {
 //                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                   setUserLocationMarker(location);
+//                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
+                    setUserLocationMarker(location);
                 } else {
                     if (ActivityCompat.checkSelfPermission(Home.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Home.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         // TODO: Consider calling
@@ -730,6 +733,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                     fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
                         @Override
                         public void onSuccess(Location location) {
+//                            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+//                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
                             setUserLocationMarker(location);
                         }
                     });
@@ -739,6 +744,66 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 //                 mMap.addMarker(new MarkerOptions().position(latLng));
             }
         });
+
+    }
+    private void zoomToUserLocation() {
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+//        Task<Location> locationTask = fusedLocationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, new CancellationToken() {
+//            @Override
+//            public boolean isCancellationRequested() {
+//                return false;
+//            }
+//
+//            @NonNull
+//            @NotNull
+//            @Override
+//            public CancellationToken onCanceledRequested(@NonNull @NotNull OnTokenCanceledListener onTokenCanceledListener) {
+//                return null;
+//            }
+//        });
+//        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+//            @Override
+//            public void onSuccess(Location location) {
+//                if (location != null) {
+//                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+//                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+//                   //setUserLocationMarker(location);
+//                } else {
+//                    if (ActivityCompat.checkSelfPermission(Home.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Home.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                        // TODO: Consider calling
+//                        //    ActivityCompat#requestPermissions
+//                        // here to request the missing permissions, and then overriding
+//                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                        //                                          int[] grantResults)
+//                        // to handle the case where the user grants the permission. See the documentation
+//                        // for ActivityCompat#requestPermissions for more details.
+//                        return;
+//                    }
+                    fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                            //setUserLocationMarker(location);
+                        }
+                    });
+
+
+
+//                 mMap.addMarker(new MarkerOptions().position(latLng));
+//            }
+//        });
 
     }
 
@@ -835,21 +900,26 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
-        builder.setTitle("Are you sure you want to exit?");
-        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Home.super.onBackPressed();
-            }
-        });
-        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.create();
-        builder.show();
+        if(sheetBehavior.getState()!=BottomSheetBehavior.STATE_EXPANDED) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
+            builder.setTitle("Are you sure you want to exit?");
+            builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Home.super.onBackPressed();
+                }
+            });
+            builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.create();
+            builder.show();
+        }else{
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+        }
     }
 }

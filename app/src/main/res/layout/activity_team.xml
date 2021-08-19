@@ -13,12 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="292dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001"
         app:srcCompat="@drawable/teams" />
 
 
@@ -31,6 +28,7 @@
         android:layout_width="320dp"
         android:layout_height="40dp"
         android:fontFamily="@font/medium"
+        android:layout_margin="8dp"
         android:gravity="center"
         android:text="Meet the Development Team"
         android:textColor="@color/black"
@@ -42,21 +40,19 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardsizhan"
-        android:layout_width="359dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
 
         app:cardBackgroundColor="#efeeee"
         app:cardCornerRadius="20dp"
+
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
-
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardsuhail"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/cardsuhail">
 
 
         <com.google.android.material.card.MaterialCardView
@@ -147,10 +143,10 @@
             android:src="@drawable/link" />
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
 
         android:id="@+id/cardsuhail"
-        android:layout_width="359dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
 
         app:cardBackgroundColor="#efeeee"
@@ -158,15 +154,12 @@
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
+
+
         app:cardUseCompatPadding="true"
-
-
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.002">
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
 
 
         <com.google.android.material.card.MaterialCardView
@@ -253,7 +246,7 @@
 
             android:textSize="15dp" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,33 +2,6 @@
 <resources>
 
 
-    <style name="CustomTheme" parent="MaterialDrawerTheme">
-        <!-- ...and here we setting appcompat’s color theming attrs -->
-        <item name="colorPrimary">@color/material_drawer_primary</item>
-        <item name="colorPrimaryDark">@color/maincolor</item>
-        <item name="colorAccent">@color/material_drawer_accent</item>
-
-
-        <!-- MaterialDrawer specific values -->
-        <item name="material_drawer_background">@color/material_drawer_background</item>
-        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
-        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
-        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
-        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
-        <item name="material_drawer_divider">@color/material_drawer_divider</item>
-        <item name="material_drawer_selected">@color/material_drawer_selected</item> <!-- Material 2 defines 12% alpha, primary color -->
-        <item name="material_drawer_selected_legacy">@color/material_drawer_selected</item> <!-- Defines the color if legacy style (Material 1, is enabled) -->
-        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
-        <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
-        <item name="material_drawer_header_selection_subtext">@color/material_drawer_dark_header_selection_subtext</item>
-        <item name="material_drawer_legacy_style">false</item> <!-- Enables legacy Material 1 style -->
-    </style>
-
-        <style name="DefaultButton">
-            <item name="android:layout_width">wrap_content</item>
-            <item name="android:layout_height">wrap_content</item>
-        </style>
-
     <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
 
     </style>
@@ -49,20 +22,8 @@
         <item name="materialThemeOverlay">@style/Widget.MaterialComponents.Button.TextButton</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
-    <style name="Widget.App.ButtonPositive" parent="MyButton">
-        <item name="materialThemeOverlay">@style/MyButton</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
-    </style>
-
-    <style name="ThemeOverlay.App.Button" parent="">
-        <item name="colorPrimary">@color/black</item>
-    </style>
 
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">15dp</item>
-    </style>
-    <style name="ShapeAppearance.App.LargeComponent." parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">15dp</item>
     </style>
@@ -71,10 +32,6 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">5dp</item>
     </style>
-
-<style name="MyButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-    <item name="tint">@color/maincolor</item>
-</style>
 
     <color name="shrine_pink_900">#056E9D</color>
 
