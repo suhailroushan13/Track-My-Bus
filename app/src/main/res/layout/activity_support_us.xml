@@ -14,7 +14,7 @@
 
 
         android:layout_height="250dp"
-android:scaleType="center"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@ android:scaleType="center"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="380dp"
         android:fontFamily="@font/light"
-        android:text="Your App Store review helps us to spread the world  grow the Waze Community"
+        android:text="@string/your_review_helps_us_spread_the_word_and_grow_our_community"
 
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -80,7 +80,7 @@ android:scaleType="center"
         android:layout_width="214dp"
         android:layout_height="64dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="148dp"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/medium"
@@ -93,6 +93,7 @@ android:scaleType="center"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar"
         app:layout_constraintVertical_bias="0.206"
@@ -108,10 +109,9 @@ android:scaleType="center"
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.808" />
+        app:layout_constraintVertical_bias="0.662" />
 
     <!--    <RatingBar-->
 

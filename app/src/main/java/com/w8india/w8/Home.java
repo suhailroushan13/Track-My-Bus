@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -55,6 +54,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.auth.FirebaseAuth;
@@ -159,7 +159,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
         callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Home.this, R.style.Theme_MaterialComponents_Dialog);
+
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Home.this,R.style.ThemeOverlay_App_MaterialAlertDialog);
 
                 builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
                     @Override
@@ -173,8 +174,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
                     }
                 });
-                builder.setTitle("Do you want to call?");
-                builder.setMessage("Please note that this may distract the driver so please use this carefully and only if its very urgent!");
+                builder.setTitle("Is it Important to Call ?");
+                builder.setMessage("Please note that this may distract the driver.So please use this feature carefully & Only if its very urgent!");
                 builder.create();
                 builder.show();
 
@@ -328,9 +329,10 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                         new PrimaryDrawerItem().withName("Switch Bus").withIcon(R.drawable.bus).withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Support Us").withIcon(R.drawable.rateus).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Tell a Friend").withIcon(R.drawable.friend).withIdentifier(3).withSelectable(false),
-                        //new PrimaryDrawerItem().withName("Add Your Bus").withIcon(R.drawable.addbus).withIdentifier(7).withSelectable(false),
+
                         new PrimaryDrawerItem().withName("Request Wait").withIcon(R.drawable.timer).withIdentifier(9).withSelectable(false),
                         new PrimaryDrawerItem().withName("The Team").withIcon(R.drawable.team).withIdentifier(4).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Website").withIcon(R.drawable.web).withIdentifier(7).withSelectable(false),
 
                         //new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
                         new PrimaryDrawerItem().withName("Join Our Discord").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
@@ -365,6 +367,9 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                             } else if (drawerItem.getIdentifier() == 9) {
                                 intent = new Intent(Home.this, Request.class);
 
+                            } else if (drawerItem.getIdentifier() == 7) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://lordsbus.in/"));
+
                             } else if (drawerItem.getIdentifier() == 5) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/6NtGDzKTAz"));
                                 //link
@@ -375,7 +380,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, Student_Number.class);
                                 finish();
                             } else if (drawerItem.getIdentifier() == 2000) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/w8india.in/"));
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/lordsbus.in/"));
                             } else if (drawerItem.getIdentifier() == 2001) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/w8india_in"));
                             } else if (drawerItem.getIdentifier() == 2003) {
@@ -901,7 +906,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
     @Override
     public void onBackPressed() {
         if(sheetBehavior.getState()!=BottomSheetBehavior.STATE_EXPANDED) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
+
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Home.this,R.style.ThemeOverlay_App_MaterialAlertDialog);
             builder.setTitle("Are you sure you want to exit?");
             builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                 @Override

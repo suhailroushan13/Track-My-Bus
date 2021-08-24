@@ -5,9 +5,9 @@
 
     </solid>
 
-<stroke android:width="2dp">
+    <stroke android:width="2dp">
 
-</stroke>
+    </stroke>
 
     <corners android:radius="10dp">
 

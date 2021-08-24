@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.hsalf.smileyrating.SmileyRating;
 
 public class Support_us extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class Support_us extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support_us);
-        rate.findViewById(R.id.rate);
+        rate=findViewById(R.id.rate);
         rate.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -83,7 +84,7 @@ public class Support_us extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this,R.style.ThemeOverlay_App_MaterialAlertDialog);
         builder.setTitle("Feedback");
         builder.setMessage("Wana Change Your Mind ? Give us a Feedback");
         builder.setCancelable(false);

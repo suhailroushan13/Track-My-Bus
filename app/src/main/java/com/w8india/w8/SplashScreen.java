@@ -12,9 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class SplashScreen extends AppCompatActivity {
 
 
@@ -95,7 +92,7 @@ public class SplashScreen extends AppCompatActivity {
                             }
 
                         }
-                    }, 1500);
+                    }, 1000);
                 }
             });
 

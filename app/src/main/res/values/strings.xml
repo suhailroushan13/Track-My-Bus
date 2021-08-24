@@ -48,7 +48,7 @@
     <string name="call">CALL</string>
     <!--    <string name="whatsapp">WhatsApp</string>-->
     <string name="if_you_are_l8_make_your_bus_w8">If You Are Late Make Your Bus Wait</string>
-    <string name="fill_your_details">Fill Your Details</string>
+    <string name="fill_your_details">Fill Your Details :</string>
     <string name="mohammed_suhail_roushan_ali">Mohammed Suhail Roushan Ali</string>
     <string name="mohammed_izhan">Mohammed Izhan Ali</string>
     <string name="default_notification_channel_id">Message</string>
@@ -65,7 +65,9 @@
     <string name="help_your_classmate_s_finding_an_easy_way_to_reach_college_on_time">Help your Classmate\'s finding an Easy Way to reach College on Time</string>
     <string name="contact_us">Contact us</string>
     <string name="version_1_0">Version:1.0</string>
-    <!--    <string name="resend">Resend</string>-->
+    <string name="help_your_classmates_find_an_easy_way_to_reach_college_on_time">Help your classmates find an easy way to reach College on time!</string>
+    <string name="your_review_helps_us_spread_the_word_and_grow_our_community">Your review helps us spread the word and grow our community.</string>
+
 
 
 </resources>
