@@ -14,11 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class About extends AppCompatActivity implements View.OnClickListener{
 Button privacy,tnc,mail;
-TextView version;
+TextView version,contactusbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+
 
         privacy = findViewById(R.id.privacypolbtn);
         privacy.setOnClickListener(this);
@@ -28,11 +30,14 @@ TextView version;
         mail.setOnClickListener(this);
         version = findViewById(R.id.versionabt);
 
+
         version.setText("Version"+vname(this));
 
 
 
     }
+
+
 
 
     private String vname(Context context){
@@ -63,8 +68,18 @@ TextView version;
                 Toast.makeText(About.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
             }
         }else if(v==privacy){
+
+            String url = "http://www.lordsbus.in/privacy.html";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
             //TODO privacy policy
         }else if(v==tnc){
+
+            String url = "http://www.lordsbus.in/terms.html";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
             //TODO tnc
         }
     }

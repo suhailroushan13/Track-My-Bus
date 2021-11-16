@@ -35,15 +35,19 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+
         android:gravity="left"
         android:text="@string/tell_a_friend"
+
+
         android:textColor="@color/black"
-
-
         android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shares"
-        tools:ignore="RtlHardcoded"
-        tools:layout_editor_absoluteX="20dp">
+        tools:ignore="RtlHardcoded">
 
     </TextView>
 
@@ -55,7 +59,7 @@
         android:layout_marginTop="1dp"
         android:fontFamily="@font/light"
         android:gravity="left"
-        android:text="@string/help_your_classmate_s_finding_an_easy_way_to_reach_college_on_time"
+        android:text="@string/help_your_classmates_find_an_easy_way_to_reach_college_on_time"
 
 
         android:textColor="@color/black"
@@ -75,37 +79,41 @@
         android:id="@+id/textView56"
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:fontFamily="@font/medium"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+
+        android:fontFamily="@font/medium"
         android:gravity="left"
+
+
         android:text="Why Lords Bus App ???"
+
         android:textColor="@color/ColorPrimary"
-
-
         android:textSize="30sp"
-
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView567"
-        tools:ignore="RtlHardcoded"
-        tools:layout_editor_absoluteX="20dp"
-        android:layout_marginLeft="16dp">
+        tools:ignore="RtlHardcoded">
 
     </TextView>
+
 
     <TextView
         android:id="@+id/textView56799"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="14dp"
-        android:fontFamily="@font/light"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
 
+
+
+
+
+        android:fontFamily="@font/light"
         android:gravity="left"
+
+
         android:text="1.  Clear Directions\n2. Preferred Features\n3. User Friendly Design Interface\n4. Real Time Tracking with Live Location\n5. On Time Alert Notifications"
 
-
         android:textColor="@color/black"
-
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +121,6 @@
         tools:ignore="RtlHardcoded">
 
     </TextView>
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sharebtn"
@@ -139,7 +146,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView56799"
-        app:layout_constraintVertical_bias="0.426"
+        app:layout_constraintVertical_bias="0.328"
         app:strokeColor="@color/white"
         app:strokeWidth="3dp"
         tools:ignore="UnknownId" />

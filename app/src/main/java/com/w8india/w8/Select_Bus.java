@@ -34,7 +34,7 @@ public class Select_Bus extends AppCompatActivity {
     SharedPreferences preferences;
 
     String [] titles={"Bus No.1 ","Bus No.2","Bus No.3","Bus No.4","Bus No.5","Bus No.6","Bus No.7"," Bus No.8"};
-    String [] descriptions={"JNTU - AMEERPET - MEHDIPATNAM","CHANDRAYANGUTTA - SHALIBANDA - RAJENDRANAGAR","NEREDMERT - MUSHEERABAD - MDPTM","LB NAGAR - NAMPALLY - BAPUGHAT","SAGAR X ROAD - BAHADURPURA - RJNR","NANAL NAGAR - 7 TOMBS- GOLCONDA","MIYAPUR - GACHIBOWLI - LANGER HOUSE", "IS SADAN - DABIRPURA - KARWAN"};
+    String [] descriptions={"JNTU - AMEERPET - MEHDIPATNAM","CHANDRAYANGUTTA - SHA ALI BANDA - RAJENDRANAGAR","NEREDMET - MUSHEERABAD - MEHDIPATNAM","LB NAGAR - NAMPALLY - BAPU GHAT","SAGAR X ROAD - BAHADURPURA - RAJENDRANAGAR","NANAL NAGAR - 7 TOMBS- GOLCONDA","MIYAPUR - GACHIBOWLI - LANGER HOUSE", "IS SADAN - DABIRPURA - KARWAN"};
     int [] images={R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver,R.drawable.busdriver};
     ListView lv;
     

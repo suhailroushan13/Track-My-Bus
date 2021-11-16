@@ -12,8 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class Request extends AppCompatActivity {
   EditText names,messgaes;
@@ -75,7 +76,7 @@ public class Request extends AppCompatActivity {
         }        call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Request.this, R.style.ThemeOverlay_App_MaterialAlertDialog);
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Request.this,R.style.ThemeOverlay_App_MaterialAlertDialog);
 
                 builder.setPositiveButton("Proceed",new DialogInterface.OnClickListener() {
                     @Override
