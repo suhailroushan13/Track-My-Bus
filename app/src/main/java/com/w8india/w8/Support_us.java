@@ -26,7 +26,7 @@ public class Support_us extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support_us);
-        rate.findViewById(R.id.rate);
+        rate = findViewById(R.id.rate);
         rate.setOnClickListener(new View.OnClickListener() {
 
             @Override

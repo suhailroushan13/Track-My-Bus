@@ -61,14 +61,14 @@
                 app:icon="@drawable/outline_privacy_tip_black_24dp" />
 
             <ImageView
-                android:layout_width="200dp"
                 android:id="@+id/abtlogo"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/abtud"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
-
+                android:layout_below="@id/abtud"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/logoaa"/>
+
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/logoaa" />
 
             <TextView
                 android:id="@+id/textView8"

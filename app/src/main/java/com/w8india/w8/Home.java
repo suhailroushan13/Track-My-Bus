@@ -375,7 +375,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, Student_Number.class);
                                 finish();
                             } else if (drawerItem.getIdentifier() == 2000) {
-                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/w8india.in/"));
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/trackmybus.tech/"));
                             } else if (drawerItem.getIdentifier() == 2001) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/w8india_in"));
                             } else if (drawerItem.getIdentifier() == 2003) {

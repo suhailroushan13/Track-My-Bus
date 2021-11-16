@@ -30,7 +30,7 @@
         android:gravity="center"
 
 
-        android:text="@string/say_your_number_i_ll_make_otp_appear_on_screen"
+        android:text="Enter your number to get a verification code"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
 
