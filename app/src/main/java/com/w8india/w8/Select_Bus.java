@@ -98,6 +98,12 @@ public class Select_Bus extends AppCompatActivity {
                        startActivity(new Intent(Select_Bus.this, Home.class));
                        finish();
                        break;
+                   case 2:
+                       editor.putInt("bus",3);
+                       editor.commit();
+                       startActivity(new Intent(Select_Bus.this, Home.class));
+                       finish();
+                       break;
                    default:
 
                        if(preferences.getBoolean("first", true)){
