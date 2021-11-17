@@ -57,8 +57,8 @@ TextView version,contactusbtn;
             try {
 
                 String uriText =
-                        "mailto:w8india@gmail.com" +
-                                "?subject=" + Uri.encode("Lords Bus App") +
+                        "mailto:trackmybus.team@gmail.com" +
+                                "?subject=" + Uri.encode("Track My Bus App") +
                                 "&body=" + Uri.encode("Hi Developer's");
                 Uri uri = Uri.parse(uriText);
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
@@ -69,14 +69,14 @@ TextView version,contactusbtn;
             }
         }else if(v==privacy){
 
-            String url = "http://www.lordsbus.in/privacy.html";
+            String url = "https://trackmybus.tech/privacy.html";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);
             //TODO privacy policy
         }else if(v==tnc){
 
-            String url = "http://www.lordsbus.in/terms.html";
+            String url = "https://trackmybus.tech/terms.html";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);

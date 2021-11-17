@@ -86,7 +86,7 @@
         android:gravity="left"
 
 
-        android:text="Why Lords Bus App ???"
+        android:text="Why Track My Bus ?"
 
         android:textColor="@color/ColorPrimary"
         android:textSize="30sp"
@@ -111,7 +111,7 @@
         android:gravity="left"
 
 
-        android:text="1.  Clear Directions\n2. Preferred Features\n3. User Friendly Design Interface\n4. Real Time Tracking with Live Location\n5. On Time Alert Notifications"
+        android:text=" • Real Time Tracking with Live Location\n • User Friendly Design Interface\n • On Time Alerts"
 
         android:textColor="@color/black"
         android:textSize="20sp"
