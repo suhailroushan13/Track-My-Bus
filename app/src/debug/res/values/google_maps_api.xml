@@ -21,7 +21,7 @@
 AIzaSyC-WKonRF3Riw5v1uOWRG7yQb0j9pvenKg suhails key
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
-
+AIzaSyDU_qMQnvBX6HHs9lAg50fk-OgMGkXMFgU
     AIzaSyCgsC3EHBAIuXgfAboaZZlO5RhOfJXoIAY izhan key
     -->
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCgsC3EHBAIuXgfAboaZZlO5RhOfJXoIAY</string>

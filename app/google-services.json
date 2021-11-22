@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1015640104727",
+    "firebase_url": "https://w8-android-default-rtdb.firebaseio.com",
     "project_id": "w8-android",
     "storage_bucket": "w8-android.appspot.com"
   },
@@ -14,10 +15,87 @@
       },
       "oauth_client": [
         {
+          "client_id": "1015640104727-dp4f851mqb8lik8o5qvaiej94r8oifhq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.w8india.w8",
+            "certificate_hash": "aa26ff73845d2646f8bc4f11e16f733620320cfd"
+          }
+        },
+        {
+          "client_id": "1015640104727-o2k8qhc4p1q8v7bd42l2ihg9kcqh4s7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.w8india.w8",
+            "certificate_hash": "eadf0402b6d6eca20c3d082bceb86ea0d0cc5dda"
+          }
+        },
+        {
+          "client_id": "1015640104727-r9btu0uvni0nsuq7jadmus13ld3qm5ob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.w8india.w8",
+            "certificate_hash": "cb1821118add52df4d1198c181ab8e24107ff046"
+          }
+        },
+        {
+          "client_id": "1015640104727-s07h12srre5j0rkgtg315eesp27p7ep5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.w8india.w8",
+            "certificate_hash": "57a2f3064cf2396542b0fb17cc08cd86702fa5f4"
+          }
+        },
+        {
           "client_id": "1015640104727-uo8ee7hj8dtg5g2in22kpf83muq7vif4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.w8india.w8",
+            "certificate_hash": "f7b90bbd07e9336f9617ec14cf6f1636ec4c6215"
+          }
+        },
+        {
+          "client_id": "1015640104727-vip86erpuhbld39to71hqo9jbl22fjs0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCimZjKw9ZlOPlZjWReUmxp0JZc6BZ_tdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015640104727-vip86erpuhbld39to71hqo9jbl22fjs0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015640104727:android:bb081bf1dee06f781ca152",
+        "android_client_info": {
+          "package_name": "com.w8india.w8driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015640104727-15208ap142ah2mf3bn5vke6ddikij5sc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.w8india.w8driver",
+            "certificate_hash": "cb1821118add52df4d1198c181ab8e24107ff046"
+          }
+        },
+        {
+          "client_id": "1015640104727-jfum2tssor2ir9urcj4697u43m01j78e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.w8india.w8driver",
             "certificate_hash": "f7b90bbd07e9336f9617ec14cf6f1636ec4c6215"
           }
         },
