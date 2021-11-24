@@ -334,6 +334,7 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
 
                         //new PrimaryDrawerItem().withName("Request (W8)").withIcon(R.drawable.wait).withIdentifier(16).withSelectable(false),
                         new PrimaryDrawerItem().withName("Join Our Discord").withIcon(R.drawable.join).withIdentifier(5).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Our Website").withIcon(R.drawable.web).withIdentifier(7).withSelectable(false),
                         new PrimaryDrawerItem().withName("About").withIcon(R.drawable.aboutus).withIdentifier(6).withSelectable(false),
                         new ExpandableDrawerItem().withName("Follow Us ").withIcon(R.drawable.follow).withIdentifier(8).withSelectable(false).withSubItems
                                 (
@@ -364,6 +365,8 @@ public class Home extends FragmentActivity implements OnMapReadyCallback, Google
                                 intent = new Intent(Home.this, Team.class);
                             } else if (drawerItem.getIdentifier() == 9) {
                                 intent = new Intent(Home.this, Request.class);
+                            } else if (drawerItem.getIdentifier() == 7) {
+                                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://trackmybus.tech/"));
 
                             } else if (drawerItem.getIdentifier() == 5) {
                                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/6NtGDzKTAz"));

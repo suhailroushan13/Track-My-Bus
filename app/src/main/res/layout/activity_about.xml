@@ -104,15 +104,14 @@
 
 <!--            Line -->
             <View
-                android:layout_below="@id/tv111"
+                android:id="@+id/sepratorabt"
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:id="@+id/sepratorabt"
-                android:layout_marginTop="25dp"
-                android:background="#C8D3D3D3"
-                android:layout_marginRight="16dp"
+                android:layout_below="@id/tv111"
                 android:layout_marginLeft="16dp"
-                />
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="16dp"
+                android:background="#FFFFFF" />
 <!--                 Text Contact Us -->
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
