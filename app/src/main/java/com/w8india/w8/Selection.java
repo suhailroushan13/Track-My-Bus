@@ -28,7 +28,7 @@ public class Selection extends AppCompatActivity {
         dlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.w8india.w8driver"); // missing 'http://' will cause crashed
+                Uri uri = Uri.parse("https://trackmybus.tech/driver.html"); // missing 'http://' will cause crashed
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
