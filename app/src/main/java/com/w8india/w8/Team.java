@@ -1,5 +1,7 @@
 package com.w8india.w8;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,8 +24,6 @@ String us;
 
         izhan=findViewById(R.id.izhan);
         izhan.setOnClickListener(this);
-        srli=findViewById(R.id.lis);
-        srli.setOnClickListener(this);
 //        izig=findViewById(R.id.igi);
 //        izig.setOnClickListener(this);
 //        iztw=findViewById(R.id.twi);
@@ -72,6 +72,15 @@ String us;
 //
 //       }
 
+
+    }
+
+    public void sohail(View view) {
+          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.suhailroushan.com")));
+    }
+
+    public void izhan(View view) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://izhan.bio.link")));
 
     }
 }

@@ -32,7 +32,7 @@ public class Friend extends AppCompatActivity {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_SUBJECT, "W8");
-                    String shareMessgae = "  Track My Bus is an Application which Track the Real Time Location Of College Buses https://play.google.com/store/apps/details?" + BuildConfig.APPLICATION_ID + "\n\n Learn More :  https://trackmybus.tech/ ";
+                    String shareMessgae = "  Track My Bus is an Application which Track the Real Time Location Of College Buses: https://play.google.com/store/apps/details?id=com.w8india.w8\n\n Learn More :  https://trackmybus.tech/ ";
 
                     intent.putExtra(Intent.EXTRA_TEXT, shareMessgae);
                     startActivity(Intent.createChooser(intent, "SHARE"));

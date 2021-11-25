@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_about.xml" value="0.16363636363636364" />
+        <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_request.xml" value="0.16363636363636364" />
         <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_splash_screen.xml" value="0.16363636363636364" />
         <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_student__number.xml" value="0.16363636363636364" />
         <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_student__o_t_p.xml" value="0.16363636363636364" />
-        <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_team.xml" value="0.16363636363636364" />
+        <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_support_us.xml" value="0.16363636363636364" />
+        <entry key="..\:/Android/2021 projects/app/src/main/res/layout/activity_team.xml" value="0.33" />
+        <entry key="..\:/Android/2021 projects/app/src/main/res/layout/bottom_sheet.xml" value="0.16363636363636364" />
         <entry key="..\:/IZHAAN/FINAL/app/src/main/res/drawable/circleround.xml" value="1.275" />
         <entry key="..\:/IZHAAN/FINAL/app/src/main/res/drawable/small.xml" value="1.3229166666666667" />
         <entry key="..\:/IZHAAN/FINAL/app/src/main/res/layout/activity_about.xml" value="0.67" />

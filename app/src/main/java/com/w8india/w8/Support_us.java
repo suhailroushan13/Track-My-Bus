@@ -52,7 +52,7 @@ public class Support_us extends AppCompatActivity {
                     try {
 
                         String uriText =
-                                "mailto:w8india@gmail.com" +
+                                "mailto:trackmybus.team@gmail.com" +
                                         "?subject=" + Uri.encode("Feedback for App") +
                                         "&body=" + Uri.encode("Hi Developer's");
                         Uri uri = Uri.parse(uriText);

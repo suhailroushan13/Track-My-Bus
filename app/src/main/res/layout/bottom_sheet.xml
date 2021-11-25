@@ -45,23 +45,23 @@
         android:layout_below="@id/imageView7"
         android:layout_alignParentRight="true"
 
-        android:layout_marginEnd="15dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:text="@string/whatsapp"
         android:textColor="#fff"
-        android:textSize="12sp"
+        android:textSize="11sp"
+        app:backgroundTint="#25D366"
         app:icon="@drawable/whatsapp"
         app:iconSize="30dp"
         app:iconTint="#fff"
-        app:backgroundTint="#25D366"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.894"
-        app:strokeColor="#25D366"
-        android:layout_marginRight="15dp" />
+        app:strokeColor="#25D366" />
 
     <TextView
         android:id="@+id/textView115"
@@ -92,19 +92,19 @@
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-android:textSize="12sp"
         android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:text="@string/call"
+        android:text="EMERGENCY"
         android:textColor="#fff"
+        android:textSize="11sp"
+        app:backgroundTint="@color/colorAccent"
+
         app:icon="@drawable/calls"
         app:iconSize="20dp"
-        app:iconTint="#fff"
-
-        app:backgroundTint="@color/colorAccent"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp" />
+        app:iconTint="#fff" />
 
     <ImageView
         android:id="@+id/imageView7"

@@ -50,7 +50,7 @@ public class Select_Bus extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this,R.style.ThemeOverlay_App_MaterialAlertDialog);
-        builder.setMessage("1.The Driver for this Bus doesn't have a Smartphone\n2.Due to this problem we are unable to track this Bus Location.\n3.Meanwhile We are working on an Alternative solution.");
+        builder.setMessage("Due to uncertain circumstances we couldn't add this bus. \nPlease stay tuned while we are working on it. \nInconvenience regretted!");
 
 //        builder.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
 //            @Override

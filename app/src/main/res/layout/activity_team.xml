@@ -32,7 +32,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/medium"
         android:gravity="center"
-        android:text="Meet the Development Team"
+        android:text="App by:"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,14 +40,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardsizhan"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-
+        android:layout_height="180dp"
+android:clickable="true"
+        android:focusable="true"
         app:cardBackgroundColor="#efeeee"
         app:cardCornerRadius="20dp"
 
+        android:onClick="izhan"
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
@@ -65,7 +67,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="30dp"
             app:cardCornerRadius="50dp"
             app:strokeColor="@color/maincolor"
             app:strokeWidth="2dp">
@@ -73,6 +75,8 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:padding="5dp"
+                android:background="#fff"
                 android:scaleType="fitCenter"
                 android:src="@drawable/izhan" />
 
@@ -85,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
             android:layout_marginLeft="105dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="@font/medium"
 
             android:text="@string/mohammed_izhan"
@@ -143,46 +147,42 @@
         <!--            android:layout_marginLeft="180dp"-->
         <!--            android:layout_marginTop="83dp"-->
         <!--            android:src="@drawable/link" />-->
-        <ImageView
-            android:id="@+id/lis1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-
-            android:layout_gravity="center"
-            android:layout_marginLeft="-75dp"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/ic_outline_public_24"
-            app:tint="@color/maincolor" />
 
         <TextView
             android:id="@+id/tag_info1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginLeft="130dp"
+            android:layout_gravity="center_horizontal"
 
+            android:gravity="center"
 
+            android:drawableTint="@color/maincolor"
+            android:drawableStart="@drawable/ic_outline_public_24"
+            android:drawablePadding="5dp"
             android:layout_marginTop="80dp"
             android:autoLink="web"
             android:linksClickable="true"
             android:text="izhan.bio.link"
 
-            android:textSize="15dp" />
-    </androidx.cardview.widget.CardView>
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/ic_outline_public_24" />
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
 
         android:id="@+id/cardsuhail"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
+        android:clickable="true"
+        android:focusable="true"
 
-        android:layout_marginTop="24dp"
         app:cardBackgroundColor="#efeeee"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
 
 
+        android:onClick="sohail"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -199,7 +199,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="30dp"
             app:cardCornerRadius="50dp"
             app:strokeColor="@color/maincolor"
             app:strokeWidth="2dp">
@@ -220,7 +220,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
             android:layout_marginLeft="105dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="@font/medium"
 
             android:text="@string/mohammed_suhail_roushan_ali"
@@ -249,31 +249,24 @@
 
         </TextView>
 
-        <ImageView
-            android:id="@+id/lis"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
 
-            android:layout_gravity="center"
-            android:layout_marginLeft="-75dp"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/ic_outline_public_24"
-            app:tint="@color/maincolor" />
 
         <TextView
             android:id="@+id/tag_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginLeft="130dp"
+            android:layout_gravity="center_horizontal"
 
-
+            android:drawableTint="@color/maincolor"
+            android:drawableStart="@drawable/ic_outline_public_24"
+            android:drawablePadding="5dp"
             android:layout_marginTop="80dp"
             android:autoLink="web"
             android:linksClickable="true"
             android:text="suhailroushan.com"
 
-            android:textSize="15dp" />
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/ic_outline_public_24" />
 
     </com.google.android.material.card.MaterialCardView>
 

@@ -33,7 +33,7 @@
     <string name="privacy_policy">Privacy Policy</string>
 
     <string name="why_you_should_rate_us">Why you should Rate Us ?</string>
-    <string name="rate_us">Rate Us</string>
+    <string name="rate_us">Rate your experience</string>
     <string name="title_activity_maps">Map</string>
 
 
@@ -56,17 +56,17 @@
     <string name="didn_t_recieve_code_">Didn\'t Recieve Code ?</string>
     <string name="todo54">TODO</string>
     <string name="pick_your_bus">Pick Your Bus</string>
-    <string name="request_wait">Request Wait</string>
+    <string name="request_wait">Request Wait (Beta)</string>
     <string name="say_your_number_i_ll_make_otp_appear_on_screen">Let\'s verify you with a One Time Password</string>
 
-    <string name="android_developer_ui_ux_designer">Android Developer | UI UX Designer</string>
+    <string name="android_developer_ui_ux_designer">Android Developer | UI UX </string>
     <string name="tell_a_friend">Tell a Friend</string>
     <string name="help_your_classmate_s_finding_an_easy_way_to_reach_college_on_time">Help your Classmate\'s finding an Easy Way to reach College on Time</string>
     <string name="contact_us">Contact us</string>
     <string name="version_1_0">Version:1.0</string>
     <string name="help_your_classmates_find_an_easy_way_to_reach_college_on_time">Help your classmates to reach College on time by never missing a bus again
 </string>
-    <string name="your_review_helps_us_spread_the_word_and_grow_our_community">Your review helps us spread the word and grow our community.</string>
+    <string name="your_review_helps_us_spread_the_word_and_grow_our_community">Your feedback helps us in improving the app and your positive words encourages us</string>
 
 
 
