@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Selection extends AppCompatActivity {
-    Button slogin,dlogin;
+    Button slogin,dlogin,button2;
     FirebaseAuth auth;
     FirebaseUser user;
 
@@ -22,6 +22,14 @@ public class Selection extends AppCompatActivity {
         setContentView(R.layout.activity_selection);
         slogin=findViewById(R.id.slogin);
         slogin.setOnClickListener(v -> Student_Number());
+
+        button2=findViewById(R.id.button2);
+        button2.setOnClickListener(v ->Student_Number());
+
+
+
+
+
 
         dlogin=findViewById(R.id.dlogin);
         dlogin=findViewById(R.id.dlogin);
@@ -44,6 +52,7 @@ public class Selection extends AppCompatActivity {
     public void Student_Number(){
         Intent intent = new Intent(this, Student_Number.class);
         startActivity(intent);
+
         finish();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
